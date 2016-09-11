@@ -1,0 +1,102 @@
+<!--#include virtual="../header.html" -->
+<!--#include virtual="../header2.html" -->
+
+
+Syllabus
+========
+
+STATS 110, Statistical Methods in Engineering and the Physical Sciences
+Stanford University, Department of Statistics, Autumn 2016
+
+
+**************
+
+Course Description
+------------------
+This is an introduction to probability and statistics for engineers and science majors. We will cover descriptive statistics, basic probability, hypothesis testing, confidence intervals, point estimation, simple linear regression, analysis of variance (ANOVA), and some nonparametric methods. We will try to use real world examples to motivate the understanding of statistical analysis. The only prerequisite is one year of calculus.
+
+Schedule
+--------
+
+The class meets Monday through Thursday 11:30am to 12:20pm in [320-105](https://campus-map.stanford.edu/?id=01-320&lat=37.42694141&lng=-122.17188691&zoom=17&srch=320-105).  Monday, Tuesday, and Wednesday will be lectures and Thursday will be a recitation section.  
+
+Textbook and recommended reading 
+--------------------------------
+
+We will be using Norm Matloff's free textbook From Algorithms to Z-Scores: Probabilistic and Statistical Modeling in Computer Science, available at [http://heather.cs.ucdavis.edu/~matloff/132/PLN/ProbStatBook.pdf].  We will not strictly follow the textbook, so class attendance is highly suggested.
+
+The book's examples and homework use [R](https://cran.r-project.org/) and we shall too.    Some resources on learning R can be found at [https://cran.r-project.org/doc/contrib/Owen-TheRGuide.pdf], [https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf], and [http://www.cyclismo.org/tutorial/R/].  
+
+
+Course Staff
+------------
+
+**Instructor**: Timothy Daley
+**Primary Contact**: [Piazza](http://www.piazza.com/stanford/autumn2016/stats110)
+**Email**: tdaley@stanford.edu
+**Office**: [Sequoia Hall](http://campus-map.stanford.edu/?id=04-530&lat=37.4289326567&lng=-122.172199549) room 105
+**Office Hours**: Tuesday 1-4 pm or by appointment.
+
+
+**TAs**: TBD
+
+
+### Contacting Course Staff
+
+
+Questions about the homework, about R, of general interest, or about course logistics are most appropriate to ask on [Piazza](http://www.piazza.com/stanford/autumn2016/stats110). 
+Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Piazza much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
+
+
+
+### Course objectives
+
+My primary objective in this course is to instill in you an intuitive understanding of probability and statistics that you can apply in your daily and professional life.  This includes how to deal with data, model physical processes, and understand statistical claims (such as those you see in the news).  I will try to focus on this basic principle and appreciate any feedback.    
+
+
+**********
+
+Assignments and Evaluation
+--------------------------
+
+**Grading Breakdown**
+* 30% Quizzes (10 total, no quiz in the last week)
+* 40% Weekly homework (10 total, no homework the first week)
+* 30% Final Exam 
+
+
+**Due Dates and Exam Dates**
+Homeworks are due at 
+
+
+**Submitting Assignments**
+* All homeworks are due Friday at 11:59pm 
+* Late assignments will not be graded.  
+* Homeworks must be submitted as a single .pdf file emailed to tdaley@stanford.edu.  
+* The email subject should be Stats110-HW[homework #] and the homework file name should be [your Stanford User ID]-hw[homework #].pdf (e.g., If John Smith's User ID is jsmith, he would send an email with a subject of Stats110-HW1 with the file jsmith-hw1.pdf attached).  
+* If you need to resubmit your homework, please send an email with the same format as above.  Only the most recent submission received on time will be graded.
+* We will reply to your assignment email with your score and comments.
+
+
+**Quizzes**
+
+
+
+**Homework**
+
+
+
+**Final exam**
+
+
+
+
+
+
+
+
+<!--#include virtual="../footer.html" -->
+
+
+
+
