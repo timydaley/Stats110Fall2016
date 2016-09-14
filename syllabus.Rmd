@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 <!--#include virtual="../header.html" -->
 <!--#include virtual="../header2.html" -->
 
@@ -13,7 +16,7 @@ Stanford University, Department of Statistics, Autumn 2016
 
 Course Description
 ------------------
-This is an introduction to probability and statistics for engineers and science majors. We will cover descriptive statistics, basic probability, hypothesis testing, confidence intervals, point estimation, simple linear regression, analysis of variance (ANOVA), and some nonparametric methods. We will try to use real world examples to motivate the understanding of statistical analysis. The only prerequisite is one year of calculus.
+This is an introduction to probability and statistics for engineers and science majors. We will cover such topics as descriptive statistics, basic probability, hypothesis testing, confidence intervals, point estimation, simple linear regression, analysis of variance (ANOVA), and some nonparametric methods. We will try to use real world examples to motivate the understanding of statistical analysis. The only prerequisite is one year of calculus.
 
 Schedule
 --------
@@ -32,7 +35,7 @@ Course Staff
 ------------
 
 **Instructor**: Timothy Daley
-**Primary Contact**: [Piazza](http://www.piazza.com/stanford/autumn2016/stats110)
+**Primary Contact**: [Canvas](https://canvas.stanford.edu)
 **Email**: tdaley@stanford.edu
 **Office**: [Sequoia Hall](http://campus-map.stanford.edu/?id=04-530&lat=37.4289326567&lng=-122.172199549) room 105
 **Office Hours**: Tuesday 1-4 pm or by appointment.
@@ -44,7 +47,7 @@ Course Staff
 ### Contacting Course Staff
 
 
-Questions about the homework, about R, of general interest, or about course logistics are most appropriate to ask on [Piazza](http://www.piazza.com/stanford/autumn2016/stats110). 
+Questions about the homework, about R, of general interest, or about course logistics are most appropriate to ask on [Canvas](https://canvas.stanford.edu/courses/47191/discussion_topics). 
 Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Piazza much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
 
 
@@ -66,28 +69,22 @@ Assignments and Evaluation
 
 
 **Due Dates and Exam Dates**
-Homeworks are due at 
+Homeworks will be posted Mondays on Canvas at 5pm.  They are due Fridays at 11:59pm.  Late homework will be accepted till the next homework is posted for 50 \% credit.  
 
 
 **Submitting Assignments**
 * All homeworks are due Friday at 11:59pm 
 * Late assignments will not be graded.  
-* Homeworks must be submitted as a single .pdf file emailed to tdaley@stanford.edu.  
-* The email subject should be Stats110-HW[homework #] and the homework file name should be [your Stanford User ID]-hw[homework #].pdf (e.g., If John Smith's User ID is jsmith, he would send an email with a subject of Stats110-HW1 with the file jsmith-hw1.pdf attached).  
-* If you need to resubmit your homework, please send an email with the same format as above.  Only the most recent submission received on time will be graded.
-* We will reply to your assignment email with your score and comments.
+* Homeworks must be submitted through Canvas.
+* The homework file name should be [your Stanford User ID]-hw[homework #].pdf (e.g., If John Smith's User ID is jsmith, he would submit the file jsmith-hw1.pdf to canvas).  
 
 
 **Quizzes**
-
-
-
-**Homework**
-
+There will be short weekly quizes on Thursdays to test the material that was taught earlier in the week.
 
 
 **Final exam**
-
+The final exam is on Friday December 16 at 8:30am.  
 
 
 

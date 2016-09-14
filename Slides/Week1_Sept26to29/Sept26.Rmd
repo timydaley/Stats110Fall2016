@@ -1,0 +1,61 @@
+---
+title: "Syllabus"
+output: slidy_presentation
+---
+
+# Classes
+
+- Lectures: Monday, Tuesday, and Wednesday 
+
+- Recitation: Thursday
+
+# Textbook
+
+- http://heather.cs.ucdavis.edu/~matloff/132/PLN/ProbStatBook.pdf
+
+```{r, out.width = "450px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("ProbStatBookPage1.jpg")
+```
+
+# Homework
+
+- Posted on Canvas on Monday at 5pm.
+
+- Due the next Friday at 11:59pm through Canvas.
+
+- Late homework will be accepted till the next homework is posted (5pm) for 50 \% credit. 
+
+- No homework this week.
+
+- Homework makes up a total of 40 \% of your final grade.
+
+# Quizes
+
+- Short (~10 minutes) weekly quizes on Thursday at the end of the recitation session.
+
+- Every week except the last week.
+
+- Quizes make up a total of 30 \% of your final grade.
+
+# Final Exam
+
+- Friday December 16 at 8:30am
+
+- Room: TBD
+
+- 30\% of your final grade
+
+# Office hours
+
+- Tuesday 1-4pm
+
+- Sequoia 105.
+
+- Otherwise by appointment (my office is not in Sequoia)
+
+# Slides
+
+- Slides will be posted to Canvas.
+
+
+
