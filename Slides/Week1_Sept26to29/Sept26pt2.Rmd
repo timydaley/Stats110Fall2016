@@ -69,7 +69,7 @@ barplot(c(admitted[1,1]/sum(admitted[,1]), admitted[1,2]/sum(admitted[,2])),
 
 ## Acceptance rates by department
 
-```{r}
+```{r, fig.height=4}
 par(mfrow = c(1, 5))
 for(dept in c("A", "B", "C", "D", "E")){
   x = UCBAdmissions[ , , dept]
@@ -79,7 +79,25 @@ for(dept in c("A", "B", "C", "D", "E")){
 }
 ```
 
-## Size of departments versus
+## Acceptance rate vs female application
+
+```{r cache=TRUE, fig.height=4.5, fig.width=5.5}
+y = c()
+for(dept in c("A", "B", "C", "D", "E", "F")){
+  x = UCBAdmissions[ , , dept]
+  y = rbind(y, c(sum(x[1,])/sum(x), sum(x[,2])/sum(x)))
+}
+plot(y, pch = 16, xlim = c(0, 1), ylim = c(0, 1), 
+     xlab = "acceptance rate", ylab = "female application rate")
+```
+
+## Confounding factors!
+
+- Decisions of acceptance are made at the department level
+
+- Females tended to apply to more exclusive departments
+
+- Even with no bias in each department, it would appear in aggregate that the school is biased against women.
 
 
 

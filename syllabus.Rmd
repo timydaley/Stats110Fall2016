@@ -28,7 +28,7 @@ Textbook and recommended reading
 
 We will be using Norm Matloff's free textbook From Algorithms to Z-Scores: Probabilistic and Statistical Modeling in Computer Science, available at [http://heather.cs.ucdavis.edu/~matloff/132/PLN/ProbStatBook.pdf].  We will not strictly follow the textbook, so class attendance is highly suggested.
 
-The book's examples and homework use [R](https://cran.r-project.org/) and we shall too.    Some resources on learning R can be found at [https://cran.r-project.org/doc/contrib/Owen-TheRGuide.pdf], [https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf], and [http://www.cyclismo.org/tutorial/R/].  
+The book's examples and homework use [R](https://cran.r-project.org/) and we shall too.    Some resources on learning R can be found at [http://heather.cs.ucdavis.edu/~matloff/R/RProg.pdf],  [https://cran.r-project.org/doc/contrib/Owen-TheRGuide.pdf], [http://r4ds.had.co.nz/],  [https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf], and [http://www.cyclismo.org/tutorial/R/].  
 
 
 Course Staff
@@ -48,7 +48,7 @@ Course Staff
 
 
 Questions about the homework, about R, of general interest, or about course logistics are most appropriate to ask on [Canvas](https://canvas.stanford.edu/courses/47191/discussion_topics). 
-Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Piazza much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
+Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Canvas much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
 
 
 
