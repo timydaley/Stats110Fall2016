@@ -41,7 +41,11 @@ Course Staff
 **Office Hours**: Tuesday 1-4 pm or by appointment.
 
 
-**TAs**: TBD
+**TAs**: 
+Mona Azadkia <mazadkia@stanford.edu>
+Claire Donnat <cdonnat@stanford.edu>
+Snigdha Panigrahi <snigdha@stanford.edu>
+
 
 
 ### Contacting Course Staff
@@ -65,7 +69,7 @@ Assignments and Evaluation
 **Grading Breakdown**
 * 30% Quizzes (10 total, no quiz in the last week)
 * 40% Weekly homework (10 total, no homework the first week)
-* 30% Final Exam 
+* 30% Final Exam (or final project for graduate students taking this course, see below)
 
 
 **Due Dates and Exam Dates**
@@ -86,8 +90,8 @@ There will be short weekly quizes on Thursdays to test the material that was tau
 **Final exam**
 The final exam is on Friday December 16 at 8:30am.  
 
-
-
+**Final project**
+There has been some interest from graduate students to take this course.  For such students I am giving the option of a final project in place of the final exam and I would highly suggest this option for more experience in applied data analysis.  For such students a proposed topic is due Nov 3.  
 
 
 

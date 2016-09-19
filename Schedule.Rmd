@@ -1,0 +1,28 @@
+---
+title: "Proposed schedule and topics"
+output: html_document
+---
+
+-------------------------------------------------------------
+Week Dates         Topic
+---- ---------     --------------------------------------------
+1    Sept 26-29    Introduction to probability (Chap 2);
+
+2    Oct 3-7       Basic probability and simple discrete RVs (Chap 3)
+
+3    Oct 10-13     Discrete distributions; binomial, Poisson, etc (Chap 4)
+
+4    Oct 17-20     Continuous distributions; exponential, normal, etc (Chap 7, 8, & 9)
+
+5    Oct 24-27     Parameter estimation (Chap 18) 
+
+6    Oct 31-Nov 3  Confidence intervals (Chap 16)
+
+7    Nov 7-10      Hypothesis testing (Chap 17)
+
+8    Nov 14-17     Multiple hypothesis testing (Chap 17)
+
+9    Nov 28-Dec 1  Linear Regression (Chap 22)
+
+10   Dec 5-8       Other regression topics; logistic, etc (Chap 23)
+-------------------------------------------------------------
