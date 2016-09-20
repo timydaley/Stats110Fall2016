@@ -16,7 +16,7 @@ Week Dates         Topic
 
 5    Oct 24-27     Parameter estimation (Chap 18) 
 
-6    Oct 31-Nov 3  Confidence intervals (Chap 16)
+6    Oct 31-Nov 3  CLT and Confidence intervals (Chap 16)
 
 7    Nov 7-10      Hypothesis testing (Chap 17)
 
