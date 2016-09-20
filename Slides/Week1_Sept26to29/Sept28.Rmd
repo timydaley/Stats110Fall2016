@@ -1,0 +1,16 @@
+---
+title: "Conditional Probability and Independence"
+output: slidy_presentation
+---
+
+# Conditional Probability
+
+- The conditional probability of A given B, $\Pr(A|B)$, is the probability that A occurs over all events that include B.  
+
+![Back to the Venn diagram](venn_intersection.jpg)
+
+- The conditional probability is amount that A overlaps with B, relative to the total amount of B
+
+$$\Pr(A | B) = \frac{\Pr(A \cap B)}{\Pr(B)}$$
+                      
+

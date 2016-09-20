@@ -1,0 +1,84 @@
+---
+title: "Basic Definitions"
+output: slidy_presentation
+---
+
+# Basic definitions
+
+We need a "formal" system to work with, so we'll start off with basic definitions.  Underlying these definitions is a basic intuition about what data or experiments are.  Though we formalize these concepts, never forget the intuition.
+
+#  What is an experiment?
+
+An **experiment** is the process of obtaining an **observation** or taking a **measurement**
+
+
+* For example: roll a single 6-sided die.  
+    * You will get exactly one of the following: 1, 2, 3, 4, 5, or 6.  
+    * You can't decompose these into any other events, so these are called **simple events**
+
+* Flip a coin 2 times.
+    * What are the simple events?
+
+# Sample Space
+
+* The **sample space** of an experiment is the collection of all its possbile outcomes.
+
+* Events that will never occur are not in the sample space, as they never occur (e.g. rolling a 42 using a single roll of a 6-sided die).
+
+* A random variable is a numerical outcome.
+
+# Probability 
+
+* The probability of an event is the measure of how often it occurs if the experiment is repeated a very large number of times.
+
+- $\Pr (\text{rolling 1 using a 6-sided die}) = 1/6$
+
+- $0 \leq \Pr (\text{A}) \leq 1$ for all A
+
+- $\Pr (\text{A}) = 0$ means A will never occur
+
+- $\Pr (\text{A}) = 1$ means A will always occur (and nothing else)
+
+# Decomposing complex events to simple events
+
+- If $\text{A} = \text{A}_{1} + \text{A}_{2}$ and $A_{1}$ and $A_{2}$ have no overlap (non-intersecting), then $$\Pr(\text{A}) = \Pr(\text{A}_{1}) + \Pr(\text{A}_{2})$$
+
+- Example: What is the probability of getting a total of 4 when rolling two 6-sided die?
+    - $\Pr(4) = \Pr( \{1, 3\} \text{ or } \{2, 2\} \text{ or } \{3, 1 \}) = \frac{1}{6} \cdot \frac{1}{6} + \frac{1}{6} \cdot \frac{1}{6} +  \frac{1}{6} \cdot \frac{1}{6} = \frac{3}{36} = \frac{1}{12}$
+    
+- Example: What is the probability of getting either a total of 3 or 4?
+    - $\Pr(3 \text{ or } 4) = \Pr( \{1, 2 \} \text{ or } \{1, 3 \} \text{ or } \{2, 1 \} \text{ or } \{2, 2 \} \text{ or } \{3, 1 \}) = \frac{5}{36}$
+    
+# Compound events
+
+- The union of two events A \& B is either A or B or both (if possible), this is denoted by $\text{A} \cup \text{B}$.
+
+- The intersection of two events is A and B, meaning both have to occur, and is denoted $\text{A} \cap \text{B}$.  
+
+- The complement of an event A, $A^{C}$, is the event that A does not occur.
+
+# How to calculate probabilities if events overlap?
+
+![Obligatory Venn diagram](venn_intersection.jpg)
+
+- Note that if we count A and B, we count the overlap twice
+    - Subtract off the twice counted overlap
+   
+- (A or B) = A + B - (A and B)
+
+# How to calculate probabilities if events overlap?
+
+- In math notation, $\Pr(\text{A} \cup \text{B}) = \Pr (\text{A}) + \Pr (\text{B}) - \Pr(\text{A} \cap \text{B})$
+
+- Similarly $\Pr(\text{A} \cup \text{B} \cup \text{C}) = \Pr(\text{A}) + \Pr(\text{B}) + \Pr(\text{C}) - \Pr(\text{A} \cap \text{B}) - \Pr(\text{A} \cap \text{C})$
+                         $- \Pr(\text{B} \cap \text{C}) + \Pr(\text{A} \cap \text{B} \cap \text{C})$
+                         
+
+# Examples
+
+
+
+
+
+
+

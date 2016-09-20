@@ -53,6 +53,24 @@ knitr::include_graphics("ProbStatBookPage1.jpg")
 
 - Otherwise by appointment (my office is not in Sequoia)
 
+# TAs
+
+Mona Azadkia <mazadkia@stanford.edu> 
+
+- need picture
+
+# TAs
+
+Claire Donnat <cdonnat@stanford.edu>
+
+- need picture
+
+# TAs
+
+Snigdha Panigrahi <snigdha@stanford.edu>
+
+- need picture
+
 # Slides
 
 - Slides will be posted to Canvas.
