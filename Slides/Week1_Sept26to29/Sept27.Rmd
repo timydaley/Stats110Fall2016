@@ -59,7 +59,7 @@ An **experiment** is the process of obtaining an **observation** or taking a **m
 
 # How to calculate probabilities if events overlap?
 
-![Obligatory Venn diagram](venn_intersection.jpg)
+![Obligatory Venn diagram](AintersectB.png)
 
 - Note that if we count A and B, we count the overlap twice
     - Subtract off the twice counted overlap
@@ -73,8 +73,47 @@ An **experiment** is the process of obtaining an **observation** or taking a **m
 - Similarly $\Pr(\text{A} \cup \text{B} \cup \text{C}) = \Pr(\text{A}) + \Pr(\text{B}) + \Pr(\text{C}) - \Pr(\text{A} \cap \text{B}) - \Pr(\text{A} \cap \text{C})$
                          $- \Pr(\text{B} \cap \text{C}) + \Pr(\text{A} \cap \text{B} \cap \text{C})$
                          
-
+                         
 # Examples
+
+- What is the chance of not rolling a 4 on either dice on two 6-sided dice?
+
+- Way 1: enumerate
+$$\Pr(\text{no 4}) = \Pr(\{1, 1 \} \text{or} \{1, 2 \} \text{or} \{1, 3 \} \text{or} \{1, 5 \} \text{or} \ldots) = \frac{25}{36}$$
+
+- Way 2: use probability laws
+$$\Pr(\text{no 4 on either}) = \Pr(\text{no 4 on 1st}) + \Pr(\text{no 4 on 2nd}) - \Pr(\text{no 4 on both})$$
+$$= \frac{5}{6} + \frac{5}{6} - \frac{35}{36} = \frac{25}{36}$$
+
+- Or 
+$$\Pr(\text{no 4 on either}) = 1 - \Pr(\text{4 on either})$$
+$$= 1 - (\Pr(\text{4 on 1st}) + \Pr(\text{4 on 2nd}) - \Pr(\text{4 on both}))$$
+$$= 1 - (\frac{1}{6} + \frac{1}{6} - \frac{1}{36}) = 1 - \frac{11}{36} = \frac{25}{36}$$
+
+
+
+# Counting
+
+- A basic part of probability involves counting events, but this number may be large.  We need systematic ways to do this.
+
+- Two basic cases: order matters \& order doesn't matter
+
+# Order matters
+
+- Example: How many ways can you get two cards (from a standard 52 card deck) dealt in order?
+    $$= \# \text{ ways for first card} \cdot \# \text{ ways for second card (with first card removed)}$$
+    $$= 52 \cdot 51$$
+    
+# Order doesn't matter
+
+- How many ways to get two cards dealt in any order?
+
+- $= \#$ ways to get two cards in order, then correct for $\#$ of ways to rearrange.
+
+    $$= 52 \cdot 51 \, / 2$$
+    
+- What about 3 cards?
+
 
 
 
