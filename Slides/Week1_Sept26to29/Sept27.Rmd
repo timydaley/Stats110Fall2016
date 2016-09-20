@@ -91,18 +91,24 @@ $$= 1 - (\Pr(\text{4 on 1st}) + \Pr(\text{4 on 2nd}) - \Pr(\text{4 on both}))$$
 $$= 1 - (\frac{1}{6} + \frac{1}{6} - \frac{1}{36}) = 1 - \frac{11}{36} = \frac{25}{36}$$
 
 
-
 # Counting
 
 - A basic part of probability involves counting events, but this number may be large.  We need systematic ways to do this.
 
 - Two basic cases: order matters \& order doesn't matter
 
+
+
 # Order matters
 
 - Example: How many ways can you get two cards (from a standard 52 card deck) dealt in order?
     $$= \# \text{ ways for first card} \cdot \# \text{ ways for second card (with first card removed)}$$
     $$= 52 \cdot 51$$
+   
+   
+    
+![](cards.gif)
+
     
 # Order doesn't matter
 
@@ -115,9 +121,28 @@ $$= 1 - (\frac{1}{6} + \frac{1}{6} - \frac{1}{36}) = 1 - \frac{11}{36} = \frac{2
 - What about 3 cards?
 
 
+# Examples
+
+What is the probability of getting dealt an Ace and a King of different suits in a two card hand?
+
+- Suppose the first card is an Ace (since order doesn't matter), then the next card can be one of three remaining kings.  
+$$\frac{4 \cdot 3}{52 \cdot 51 \,  / 2} \approx 0.00905$$
 
 
+# Examples
+
+In Texas Hold 'Em everyone is dealt two cards face down, then three community cards are dealt, then two rounds of one additional community cards (for 7 cards total).
+
+Suppose you have a flush (5 cards of same suit) after the first 3 community cards.  If there are 3 players, what is the probability at least one of the two other players also have a flush?
 
 
+# Examples (cont)
 
+Since you have a flush, you have two cards of the same suit, and the three community cards are also of the same suit.  That's 5 cards of the same suit, leaving $13 - 5 = 8$ cards of that suit remaining out the $52 - 5 = 47$ unknown cards.  A player needs two cards of the same suit to have a flush
+
+The chance that one other player has a flush is $\frac{8 \cdot 7}{47 \cdot 46}$.  The chance that both players have a flush is $\frac{8 \cdot 7 \cdot 6 \cdot 5}{47 \cdot 46 \cdot 45 \cdot 44}$.
+
+$$\Pr(\text{at least one player has a flush}) = \Pr(\text{player 1 has flush} \cup \text{player 2 has flush})$$
+$$= \Pr(\text{player 1 has flush}) + \Pr(\text{player 2 has flush}) - \Pr(\text{both have flush})$$
+$$= \frac{8 \cdot 7}{47 \cdot 46} + \frac{8 \cdot 7}{47 \cdot 46} - \frac{8 \cdot 7 \cdot 6 \cdot 5}{47 \cdot 46 \cdot 45 \cdot 44} = 0.0514$$
 
