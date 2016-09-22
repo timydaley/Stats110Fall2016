@@ -144,6 +144,11 @@
 <li><p>Similarly for any functions <span class="math inline">\(g, h\)</span> and independent <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math display">\[\mathrm{E} (g(X) \cdot h(Y)) = \mathrm{E} (g(X)) \cdot \mathrm{E} (h(Y)).\]</span></p></li>
 </ul>
 </div>
+<div id="properties-of-expectation-using-cdf-to-calculate-expectation" class="slide section level1">
+<h1>Properties of expectation: using cdf to calculate expectation</h1>
+<p>Suppose that <span class="math inline">\(X\)</span> can only take on positive values: <span class="math inline">\(\{ 0, 1, 2, \ldots \}\)</span>. How to calculate expectation using cdf?</p>
+<p><span class="math display">\[\mathrm{E}(X) = \sum{x \geq 0} x f(x)\]</span> <span class="math display">\[= \sum_{x \geq 1} x \Pr(X = x) = \sum_{x \geq 1} \sum_{y = 1}^{x} \Pr(X = x)\]</span> <span class="math display">\[= \sum_{y \geq 1} \sum_{x = y}^{\infty} \Pr(X = x) = \sum_{y \geq 1} \Pr(X \geq y)\]</span> <span class="math display">\[= \sum_{y \geq 1} 1 - F(y)\]</span></p>
+</div>
 <div id="examples-4" class="slide section level1">
 <h1>Examples</h1>
 <ul>
@@ -200,6 +205,56 @@
 <li>Remember we have to pay <span class="math inline">\(\$ 10\)</span> to play, so we lose that no matter what. <span class="math display">\[\mathrm{E}(\text{ betting on red }) = \mathrm{E}(X - 10)\]</span> <span class="math display">\[= (20/38) \cdot 0 + (18/38) \cdot 20 - 10 = -0.526\]</span></li>
 </ul></li>
 </ul>
+</div>
+<div id="example-the-proper-price-of-making-a-flush-with-one-card-to-come" class="slide section level1">
+<h1>Example: The proper price of making a flush with one card to come?</h1>
+<p>Suppose we’ve seen 6 cards and we have four to a flush (5 cards of the same suit). The current pot is $20. If our opponent bets, what price can he bet that is break even for making a flush?</p>
+<p>We want to calculate the cost <span class="math inline">\(C\)</span> such that <span class="math display">\[\mathrm{E} (\text{call}) = - C + \Pr(\text{flush}) \cdot (20 + 2 \cdot C) = 0\]</span></p>
+</div>
+<div id="example-the-proper-price-of-making-a-flush-with-one-card-to-come-1" class="slide section level1">
+<h1>Example: The proper price of making a flush with one card to come?</h1>
+<p>First: What’s the probability of making the flush?</p>
+<ul>
+<li><p>We’ve seen 4 cards of the suit, <span class="math inline">\(13 - 4 = 9\)</span> remaining.</p></li>
+<li><p>Total number of cards remaining: <span class="math inline">\(52 - 6 = 46\)</span> remaining</p></li>
+</ul>
+<p><span class="math display">\[\Pr (\text{ flush }) = \frac{9}{46} \approx 0.195\]</span></p>
+</div>
+<div id="example-the-proper-price-of-making-a-flush-with-one-card-to-come-2" class="slide section level1">
+<h1>Example: The proper price of making a flush with one card to come?</h1>
+<p>Now to calculate <span class="math inline">\(C\)</span>.</p>
+<p><span class="math display">\[-C + \frac{9}{46} \cdot(20 + 2 \cdot C) = 0\]</span> <span class="math display">\[\frac{180}{46} + C \cdot \bigg(\frac{18}{46} - 1 \bigg) = 0\]</span> <span class="math display">\[\frac{180}{46} = \frac{28}{46} C\]</span> <span class="math display">\[C = \frac{180}{28} \approx 6.43\]</span></p>
+<p>So if our opponent bets $6.5 or more, calling for the flush would not be profitable.</p>
+</div>
+<div id="variance" class="slide section level1 bigger">
+<h1>Variance</h1>
+</div>
+<div id="variance-1" class="slide section level1">
+<h1>Variance</h1>
+<p><strong>Variance</strong> is a measure of variation or dispersion. It specifically measures the squared deviation from the mean.</p>
+<p><span class="math display">\[\mathrm{Var}(X) = \sigma_{X}^{2} = \mathrm{E}(X - \mathrm{E}(X))^{2}\]</span></p>
+<p>The <strong>standard deviation</strong> is the square root of the variance. Note that the standard deviation has the same units as <span class="math inline">\(X\)</span>.</p>
+<p><span class="math display">\[\sigma_{X} = \sqrt{\mathrm{Var}(X)}\]</span></p>
+</div>
+<div id="properties-of-variance" class="slide section level1">
+<h1>Properties of variance:</h1>
+<ul>
+<li><p>invariant to translation (shifts) <span class="math display">\[\mathrm{Var}(X + c) = \mathrm{E} \big(X + c - \mathrm{E}(X + c) \big)^{2}\]</span> <span class="math display">\[= \mathrm{E} \big(X + c - \mathrm{E}(X) - c \big)^{2}\]</span> <span class="math display">\[= \mathrm{E} \big(X - \mathrm{E}(X) \big)^{2}\]</span></p></li>
+<li>scaling <span class="math inline">\(X\)</span> scales the variance quadratically <span class="math display">\[\mathrm{Var}(c \cdot X) = \mathrm{E} \big(c \cdot X - \mathrm{E}(c \cdot X) \big)^{2}\]</span> <span class="math display">\[= \mathrm{E} \big(c \cdot X - c \cdot \mathrm{E}(X) \big)^{2}\]</span> <span class="math display">\[= c^{2} \cdot \mathrm{E} (X - \mathrm{E}(X)) = c^{2} \mathrm{Var} (X)\]</span>
+<ul>
+<li>scaling <span class="math inline">\(X\)</span> scales the standard deviation</li>
+</ul></li>
+</ul>
+</div>
+<div id="properties-of-variance-difference-of-squared-expectations" class="slide section level1">
+<h1>Properties of variance: difference of squared expectations</h1>
+<p><span class="math display">\[\mathrm{Var}(X) = \mathrm{E}(X - \mathrm{E}(X))^{2}\]</span> <span class="math display">\[= \mathrm{E} \big(X^{2} - 2 \cdot X \cdot \mathrm{E}(X) + (\mathrm{E}(X))^{2} \big)\]</span> <span class="math display">\[= \mathrm{E} (X^{2}) - 2 \mathrm{E}(X) \mathrm{E}(X) + (\mathrm{E}(X))^{2}\]</span> <span class="math display">\[= \mathrm{E} (X^{2}) - (\mathrm{E}(X))^{2}\]</span></p>
+<p>This sometimes eases the calculations.</p>
+</div>
+<div id="example-whats-the-variance-in-betting-10-on-red-in-roulette" class="slide section level1">
+<h1>Example: What’s the variance in betting $10 on red in roulette?</h1>
+<p><span class="math display">\[\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}\]</span> <span class="math display">\[= 47.24 + 52.48 = 99.72\]</span></p>
+<p><span class="math display">\[\sigma_{X} = 9.986\]</span></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

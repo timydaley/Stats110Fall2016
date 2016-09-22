@@ -18,6 +18,7 @@ $$f(x) = \Pr(X = x; x \in A)$$
 
 - The pmf tells us the probability of all the outcomes $X$ can take.  
     - If we expand the sample space, then $f(x) = 0$ if $x \notin A$.
+    
 
 # Examples
 
@@ -104,6 +105,8 @@ plot(y = c(0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1), x = c(-2, 0, 0, 1, 1, 2, 2, 4), 
 $$\mathrm{E} (X) = \sum_{x \in A} x \Pr(X = x)$$
 $$= \sum_{x \in A} x f(x)$$
 
+
+
 # Properties of expectation: Linearity
 
 - The expectation of a sum of random variables is the sum of the expectations (independent or not).
@@ -128,6 +131,15 @@ $$\mathrm{E} (X \cdot Y) = \mathrm{E} (X) \cdot \mathrm{E} (Y) \; \text{ for } X
 
 - Similarly for any functions $g, h$ and independent $X$ and $Y$,
 $$\mathrm{E} (g(X) \cdot h(Y)) = \mathrm{E} (g(X)) \cdot \mathrm{E} (h(Y)).$$
+
+# Properties of expectation: using cdf to calculate expectation
+
+Suppose that $X$ can only take on positive values: $\{ 0, 1, 2, \ldots \}$.  How to calculate expectation using cdf?
+
+$$\mathrm{E}(X) = \sum{x \geq 0} x f(x)$$
+$$= \sum_{x \geq 1} x \Pr(X = x) = \sum_{x \geq 1} \sum_{y = 1}^{x} \Pr(X = x)$$
+$$= \sum_{y \geq 1} \sum_{x = y}^{\infty} \Pr(X = x) = \sum_{y \geq 1} \Pr(X \geq y)$$
+$$= \sum_{y \geq 1} 1 - F(y)$$
 
 
 # Examples
@@ -178,4 +190,71 @@ $$\mathrm{E} (X) = 0 \cdot 0.25 + 1 \cdot 0.5  + 2 \cdot 0.25= 1$$
 $$\mathrm{E}(\text{ betting on red }) = \mathrm{E}(X - 10)$$
 $$= (20/38) \cdot 0 + (18/38) \cdot 20 - 10 = -0.526$$
 
+# Example: The proper price of making a flush with one card to come?
 
+Suppose we've seen 6 cards and we have four to a flush (5 cards of the same suit).  The current pot is $20.  If our opponent bets, what price can he bet that is break even for making a flush?
+
+We want to calculate the cost $C$ such that 
+$$\mathrm{E} (\text{call}) = - C + \Pr(\text{flush}) \cdot (20 + 2 \cdot C) = 0$$
+
+# Example: The proper price of making a flush with one card to come?
+
+First:  What's the probability of making the flush?
+
+- We've seen 4 cards of the suit, $13 - 4 = 9$ remaining.
+
+- Total number of cards remaining: $52 - 6 = 46$ remaining
+
+$$\Pr (\text{ flush }) = \frac{9}{46} \approx 0.195$$
+
+# Example: The proper price of making a flush with one card to come?
+
+Now to calculate $C$.
+
+$$-C + \frac{9}{46} \cdot(20 + 2 \cdot C) = 0$$
+$$\frac{180}{46} + C \cdot \bigg(\frac{18}{46} - 1 \bigg) = 0$$
+$$\frac{180}{46} = \frac{28}{46} C$$
+$$C = \frac{180}{28} \approx 6.43$$
+
+So if our opponent bets $6.5 or more, calling for the flush would not be profitable.
+
+# Variance {.bigger}
+
+# Variance
+
+**Variance** is a measure of variation or dispersion.  It specifically measures the squared deviation from the mean.
+
+$$\mathrm{Var}(X) = \sigma_{X}^{2} = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
+
+The **standard deviation** is the square root of the variance.  Note that the standard deviation has the same units as $X$.  
+
+$$\sigma_{X} = \sqrt{\mathrm{Var}(X)}$$
+
+# Properties of variance: 
+
+- invariant to translation (shifts)
+$$\mathrm{Var}(X + c) = \mathrm{E} \big(X + c - \mathrm{E}(X + c) \big)^{2}$$
+$$= \mathrm{E} \big(X + c - \mathrm{E}(X) - c \big)^{2}$$
+$$= \mathrm{E} \big(X - \mathrm{E}(X) \big)^{2}$$
+
+- scaling $X$ scales the variance quadratically
+$$\mathrm{Var}(c \cdot X) = \mathrm{E} \big(c \cdot X - \mathrm{E}(c \cdot X) \big)^{2}$$
+$$= \mathrm{E} \big(c \cdot X - c \cdot \mathrm{E}(X) \big)^{2}$$
+$$= c^{2} \cdot \mathrm{E} (X - \mathrm{E}(X)) = c^{2} \mathrm{Var} (X)$$
+    - scaling $X$ scales the standard deviation
+
+# Properties of variance: difference of squared expectations
+
+$$\mathrm{Var}(X) = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
+$$= \mathrm{E} \big(X^{2} - 2 \cdot X \cdot \mathrm{E}(X) + (\mathrm{E}(X))^{2} \big)$$
+$$= \mathrm{E} (X^{2}) - 2 \mathrm{E}(X) \mathrm{E}(X) + (\mathrm{E}(X))^{2}$$
+$$= \mathrm{E} (X^{2}) - (\mathrm{E}(X))^{2}$$
+
+This sometimes eases the calculations.
+
+# Example: What's the variance in betting $10 on red in roulette?
+
+$$\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}$$
+$$= 47.24 + 52.48 = 99.72$$
+
+$$\sigma_{X} = 9.986$$
