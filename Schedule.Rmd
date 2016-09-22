@@ -8,7 +8,7 @@ Week Dates         Topic
 ---- ---------     --------------------------------------------
 1    Sept 26-29    Introduction to probability (Chap 2);
 
-2    Oct 3-7       Basic probability and simple discrete RVs (Chap 3)
+2    Oct 3-7       Basic probability (expectation, variance) and simple discrete RVs (Chap 3)
 
 3    Oct 10-13     Discrete distributions; binomial, Poisson, etc (Chap 4)
 

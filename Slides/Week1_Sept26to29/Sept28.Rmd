@@ -63,14 +63,19 @@ $$\Pr(B) = \Pr(A \cap B) + \Pr(A^{C} \cap B) = \Pr(B | A) \Pr(A) + \Pr(B | A^{C}
 - Together give Bayes' Rule:
 $$\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})}$$
 
-# Applying Bayes rule: medical testing
 
-Suppose you have a medical test with $99.9 \%$ sensitivity (true negative rate) and $99.9 \%$ specificity (true positive rate) for a condition or disease that affects $0.01 \%$ of the population.
+# Applying Bayes' rule:  mammogram testing
 
-If you test a random person, what's the probability that have the condition given they tested positive
+Recently the American Cancer Society released new guidelines for mammogram testing.  Specifically they increased the suggested age for mammogram testing to 45 from 40.  All of the following information is taken from the National Cancer Institute (https://www.cancer.gov/types/breast/).  
 
-$\Pr(\text{condition} | +) = \frac{\Pr(+ | \text{condition}) \Pr(\text{condition})}{\Pr(+ | \text{condition}) \Pr(\text{condition}) + \Pr(+ | \text{not condition}) \Pr(\text{not condition})}$
-$$= \frac{0.999 \cdot 0.0001}{0.999 \cdot 0.0001 + 0.001 \cdot 0.9999} \approx 0.091$$
+The risk of breast cancer at 40 years old is $1.47 \%$.  The true negative rate is $80 \%$ and the true positive rate is $84 \%$.  
+
+If you test a random 40 year old woman, what's the probability she truly has breast cancer given that her mammogram was positive?
+
+$\Pr(\text{cancer} | +) = \frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}$
+$$= \frac{0.84 \cdot 0.0147}{0.84 \cdot 0.0147 + 0.16 \cdot 0.9853}$$
+$$\approx 0.073$$
+
 
 # Statistical Independence
 
@@ -103,6 +108,8 @@ $$\Rightarrow \Pr(A | B) = 0$$
 - Example: Rolling dice.  If you roll two dice, does the outcome of one die affect the other?
 
 - Counterexample: Cards.  If you deal two cards, does the outcome of the first card affect the other card?
+
+
 
 
 

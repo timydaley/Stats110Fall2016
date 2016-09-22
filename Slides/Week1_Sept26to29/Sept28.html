@@ -64,11 +64,12 @@
 <li><p>Together give Bayes’ Rule: <span class="math display">\[\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})}\]</span></p></li>
 </ul>
 </div>
-<div id="applying-bayes-rule-medical-testing" class="slide section level1">
-<h1>Applying Bayes rule: medical testing</h1>
-<p>Suppose you have a medical test with <span class="math inline">\(99.9 \%\)</span> sensitivity (true negative rate) and <span class="math inline">\(99.9 \%\)</span> specificity (true positive rate) for a condition or disease that affects <span class="math inline">\(0.01 \%\)</span> of the population.</p>
-<p>If you test a random person, what’s the probability that have the condition given they tested positive</p>
-<p><span class="math inline">\(\Pr(\text{condition} | +) = \frac{\Pr(+ | \text{condition}) \Pr(\text{condition})}{\Pr(+ | \text{condition}) \Pr(\text{condition}) + \Pr(+ | \text{not condition}) \Pr(\text{not condition})}\)</span> <span class="math display">\[= \frac{0.999 \cdot 0.0001}{0.999 \cdot 0.0001 + 0.001 \cdot 0.9999} \approx 0.091\]</span></p>
+<div id="applying-bayes-rule-mammogram-testing" class="slide section level1">
+<h1>Applying Bayes’ rule: mammogram testing</h1>
+<p>Recently the American Cancer Society released new guidelines for mammogram testing. Specifically they increased the suggested age for mammogram testing to 45 from 40. All of the following information is taken from the National Cancer Institute (<a href="https://www.cancer.gov/types/breast/" class="uri">https://www.cancer.gov/types/breast/</a>).</p>
+<p>The risk of breast cancer at 40 years old is <span class="math inline">\(1.47 \%\)</span>. The true negative rate is <span class="math inline">\(80 \%\)</span> and the true positive rate is <span class="math inline">\(84 \%\)</span>.</p>
+<p>If you test a random 40 year old woman, what’s the probability she truly has breast cancer given that her mammogram was positive?</p>
+<p><span class="math inline">\(\Pr(\text{cancer} | +) = \frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}\)</span> <span class="math display">\[= \frac{0.84 \cdot 0.0147}{0.84 \cdot 0.0147 + 0.16 \cdot 0.9853}\]</span> <span class="math display">\[\approx 0.073\]</span></p>
 </div>
 <div id="statistical-independence" class="slide section level1">
 <h1>Statistical Independence</h1>

@@ -36,7 +36,7 @@ output: pdf_document
     \
     \
     \
-    c. Suppose instead she shows you a picture of her youngest child, that's a boy.  What's the probability that the elder child is also a boy?
+    c. Suppose now she tells you that the picture is of her youngest child.  What's the probability that the elder child is also a boy?
     \
     \
     \
