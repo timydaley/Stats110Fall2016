@@ -7,7 +7,10 @@ output: slidy_presentation
 
 - The conditional probability of A given B, $\Pr(A|B)$, is the probability that A occurs over all events that include B.  
 
-![Back to the Venn diagram](venn_intersection.jpg)
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("AintersectB.png")
+```
+
 
 - The conditional probability is amount that A overlaps with B, relative to the total amount of B
 
@@ -38,17 +41,21 @@ Initially all doors have an equal chance of containing the car.  Your chance of 
 
 After showing the goat, what is the conditional probability that the other door contains the car?
 
+# Solution
+
 Here's the insight:  Monty will show a goat either way.  If the car is in door 3, he'd of had to show door 2.  If the car is in door 1, he can show either door.  And if the car is in door 2, he'd have to show door 3.
 
 $$\Pr(\text{car in door 2} | \text{ goat in door 3 and you chose door 1})$$
 $$= \frac{\Pr(\text{car is door 2 and goat in door 3} | \text{ chose door 1})}{\Pr(\text{goat in door 3} | \text{ chose door 1})}$$
 $$= \frac{1/3}{1/2} = \frac{2}{3}$$
 
-# Visualizing the Monty Hall problem
+# Visualizing the solution to the Monty Hall problem
 
 ```{r, out.width = "600px", echo=FALSE}
 knitr::include_graphics("monty_hall.jpg")
 ```
+
+Source: http://www.math.cornell.edu/~mec/2008-2009/TianyiZheng/Images/monty_hall.jpg 
 
 # Bayes' rule
 
@@ -58,7 +65,8 @@ knitr::include_graphics("monty_hall.jpg")
 $$\Pr(A | B) = \frac{\Pr(A \cap B)}{\Pr(B)}$$
 
 - Now decompose $B$ into stuff that include $A$ and not $A$ ($A^{C}$)
-$$\Pr(B) = \Pr(A \cap B) + \Pr(A^{C} \cap B) = \Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})$$
+$$\Pr(B) = \Pr(A \cap B) + \Pr(A^{C} \cap B)$$
+$$= \Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})$$
 
 - Together give Bayes' Rule:
 $$\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})}$$
@@ -66,19 +74,47 @@ $$\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A
 
 # Applying Bayes' rule:  mammogram testing
 
-Recently the American Cancer Society released new guidelines for mammogram testing.  Specifically they increased the suggested age for mammogram testing to 45 from 40.  All of the following information is taken from the National Cancer Institute (https://www.cancer.gov/types/breast/).  
+Recently the American Cancer Society released new guidelines for mammogram testing.  Specifically they increased the suggested age for mammogram testing to 45 from 40.  All of the following information is taken from the National Cancer Institute (https://www.cancer.gov/types/breast/). 
+
+Why would they increase the age?
+
+-  A positive test typically requires an invasive biopsy to confirm the cancer.  
+
+- A negative test can still miss cancer.  
+
+- Differences in cancer types:
+    - Slow growing cancers are more common in old age and easier to detect in mammograms.
+    - Fast growing cancers are more common in young age and more difficult to detect in mammograms.
+
+
+# Applying Bayes' rule:  mammogram testing
 
 The risk of breast cancer at 40 years old is $1.47 \%$.  The true negative rate is $80 \%$ and the true positive rate is $84 \%$.  
 
 If you test a random 40 year old woman, what's the probability she truly has breast cancer given that her mammogram was positive?
 
-$\Pr(\text{cancer} | +) = \frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}$
+$$\Pr(\text{cancer} | +) = \frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}$$
 $$= \frac{0.84 \cdot 0.0147}{0.84 \cdot 0.0147 + 0.16 \cdot 0.9853}$$
 $$\approx 0.073$$
 
+# Risk factors are critical
+
+Several risk factors affect the risk of breast cancer and so these number will change depending on risk factors
+
+- Genetics:
+    - BRCA1 & BRCA2 mutations
+
+- Familial history of breast cancer
+
+- Radiation exposure
+
+- Age of first child
+    - Having first child at 20 or younger decreases risk
+    - Having first child at 35 or older increases risk
+
+# Statistical Independence {.bigger}
 
 # Statistical Independence
-
 - What does it mean for two events to be independent?
 
 - Intuition: One event does not affect the other.

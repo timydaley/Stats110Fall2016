@@ -16,11 +16,34 @@ author: Timothy Daley
 
 # Textbook
 
+The textbook is considered supplemental to classes.  We will not cover all topics in the book and we will cover a few topics not in the book.
+
 - http://heather.cs.ucdavis.edu/~matloff/132/PLN/ProbStatBook.pdf
 
 ```{r, out.width = "450px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("ProbStatBookPage1.jpg")
 ```
+
+# R
+
+We will be using the statistical programming language R (https://cran.r-project.org/)  in this class.
+
+- Advantages:
+    - Open source
+    - Free
+    - Lot's of available tutorials and packages to help
+    - Lot's of GUI's (graphical user interfaces available)
+    - Works on all systems
+    
+- Disadvantages:
+    - Non-standard syntax
+    - Difficult to optomize
+    
+# Rstudio
+
+Rstudio (https://www.rstudio.com/) is an easy to use GUI for R and contains a markdown editor to easily compose pdf or html reports.
+
+I highly suggest using this for homework.
 
 # Homework
 
@@ -99,11 +122,11 @@ knitr::include_graphics("ProbStatBookPage1.jpg")
 
 - Example:  Should we believe statistical claims backing up news headlines?
 
-```{r, out.width = "400px", echo=FALSE, fig.align="center"}
+```{r, out.width = "500px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("fitness_tracker_headline2.png")
 ```
 
-```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("fitness_tracker_headline1.png")
 ```
     
@@ -118,12 +141,15 @@ knitr::include_graphics("Screen Shot 2016-09-14_at_8.50.20_AM.png")
 
 # 1 in 73 million?
 
-- Dr. Roy Meadow (pediatrician):  
-    - Chance of cot death = 1/8500
-    - Chance of 2nd cot death = 1/8500
-    - The two events don't effect each other.
-    - Chance of both = 1/8500*1/8500 $\approx$ 1/73000000
-    - Therefore: "the chance that Sally Clark was innocent was 73,000,000 to 1"
+Dr. Roy Meadow (pediatrician) testified that "the chance that Sally Clark was innocent was 73,000,000 to 1"
+
+- How did he arrive at this number?
+
+- Chance of cot death = 1/8500
+- Chance of 2nd cot death = 1/8500
+- The two events don't effect each other.
+- Chance of both = 1/8500*1/8500 $\approx$ 1/73000000
+- Therefore: "the chance that Sally Clark was innocent was 73,000,000 to 1"
     
 # Why is this wrong?
     
@@ -188,7 +214,7 @@ plot(y, pch = 16, xlim = c(0, 1), ylim = c(0, 1),
      xlab = "acceptance rate", ylab = "female application rate")
 ```
 
-# Confounding factors!
+# Confounding factor!
 
 - Decisions of acceptance are made at the department level
 
