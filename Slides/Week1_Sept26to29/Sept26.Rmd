@@ -83,6 +83,15 @@ I highly suggest using this for homework.
 
 - Otherwise by appointment (my office is not in Sequoia)
 
+# Teacher
+
+Timothy Daley (me)
+
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("10679568_1538799719666828_279568368505605945_o.jpg")
+```
+
+My current specialty is the analysis of large data sets in biological experiments.  
 
 # TAs {.bigger}
 
@@ -91,20 +100,31 @@ I highly suggest using this for homework.
 
 <mazadkia@stanford.edu> 
 
-- need picture
+Office hours: Wednesdays 8-10 am
+
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("MonaAzadkia.jpg")
+```
 
 # Claire Donnat
 
 <cdonnat@stanford.edu>
 
-- need picture
+Office hours: Monday 9-11 am, Sequoia 207
 
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("photo_DONNAT.jpg")
+```
 
 # Snigdha Panigrahi
 
 <snigdha@stanford.edu>
 
-- need picture
+Office hours: Thursday 2-4 pm.
+
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("snigdha.jpg")
+```
 
 # Slides
 

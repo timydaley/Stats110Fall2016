@@ -1,6 +1,8 @@
 ---
 title: "Conditional Probability and Independence"
 output: slidy_presentation
+date: September 28, 2016
+author: Timothy Daley
 ---
 
 # Conditional Probability
@@ -115,6 +117,7 @@ Several risk factors affect the risk of breast cancer and so these number will c
 # Statistical Independence {.bigger}
 
 # Statistical Independence
+
 - What does it mean for two events to be independent?
 
 - Intuition: One event does not affect the other.
