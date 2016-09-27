@@ -1,8 +1,8 @@
 ---
-title: "Syllabus"
-output: slidy_presentation
-date: September 26, 2016
-author: Timothy Daley
+title: "Stats 110"
+author: "Timothy Daley"
+date: "September 26, 2016"
+output: beamer_presentation
 ---
 
 # Classes
@@ -20,13 +20,13 @@ The textbook is considered supplemental to classes.  We will not cover all topic
 
 - http://heather.cs.ucdavis.edu/~matloff/132/PLN/ProbStatBook.pdf
 
-```{r, out.width = "450px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("ProbStatBookPage1.jpg")
 ```
 
 # R
 
-We will be using the statistical programming language R (https://cran.r-project.org/)  in this class.
+To learn the practice of statistical analysis we will be using the statistical programming language R (https://cran.r-project.org/)  in this class.  The book has example code that illustrates the use of R in practice.
 
 - Advantages:
     - Open source
@@ -43,7 +43,10 @@ We will be using the statistical programming language R (https://cran.r-project.
 
 Rstudio (https://www.rstudio.com/) is an easy to use GUI for R and contains a markdown editor to easily compose pdf or html reports.
 
-I highly suggest using this for homework.
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("RStudio-Screenshot.png")
+```
+
 
 # Homework
 
@@ -53,7 +56,7 @@ I highly suggest using this for homework.
 
 - Due the next Friday at 11:59pm through Canvas.
 
-- Late homework will be accepted till the next homework is posted (5pm) for 50 \% credit. 
+- Late homework will be accepted till the next homework is posted for 50 \% credit. 
 
 - No homework this week.
 
@@ -61,7 +64,7 @@ I highly suggest using this for homework.
 
 # Quizes
 
-- Short (~10 minutes) weekly quizes on Thursday at the end of the recitation session.
+- Short (~10 minutes) weekly quizes on Thursdays.
 
 - Every week except the last week.
 
@@ -87,11 +90,11 @@ I highly suggest using this for homework.
 
 Timothy Daley (me)
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("10679568_1538799719666828_279568368505605945_o.jpg")
 ```
 
-My current specialty is the analysis of large data sets in biological experiments.  
+My specialty is the analysis of large data sets in biological experiments.  
 
 # TAs {.bigger}
 
@@ -102,7 +105,7 @@ My current specialty is the analysis of large data sets in biological experiment
 
 Office hours: Wednesdays 8-10 am
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("MonaAzadkia.jpg")
 ```
 
@@ -112,7 +115,7 @@ knitr::include_graphics("MonaAzadkia.jpg")
 
 Office hours: Monday 9-11 am, Sequoia 207
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("photo_DONNAT.jpg")
 ```
 
@@ -122,7 +125,7 @@ knitr::include_graphics("photo_DONNAT.jpg")
 
 Office hours: Thursday 2-4 pm.
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("snigdha.jpg")
 ```
 
@@ -142,11 +145,11 @@ knitr::include_graphics("snigdha.jpg")
 
 - Example:  Should we believe statistical claims backing up news headlines?
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "150px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("fitness_tracker_headline2.png")
 ```
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "100px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("fitness_tracker_headline1.png")
 ```
     
@@ -154,7 +157,7 @@ knitr::include_graphics("fitness_tracker_headline1.png")
 
 # Sally Clark
 
-```{r, out.width = "1000px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("Screen Shot 2016-09-14_at_8.50.20_AM.png")
 ```
 
@@ -204,11 +207,11 @@ admitted
 
 # Overall acceptance rates
 
-```{r}
+```{r, fig.width=4, fig.height=4}
 barplot(c(admitted[1,1]/sum(admitted[,1]), admitted[1,2]/sum(admitted[,2])),
-        ylim = c(0, 1), width = 0.2, names.arg = c("male", "female"),
-        ylab = "overall acceptance rate")
+        ylim = c(0, 1), width = 0.2, names.arg = c("male", "female"),  ylab = "overall acceptance rate")
 ```
+
 
 # Acceptance rates by department
 
@@ -224,7 +227,7 @@ for(dept in c("A", "B", "C", "D", "E")){
 
 # Acceptance rate vs female application
 
-```{r cache=TRUE, fig.height=4.5, fig.width=5.5}
+```{r cache=TRUE, fig.height=3, fig.width=3.5}
 y = c()
 for(dept in c("A", "B", "C", "D", "E", "F")){
   x = UCBAdmissions[ , , dept]
