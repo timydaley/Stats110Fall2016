@@ -1,11 +1,9 @@
 ---
-title: "Basic Definitions"
+title: "Basic Definitions (Chapter 2)"
 author: "Timothy Daley"
 date: "September 27, 2016"
 output:
-  beamer_presentation:
-    incremental: true
-
+  beamer_presentation
 ---
 
 # Basic definitions 
@@ -136,6 +134,16 @@ knitr::include_graphics("venn.png")
 knitr::include_graphics("venn_complement.png")
 ```
 
+# Probability of complement
+
+$$\Pr(A^{C}) = 1 - \Pr(A)$$
+
+```{r, out.width = "100px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("venn_complement.png")
+```
+
+
+
 # How to calculate probabilities if events overlap?
 
 ```{r, out.width = "100px", echo=FALSE, fig.align="center"}
@@ -157,6 +165,13 @@ $$\Pr(\text{A} \cup \text{B}) = \Pr (\text{A}) + \Pr (\text{B}) - \Pr(\text{A} \
 - Similarly for 3 sets $A$, $B$, and $C$, 
 $$\Pr(\text{A} \cup \text{B} \cup \text{C}) = \Pr(\text{A}) + \Pr(\text{B}) + \Pr(\text{C}) - \Pr(\text{A} \cap \text{B}) - \Pr(\text{A} \cap \text{C})$$
 $$\qquad - \Pr(\text{B} \cap \text{C}) + \Pr(\text{A} \cap \text{B} \cap \text{C})$$
+
+
+# Relative complement (Set minus)
+
+- $A - B$ (also written $A \backslash B$) is the portion of $A$ that doesn't overlap $B$.
+
+- What is $\Pr(A - B)$?
                          
                          
 # Examples

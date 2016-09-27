@@ -16,7 +16,7 @@ Stanford University, Department of Statistics, Autumn 2016
 
 Course Description
 ------------------
-This is an introduction to probability and statistics for engineers and science majors. We will cover such topics as descriptive statistics, basic probability, hypothesis testing, confidence intervals, point estimation, simple linear regression, analysis of variance (ANOVA), and some nonparametric methods. We will try to use real world examples to motivate the understanding of statistical analysis. The only prerequisite is one year of calculus.
+This is an introduction to probability and statistics for engineers and science majors. We will cover such topics as descriptive statistics, basic probability, hypothesis testing, confidence intervals, point estimation, simple linear regression, and other regression topics like logistic regression. We will try to use real world examples to motivate the understanding of statistical analysis. The only prerequisite is one year of calculus.
 
 Schedule
 --------
@@ -42,9 +42,9 @@ Course Staff
 
 
 **TAs**: 
-Mona Azadkia <mazadkia@stanford.edu>
-Claire Donnat <cdonnat@stanford.edu>
-Snigdha Panigrahi <snigdha@stanford.edu>
+Mona Azadkia <mazadkia@stanford.edu>;
+Claire Donnat <cdonnat@stanford.edu>;
+Snigdha Panigrahi <snigdha@stanford.edu>.
 
 
 
@@ -52,7 +52,7 @@ Snigdha Panigrahi <snigdha@stanford.edu>
 
 
 Questions about the homework, about R, of general interest, or about course logistics are most appropriate to ask on [Canvas](https://canvas.stanford.edu/courses/47191/discussion_topics). 
-Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Canvas much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
+Other students probably have the same question as you, so it will be helpful for everyone to see the responses.  The course staff will rotate in who replies to these questions which makes Canvas much simpler from an administrative perspective.  Receiving the questions online allows us time to give better answers than when we are asked on the fly.  It is fine to talk about the weekly homework questions on Piazza, but please talk about the problems more conceptually rather than just posting your answer.  Please remember the [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code) still applies.
 
 
 
