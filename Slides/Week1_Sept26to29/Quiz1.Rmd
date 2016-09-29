@@ -3,8 +3,8 @@ title: "Quiz1"
 output: pdf_document
 ---
 
-1. Suppose you throw two 4-sided dice, with sides labeled 1, 2, 3, and 4.  
-    a. List the possible outcomes of the sum of the two die and their probabilities.
+1. Suppose you throw two 4-sided dices, with sides labeled 1, 2, 3, and 4.  
+    a. List the possible outcomes of the sum of the two dices and their probabilities.
     \
     \
     \
@@ -13,7 +13,7 @@ output: pdf_document
     \
     \
     \
-    b.  Suppose that the sum is 4.  What is the probability that either die show a 1?
+    b.  Suppose that the sum is 4.  What is the probability that either dice show a 1?
     \
     \
     \
@@ -29,7 +29,7 @@ output: pdf_document
     \
     \
     \
-    b. He shows you a picture of her son.  What is the conditional probability that the other child is male?
+    b. She shows you a picture of her son.  What is the conditional probability that the other child is a boy?
     \
     \
     \
