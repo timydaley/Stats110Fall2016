@@ -1,28 +1,125 @@
 ---
-title: "Covariance & correlation"
-output: slidy_presentation
+title: "Variance"
+output:
+  beamer_presentation:
+    increment: true
 date: October 4, 2016
 author: Timothy Daley
 ---
 
-# Covariance {.bigger}
+# Variance {.bigger}
 
-# Covariance
+# Variance
 
-Covariance is a measure of how much two random variables change together.  For random variables $X$ and $Y$ with pmf $f(x, y) =  \Pr(X = x, Y = y)$, the covariance of $X$ and $Y$ is defined as
+**Variance** is a measure of variation or dispersion.  It specifically measures the squared deviation from the mean.
 
-$$\mathrm{Cov}(X, Y) = \mathrm{E} \big( (X - \mathrm{E}(X)) (Y - \mathrm{E}(Y)) \big)$$
-$$= \sum_{x} \sum_{y} f(x, y) (x - \mathrm{E}(X)) (y - \mathrm{E}(Y))$$
+$$\mathrm{Var}(X) = \sigma_{X}^{2} = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
 
-# Properties of covariance
+The **standard deviation** is the square root of the variance.  Note that the standard deviation has the same units as $X$.  
 
-If $X$ and $Y$ are independent, the $\mathrm{Cov}(X, Y) = 0$.
+$$\sigma_{X} = \sqrt{\mathrm{Var}(X)}$$
 
-The opposite is not true, if $\mathrm{Cov}(X, Y) = 0$ then it's not necessarily true that $X$ and $Y$ are independent.
+# Properties of variance: invariante to shift
 
-Example: 
-$$f(x) = \begin{cases} 0.25 & (x, y) = (-1, 1) \\ 0.5 & (x, y) = (0, -1) \\ 0.25 & (x, y) = (1, 1) \end{cases}$$
+- invariant to translation (shifts)
+$$\mathrm{Var}(X + c) = \mathrm{E} \big(X + c - \mathrm{E}(X + c) \big)^{2}$$
+$$= \mathrm{E} \big(X + c - \mathrm{E}(X) - c \big)^{2}$$
+$$= \mathrm{E} \big(X - \mathrm{E}(X) \big)^{2}$$
 
-$\mathrm{E}(X) = 0$, $\mathrm{E} (Y) = 0$, and 
-$$\mathrm{Cov}(X, Y) = 0.25 (-1 - 0)(1 - 0) + 0.5 (0 - 0) (-1 - 0) + 0.25 (1 - 0) (1 - 0)$$
-$$= -0.25 -
+# Properties of variance: scaling
+
+- scaling $X$ scales the variance quadratically
+$$\mathrm{Var}(c \cdot X) = \mathrm{E} \big(c \cdot X - \mathrm{E}(c \cdot X) \big)^{2}$$
+$$= \mathrm{E} \big(c \cdot X - c \cdot \mathrm{E}(X) \big)^{2}$$
+$$= c^{2} \cdot \mathrm{E} (X - \mathrm{E}(X)) = c^{2} \mathrm{Var} (X)$$
+    - scaling $X$ scales the standard deviation
+
+# Properties of variance: difference of squared expectations
+
+$$\mathrm{Var}(X) = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
+$$= \mathrm{E} \big(X^{2} - 2 \cdot X \cdot \mathrm{E}(X) + (\mathrm{E}(X))^{2} \big)$$
+$$= \mathrm{E} (X^{2}) - 2 \mathrm{E}(X) \mathrm{E}(X) + (\mathrm{E}(X))^{2}$$
+$$= \mathrm{E} (X^{2}) - (\mathrm{E}(X))^{2}$$
+
+This sometimes eases the calculations.
+
+# Why squared deviation?
+
+Why do we measure deviation from mean in average square deviation?
+
+- Historically, taking square deviation makes life easier since you can take derivatives of square deviation.
+
+- $\min_{c} \mathrm{E} (X - c)^{2}$
+
+- $\frac{\partial}{\partial c} \mathrm{E} (X - c)^{2} = \mathrm{E} 2(X - c)$ 
+
+- $\Rightarrow$ $c = \mathrm{E} X$.
+
+
+# Example: What's the variance in betting $10 on red in roulette?
+
+$$\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}$$
+$$= 47.24 + 52.48 = 99.72$$
+
+$$\sigma_{X} = 9.986$$
+
+
+# Estimating mean and variance {.bigger}
+
+# Estimating the mean 
+
+- The **sample mean** is the average of the observations.
+
+- If the observations are $x_{1}, x_{2}, \ldots, x_{n}$ then the sample mean is $$\bar{x} = \frac{x_{1} + x_{2} + \cdots + x_{n}}{n}$$.
+
+# Estimating the variance
+
+- The **sample variance** is the average squared deviation of the observations from the sample mean.
+
+- $$\hat{\sigma}^{2} = \frac{1}{n} \bigg( (x_{1} - \bar{x})^{2} + \cdots + (x_{n} - \bar{x})^{2} \bigg)$$
+
+- $$\hat{sigma}^{2} = \bigg(\frac{1}{n} \sum_{i = 1}^{n} x_{i}^{2} \bigg) - \bar{x}^{2}$$
+
+# Example: Simulating roulette outcomes.
+
+Suppose we have $100 to bring to the casino. Suppose we leave either after we win $100 or lose the $100 that we brought.  We want to know how much time we will spend there. 
+
+This is currently too complicated for us to do in practice, so we will simulate the process.
+
+# Example: Simulating roulette outcomes.
+
+```{r cache=TRUE}
+n_sim = 1000
+t = rep(0, times = n_sim)
+for(i in 1:1000){
+  money = 100
+  while(money < 200 & money > 0){
+    if(rbinom(1, 1, 18/38) > 0){
+      money = money + 10
+    }
+    else{
+      money = money - 10
+    }
+    t[i] = t[i] + 1
+  }
+}
+```
+
+# Example: Simulating roulette outcomes.
+
+```{r cache=TRUE, fig.height=2.5, fig.width=3.5}
+t_mean = mean(t)
+t_mean
+t_sd = sd(t)
+t_sd
+```
+
+# Example: Simulating roulette outcomes.
+
+```{r cache=TRUE, fig.height=3, fig.width=4}
+hist(t, breaks = 20)
+abline(v = t_mean, lty = 2, lwd = 2)
+abline(v = t_mean - t_sd, lty = 3, lwd = 2)
+abline(v = t_mean + t_sd, lty = 3, lwd = 2)
+legend("topright", legend = c("mean", "mean +- sd"), lty = c(2, 3))
+```

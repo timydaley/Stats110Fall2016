@@ -60,7 +60,7 @@ $$f(x) = 0 \, \forall \, x \notin A$$
 # Cumulutive distribution function
 
 - The *cumulative distribution function* of a random variable $X$ is a function of $x \in \mathbb{R}$ that gives the total probability that $X$ will be at most $x$.
-$$F(x) = \sum_{y \leq x} f(x)$$
+$$F(x) = \sum_{y \leq x} f(y)$$
 
 - Note: pmf's will usually be in lower case and cdf's will usually be in upper case.
 
@@ -84,8 +84,8 @@ $$F(x) = \sum_{y \leq x} f(x)$$
     - $A = \{0, 1 \}$ 
     - $f(0) = 0.5$, $\; f(1) = 0.5$, and $= 0$ for all other values
     
-```{r cache=TRUE, echo=FALSE, fig.height=3, fig.width=4}
-plot(y = c(0, 0, 0.5, 0.5, 1, 1), x = c(-2, 0, 0, 1, 1, 3), type = "l", lwd = 2, ylim = c(0, 1), xlim = c(-1, 2), xlab = "x", ylab = "F(x)")
+    ```{r cache=TRUE, echo=FALSE, fig.height=3, fig.width=4}
+    plot(y = c(0, 0, 0.5, 0.5, 1, 1), x = c(-2, 0, 0, 1, 1, 3), type = "l", lwd = 2, ylim = c(0, 1), xlim = c(-1, 2), xlab = "x", ylab = "F(x)")
 ```
 
 # Examples
@@ -96,9 +96,9 @@ plot(y = c(0, 0, 0.5, 0.5, 1, 1), x = c(-2, 0, 0, 1, 1, 3), type = "l", lwd = 2,
     - $A = \{0, 1, 2 \}$
     - $f(0) = 0.25$, $\; f(1) = 0.5$, and $f(2) = 0.25$
     
-```{r cache=TRUE, echo=FALSE, fig.height=3, fig.width=4}
-plot(y = c(0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1), x = c(-2, 0, 0, 1, 1, 2, 2, 4), type = "l", lwd = 2, ylim = c(0, 1), xlim = c(-1, 3), xlab = "x", ylab = "F(x)")
-```
+    ```{r cache=TRUE, echo=FALSE, fig.height=3, fig.width=4}
+    plot(y = c(0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1), x = c(-2, 0, 0, 1, 1, 2, 2, 4), type = "l", lwd = 2, ylim = c(0, 1), xlim = c(-1, 3), xlab = "x", ylab = "F(x)")
+    ```
 
 # Expectation
 
@@ -106,7 +106,7 @@ plot(y = c(0, 0, 0.25, 0.25, 0.75, 0.75, 1, 1), x = c(-2, 0, 0, 1, 1, 2, 2, 4), 
 
 - Or we can think of the expectation as the probability weighted sum of the possible outcomes:
 $$\mathrm{E} (X) = \sum_{x \in A} x \Pr(X = x)$$
-$$= \sum_{x \in A} x f(x)$$
+$$= \sum_{x \in A} x \cdot f(x)$$
 
 
 
@@ -139,7 +139,7 @@ $$\mathrm{E} (g(X) \cdot h(Y)) = \mathrm{E} (g(X)) \cdot \mathrm{E} (h(Y)).$$
 
 Suppose that $X$ can only take on positive values: $\{ 0, 1, 2, \ldots \}$.  How to calculate expectation using cdf?
 
-$$\mathrm{E}(X) = \sum{x \geq 0} x f(x)$$
+$$\mathrm{E}(X) = \sum_{x \geq 0} x f(x)$$
 $$= \sum_{x \geq 1} x \Pr(X = x) = \sum_{x \geq 1} \sum_{y = 1}^{x} \Pr(X = x)$$
 $$= \sum_{y \geq 1} \sum_{x = y}^{\infty} \Pr(X = x) = \sum_{y \geq 1} \Pr(X \geq y)$$
 $$= \sum_{y \geq 1} 1 - F(y)$$
@@ -221,78 +221,3 @@ $$C = \frac{180}{28} \approx 6.43$$
 
 So if our opponent bets $6.5 or more, calling for the flush would not be profitable.
 
-# Variance {.bigger}
-
-# Variance
-
-**Variance** is a measure of variation or dispersion.  It specifically measures the squared deviation from the mean.
-
-$$\mathrm{Var}(X) = \sigma_{X}^{2} = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
-
-The **standard deviation** is the square root of the variance.  Note that the standard deviation has the same units as $X$.  
-
-$$\sigma_{X} = \sqrt{\mathrm{Var}(X)}$$
-
-# Properties of variance: 
-
-- invariant to translation (shifts)
-$$\mathrm{Var}(X + c) = \mathrm{E} \big(X + c - \mathrm{E}(X + c) \big)^{2}$$
-$$= \mathrm{E} \big(X + c - \mathrm{E}(X) - c \big)^{2}$$
-$$= \mathrm{E} \big(X - \mathrm{E}(X) \big)^{2}$$
-
-- scaling $X$ scales the variance quadratically
-$$\mathrm{Var}(c \cdot X) = \mathrm{E} \big(c \cdot X - \mathrm{E}(c \cdot X) \big)^{2}$$
-$$= \mathrm{E} \big(c \cdot X - c \cdot \mathrm{E}(X) \big)^{2}$$
-$$= c^{2} \cdot \mathrm{E} (X - \mathrm{E}(X)) = c^{2} \mathrm{Var} (X)$$
-    - scaling $X$ scales the standard deviation
-
-# Properties of variance: difference of squared expectations
-
-$$\mathrm{Var}(X) = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
-$$= \mathrm{E} \big(X^{2} - 2 \cdot X \cdot \mathrm{E}(X) + (\mathrm{E}(X))^{2} \big)$$
-$$= \mathrm{E} (X^{2}) - 2 \mathrm{E}(X) \mathrm{E}(X) + (\mathrm{E}(X))^{2}$$
-$$= \mathrm{E} (X^{2}) - (\mathrm{E}(X))^{2}$$
-
-This sometimes eases the calculations.
-
-
-# Example: What's the variance in betting $10 on red in roulette?
-
-$$\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}$$
-$$= 47.24 + 52.48 = 99.72$$
-
-$$\sigma_{X} = 9.986$$
-
-# Example: Simulating roulette outcomes.
-
-Suppose we have $100 to bring to the casino. Suppose we leave either after we win $100 or lose the $100 that we brought.  We want to know how much time we will spend there. 
-
-This is currently too complicated for us to do in practice, so we will simulate the process.
-
-# Example: Simulating roulette outcomes.
-
-```{r cache=TRUE}
-n_sim = 1000
-t = rep(0, times = n_sim)
-for(i in 1:1000){
-  money = 100
-  while(money < 200 & money > 0){
-    if(rbinom(1, 1, 18/38) > 0){
-      money = money + 10
-    }
-    else{
-      money = money - 10
-    }
-    t[i] = t[i] + 1
-  }
-}
-```
-
-# Example: Simulating roulette outcomes.
-
-```{r cache=TRUE, fig.height=2.5, fig.width=3.5}
-t_mean = mean(t)
-t_mean
-hist(t, breaks = 20)
-abline(v = t_mean, lty = 2, lwd = 2)
-```
