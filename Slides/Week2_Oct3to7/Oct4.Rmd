@@ -1,0 +1,28 @@
+---
+title: "Covariance & correlation"
+output: slidy_presentation
+date: October 4, 2016
+author: Timothy Daley
+---
+
+# Covariance {.bigger}
+
+# Covariance
+
+Covariance is a measure of how much two random variables change together.  For random variables $X$ and $Y$ with pmf $f(x, y) =  \Pr(X = x, Y = y)$, the covariance of $X$ and $Y$ is defined as
+
+$$\mathrm{Cov}(X, Y) = \mathrm{E} \big( (X - \mathrm{E}(X)) (Y - \mathrm{E}(Y)) \big)$$
+$$= \sum_{x} \sum_{y} f(x, y) (x - \mathrm{E}(X)) (y - \mathrm{E}(Y))$$
+
+# Properties of covariance
+
+If $X$ and $Y$ are independent, the $\mathrm{Cov}(X, Y) = 0$.
+
+The opposite is not true, if $\mathrm{Cov}(X, Y) = 0$ then it's not necessarily true that $X$ and $Y$ are independent.
+
+Example: 
+$$f(x) = \begin{cases} 0.25 & (x, y) = (-1, 1) \\ 0.5 & (x, y) = (0, -1) \\ 0.25 & (x, y) = (1, 1) \end{cases}$$
+
+$\mathrm{E}(X) = 0$, $\mathrm{E} (Y) = 0$, and 
+$$\mathrm{Cov}(X, Y) = 0.25 (-1 - 0)(1 - 0) + 0.5 (0 - 0) (-1 - 0) + 0.25 (1 - 0) (1 - 0)$$
+$$= -0.25 -

@@ -1,21 +1,21 @@
 ---
 title: "Conditional Probability and Independence"
-output: slidy_presentation
-date: September 28, 2016
-author: Timothy Daley
+author: "Timothy Daley"
+date: "September 28, 2016"
+output:
+  beamer_presentation
 ---
 
 # Conditional Probability
 
 - The conditional probability of A given B, $\Pr(A|B)$, is the probability that A occurs over all events that include B.  
 
-```{r, out.width = "300px", echo=FALSE, fig.align="center"}
+```{r, out.width = "100px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("AintersectB.png")
 ```
 
 
 - The conditional probability is amount that A overlaps with B, relative to the total amount of B
-
 $$\Pr(A | B) = \frac{\Pr(A \cap B)}{\Pr(B)}$$
 
 # Conditioning on multiple events
@@ -33,8 +33,8 @@ In the game show *Let's Make a Deal*, you're shown 3 doors.  One door contains a
 
 Do you?
 
-```{r, out.width = "500px", echo=FALSE}
-knitr::include_graphics("2000px-Monty_open_door.svg.png")
+```{r, out.width = "150px", echo=FALSE}
+knitr::include_graphics("2000px-Monty_open_door.png")
 ```
 
 # The Monty Hall problem
@@ -53,7 +53,7 @@ $$= \frac{1/3}{1/2} = \frac{2}{3}$$
 
 # Visualizing the solution to the Monty Hall problem
 
-```{r, out.width = "600px", echo=FALSE}
+```{r, out.width = "200px", echo=FALSE}
 knitr::include_graphics("monty_hall.jpg")
 ```
 
@@ -73,6 +73,35 @@ $$= \Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})$$
 - Together give Bayes' Rule:
 $$\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B | A) \Pr(A) + \Pr(B | A^{C}) \Pr(A^{C})}$$
 
+# Bayes rule example
+
+Suppose we have two bags, each containing black and white balls.  One bag contains 10 of each.  The other bag contains 15 black and 5 white balls.  Suppose we sample 3 balls and get 2 black and 1 white.  What's the probability we sampled from the latter bag (the one with more black balls)?  Assume each back is *a priori* equally likely.
+
+# Bayes rule example (cont)
+
+- $$\Pr(\text{bag 2} | (2, 1) \, ) = \frac{\Pr(\text{bag 2} \cap (2, 1) \, )}{\Pr( \, (2, 1) \, )}$$
+
+- $$\Pr(\text{bag 2} \cap (2, 1) \, ) = \Pr( \, (2, 1) \, | \text{bag 2}) \cdot \Pr(\text{bag 2})$$
+- $$= \frac{\binom{15}{2} \binom{5}{1}}{\binom{20}{3}} \cdot \frac{1}{2}$$
+
+
+# Bayes rule example (cont)
+
+- $$\Pr( \, (2, 1) \, ) =$$ 
+$$\Pr( \, (2, 1) \, | \text{bag 1}) \Pr(\text{bag 1}) + \Pr( \, (2, 1) \, | \text{bag 2}) \Pr(\text{bag 2})$$
+
+- $$= \frac{\binom{10}{2} \binom{10}{1}}{\binom{20}{3}} \frac{1}{2} + \frac{\binom{15}{2} \binom{5}{1}}{\binom{20}{3}} \cdot \frac{1}{2}$$
+
+# Bayes rule example (cont)
+
+$$\Pr(\text{bag 2} | (2, 1) \, ) =$$
+$$\frac{\frac{\binom{15}{2} \binom{5}{1}}{\binom{20}{3}} \cdot \frac{1}{2}}{\frac{\binom{10}{2} \binom{10}{1}}{\binom{20}{3}} \frac{1}{2} + \frac{\binom{15}{2} \binom{5}{1}}{\binom{20}{3}} \cdot \frac{1}{2}}$$
+
+```{r}
+(choose(15, 2)*choose(5, 1)*0.5/choose(20, 3))/
+  (choose(10, 2)*choose(10, 1)*0.5/choose(20, 3) 
+   + choose(15, 2)*choose(5, 1)*0.5/choose(20, 3))
+```
 
 # Applying Bayes' rule:  mammogram testing
 
@@ -95,7 +124,8 @@ The risk of breast cancer at 40 years old is $1.47 \%$.  The true negative rate 
 
 If you test a random 40 year old woman, what's the probability she truly has breast cancer given that her mammogram was positive?
 
-$$\Pr(\text{cancer} | +) = \frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}$$
+$$\Pr(\text{cancer} | +) =$$
+$$\frac{\Pr(+ | \text{cancer}) \Pr(\text{cancer})}{\Pr(+ | \text{cancer}) \Pr(\text{cancer}) + \Pr(+ | \text{not cancer}) \Pr(\text{not cancer})}$$
 $$= \frac{0.84 \cdot 0.0147}{0.84 \cdot 0.0147 + 0.16 \cdot 0.9853}$$
 $$\approx 0.073$$
 
@@ -146,7 +176,13 @@ $$\Rightarrow \Pr(A | B) = 0$$
 
 - Example: Rolling dice.  If you roll two dice, does the outcome of one die affect the other?
 
-- Counterexample: Cards.  If you deal two cards, does the outcome of the first card affect the other card?
+- Example: Cards.  If you deal two cards, does the outcome of the first card affect the other card?
+
+# When are events independent?
+
+- Suppose $c$ is a constant value and $X$ is a random variable taking values in $\{0, 1, 2, \ldots \}$.  Are $c$ and $X$ independent?
+
+
 
 
 

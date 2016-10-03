@@ -1,0 +1,88 @@
+---
+title: "Simple random variables"
+output: slidy_presentation
+date: October 5, 2016
+author: Timothy Daley
+---
+
+
+
+# The simplest random variable
+
+- The simplest random variable is one that can only take the values $1$ or $0$.  The $1$ is typically called "success" and $0$ is a "failure". 
+
+- Takes the value $1$ with probability $p$ and $0$ with probability $1-p$  
+
+- Such a random variable is called a Bernoulli random variable, written 
+$$X \sim \text{ Bernoulli}(p)$$
+
+# pdf
+
+$$f(x) = \begin{cases} 1 - p & \text{ if } x = 0 \\ p & \text{ if } x = 1 \end{cases}$$
+
+```{r echo=FALSE, fig.width=5, fig.height=5}
+barplot(c(0.4, 0.6), names.arg = c(0, 1), xlab = "x", ylab = "f(x)", main = "p = 0.6", ylim = c(0, 1))
+```
+
+# cdf
+
+$$F(x) = \begin{cases} 0 & x < 0 \\ 1 - p & 0 \leq x < 1 \\ 1 & x \geq 1 \end{cases}$$
+
+```{r echo=FALSE, fig.width=5, fig.height=5}
+plot(x = c(-2, 0, 0, 1, 1, 3), y = c(0, 0, 1 - 0.6, 1 - 0.6, 1, 1), type = "l", lwd = 2, xlim = c(-1, 2), ylim = c(0, 1))
+```
+
+# Expected value
+
+$$\mathrm{E}(X) = \sum_{x} x f(x)$$
+$$= 0 \cdot (1 - p) + 1 \cdot p$$
+$$= p$$
+
+# Variance
+
+$$\mathrm{Var} (X) = \sum_{x} f(x) (x - \mathrm{E}(X))^{2}$$
+$$= (1 - p) \cdot (0 - p)^{2} + p \cdot (1 - p)^{2}$$
+$$= (1 - p)p^{2} + p (1 - p)^{2}$$
+$$= p (1 - p) (p + (1 - p))$$
+$$= p (1 - p)$$
+
+# Variance
+
+Or
+
+$$\mathrm{Var} (X) = \mathrm{E}(X^{2}) - (\mathrm{E} (X))^{2}$$
+$$= \sum_{x} f(x) x^{2} - p^{2}$$
+$$= (1- p) \cdot 0^{2} + p \cdot 1^{2} - p^{2}$$
+$$= p - p^{2} = p(1 - p)$$
+
+# Transforming simple random variables 
+
+Suppose you have a random variable $Y$ that takes two outcomes: $y_{1}$ with probability $1 - p$ and $y_{2} (\text{with } y_{2} > y_{1})$ with probability $p$.  
+
+How can we represent $Y$ as a simple random variable?
+
+Let $X$ $\sim$ Bernoulli$(p)$.  Then
+$$Y = y_{1} + (y_{2} - y_{1})X$$
+
+# Expectation of transformed simple random variables
+
+Expectation:
+
+Recall that $\mathrm{E}(a + b X) = a + b \mathrm{E} (X)$
+
+$$\mathrm{E}(Y) = \mathrm{E}(y_{1} + (y_{2} - y_{1}) X)$$
+$$= y_{1} + (y_{2} - y_{1}) \mathrm{E} (X)$$
+$$= y_{1} + (y_{2} - y_{1})p = (1 - p)y_{1} + p y_{2}$$
+
+# Variance of transformed simple random variables
+
+Variance:
+
+Recall that $\mathrm{Var} (a + b X) = b^{2} \mathrm{Var}(X)$
+
+$$\mathrm{Var}(Y) = \mathrm{Var}(y_{1} + (y_{2} - y_{1}) X)$$
+$$= (y_{2} - y_{1})^{2} \mathrm{Var}(X)$$
+$$= (y_{2} - y_{1})^{2} p (1 - p)$$
+
+# Examples
+

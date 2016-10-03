@@ -1,0 +1,36 @@
+---
+title: "Homework 1"
+output: pdf_document
+---
+
+1. Chapter 2, excercise 1
+
+2. Chapter 2, excercise 2
+
+3. Chapter 2, excercise 4
+
+4. Chapter 2, excercise 6
+
+5. Chapter 2, excercise 12 (a and b only)
+
+6. Chapter 2, excercise 14
+
+7. Chapter 2, excercise 21
+
+8. Suppose that a commitee of four people is randomly selected from a group of 20, consisting of 8 men and 12 women.  Assume that each person is equally likely to be chosen.  Let $X$ denote the number of women on the committee. 
+    a.  Write out the probability mass function for $X$.  Include only the possible values that $X$ can take.
+    b. What is the expectation of $X$?
+    c.  What is the standard deviation of $X$?
+    
+9. Suppose that you throw two six-sided dice.  Let $X$ be the sum of the two dice.
+    a.  Write out the probability mass function for $X$.  Include only the possible values that $X$ can take.
+    b. What is the expectation of $X$?
+    c.  What is the standard deviation of $X$?
+    
+10. Chapter 2 excercise 16
+
+11. From Chapter 2, excercise 16; what is the expected value of the total amount of money lost?
+
+12.  Suppose that a financial services company creats a security instrument that combines 10 individual securities.  Each individual security has a $1 \%$ chance of defaulting each year.  For this excercise, please include your code.
+    a. Suppose that the securities are independent.  Run 1000 simulations to estimate the expected number of securities that will default in a 10 year period.  Plot the 1000 simulated number of defaults in a histogram (the command in R is hist).
+    b. Now suppose that a default in one year increases the chance that any of the remaining individual securities defaults by $1 \%$ (e.g. if one defaults the first year, the remaining 9 each have a $2 \% chance of defaulting the next year).  Estimate the expected number of securities that will default in a 10 year period and plot the 1000 simulated number of defaults in a histogram.
