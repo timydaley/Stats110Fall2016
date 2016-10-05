@@ -1,0 +1,45 @@
+---
+title: "Quiz1"
+output: pdf_document
+---
+
+1. Suppose you throw two 4-sided dices, with sides labeled 1, 2, 3, and 4.  
+    a. List the possible outcomes of the sum of the two dices and their probabilities.
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b.  Suppose that the sum is 4.  What is the probability that either dice show a 1?
+    \
+    \
+    \
+    \
+    \
+    \
+
+2. Suppose you meet an old friend on the street.  She says that she has two children.  
+    a. List out the sample space of the genders of the two children and their corresponding probabilities.  Assume independence of the two children and that boys and girls are equally likely.
+    \
+    \
+    \
+    \
+    \
+    \
+    b. She shows you a picture of her son.  What is the conditional probability that the other child is a boy?
+    \
+    \
+    \
+    \
+    \
+    \
+    c. Suppose now she tells you that the picture is of her youngest child.  What's the probability that the elder child is also a boy?
+    \
+    \
+    \
+    \
+    \
+    \
