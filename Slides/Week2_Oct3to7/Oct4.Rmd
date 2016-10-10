@@ -1,5 +1,5 @@
 ---
-title: "Variance"
+title: "Variance, sample variance, and sample mean"
 output:
   beamer_presentation:
     increment: true
@@ -11,15 +11,13 @@ author: Timothy Daley
 
 # Variance
 
-**Variance** is a measure of variation or dispersion.  It specifically measures the squared deviation from the mean.
-
+- **Variance** is a measure of variation or dispersion.  It specifically measures the squared deviation from the mean.
 $$\mathrm{Var}(X) = \sigma_{X}^{2} = \mathrm{E}(X - \mathrm{E}(X))^{2}$$
 
-The **standard deviation** is the square root of the variance.  Note that the standard deviation has the same units as $X$.  
-
+- The **standard deviation** is the square root of the variance.  Note that the standard deviation has the same units as $X$.  
 $$\sigma_{X} = \sqrt{\mathrm{Var}(X)}$$
 
-# Properties of variance: invariante to shift
+# Properties of variance: invariant to shift
 
 - invariant to translation (shifts)
 $$\mathrm{Var}(X + c) = \mathrm{E} \big(X + c - \mathrm{E}(X + c) \big)^{2}$$
@@ -32,7 +30,7 @@ $$= \mathrm{E} \big(X - \mathrm{E}(X) \big)^{2}$$
 $$\mathrm{Var}(c \cdot X) = \mathrm{E} \big(c \cdot X - \mathrm{E}(c \cdot X) \big)^{2}$$
 $$= \mathrm{E} \big(c \cdot X - c \cdot \mathrm{E}(X) \big)^{2}$$
 $$= c^{2} \cdot \mathrm{E} (X - \mathrm{E}(X)) = c^{2} \mathrm{Var} (X)$$
-    - scaling $X$ scales the standard deviation
+    - scaling $X$ scales the standard deviation linearly
 
 # Properties of variance: difference of squared expectations
 
@@ -55,12 +53,32 @@ Why do we measure deviation from mean in average square deviation?
 
 - $\Rightarrow$ $c = \mathrm{E} X$.
 
+# Example: FLipping a coin
+
+- Flip a coin and let $X$ be the number of heads.
+
+- $\mathrm{E} X = \frac{1}{2}$
+
+- $\mathrm{E} X^{2} = 0^{2} \cdot \frac{1}{2} + 1^{2} \cdot \frac{1}{2} = \frac{1}{2}$
+
+- $\mathrm{Var} (X) = \mathrm{E} X^{2} - (\mathrm{E} X)^{2} = 1/2 - (1/2)^{2} = 1/4$.
+
+# Example: Flipping two coins
+
+- Flip a coin twice and let $X$ be the number of heads.
+
+- $\mathrm{E} X = 1$
+
+- $\mathrm{Var} (X) = \sum_{x = 0}^{2} (x - \mathrm{E} X)^{2} \Pr(X = x)$
+$$= (0 - 1)^{2} \cdot 0.25 + (1 - 1)^{2} \cdot 0.5 + (2 - 1)^{2} \cdot 0.25 = 1/2$$
+
 
 # Example: What's the variance in betting $10 on red in roulette?
 
-$$\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}$$
-$$= 47.24 + 52.48 = 99.72$$
+- Recall that $\mathrm{E} X = -0.526$, $\Pr(X = 0) = 20/38$, and $\Pr(X = 20) = 18/38$
 
+- $\mathrm{Var}(X) = \frac{20}{38} (-10 - (-0.526))^{2} + \frac{18}{38}(10 - (-0.526))^{2}$
+$$= 47.24 + 52.48 = 99.72$$
 $$\sigma_{X} = 9.986$$
 
 
@@ -78,7 +96,42 @@ $$\sigma_{X} = 9.986$$
 
 - $$\hat{\sigma}^{2} = \frac{1}{n} \bigg( (x_{1} - \bar{x})^{2} + \cdots + (x_{n} - \bar{x})^{2} \bigg)$$
 
-- $$\hat{sigma}^{2} = \bigg(\frac{1}{n} \sum_{i = 1}^{n} x_{i}^{2} \bigg) - \bar{x}^{2}$$
+- $$\hat{\sigma}^{2} = \bigg(\frac{1}{n} \sum_{i = 1}^{n} x_{i}^{2} \bigg) - \bar{x}^{2}$$
+
+# Example:
+
+- Suppose you have \$ 100 to bet on roulette.  You make ten \$ 10 bets and you win 4 times and lose 6.  What's the average outcome and variance?
+
+- Sample = $\{10, 10, 10, 10, -10, -10, -10, -10, -10, -10 \}$
+
+- $\bar{x} = (4 \cdot 10 + 6 \cdot (- 10))/10 = -2$
+
+# Example cont:
+
+$$\hat{\sigma}^{2} = \frac{1}{10} \big( 4 \cdot (10 - (-2))^{2} + 6 \cdot (-10 - (-2))^{2} \big)$$
+$$= \frac{1}{10} \big(4 \cdot 144 + 6 \cdot 64) = \frac{960}{10} = 96$$
+$$\hat{\sigma} = 9.798$$
+
+# Example: rolling die
+
+Suppose we roll a 6-sided die 20 times.  We get the following outcomes:
+```{r cache=TRUE}
+x = sample(1:6, 20, replace = TRUE)
+x
+```
+
+The sample mean is 
+```{r}
+mean(x)
+```
+
+# Example cont.
+
+The sample sd is
+```{r}
+sd(x)
+```
+
 
 # Example: Simulating roulette outcomes.
 

@@ -1,6 +1,8 @@
 ---
-title: "Simple random variables"
-output: slidy_presentation
+title: "Bernoulli and binomial random variables"
+output:
+  beamer_presentation:
+    increment: true
 date: October 5, 2016
 author: Timothy Daley
 ---
@@ -11,6 +13,8 @@ author: Timothy Daley
 
 - The simplest random variable is one that can only take the values $1$ or $0$.  The $1$ is typically called "success" and $0$ is a "failure". 
 
+- Intuition: flipping a coin and counting heads. 
+
 - Takes the value $1$ with probability $p$ and $0$ with probability $1-p$  
 
 - Such a random variable is called a Bernoulli random variable, written 
@@ -20,7 +24,7 @@ $$X \sim \text{ Bernoulli}(p)$$
 
 $$f(x) = \begin{cases} 1 - p & \text{ if } x = 0 \\ p & \text{ if } x = 1 \end{cases}$$
 
-```{r echo=FALSE, fig.width=5, fig.height=5}
+```{r echo=FALSE, fig.width=4, fig.height=3}
 barplot(c(0.4, 0.6), names.arg = c(0, 1), xlab = "x", ylab = "f(x)", main = "p = 0.6", ylim = c(0, 1))
 ```
 
@@ -28,8 +32,8 @@ barplot(c(0.4, 0.6), names.arg = c(0, 1), xlab = "x", ylab = "f(x)", main = "p =
 
 $$F(x) = \begin{cases} 0 & x < 0 \\ 1 - p & 0 \leq x < 1 \\ 1 & x \geq 1 \end{cases}$$
 
-```{r echo=FALSE, fig.width=5, fig.height=5}
-plot(x = c(-2, 0, 0, 1, 1, 3), y = c(0, 0, 1 - 0.6, 1 - 0.6, 1, 1), type = "l", lwd = 2, xlim = c(-1, 2), ylim = c(0, 1))
+```{r echo=FALSE, fig.width=4, fig.height=3}
+plot(x = c(-2, 0, 0, 1, 1, 3), y = c(0, 0, 1 - 0.6, 1 - 0.6, 1, 1), type = "l", lwd = 2, xlim = c(-1, 2), ylim = c(0, 1), ylab = "F(x)", xlab = "x", main = "p = 0.6")
 ```
 
 # Expected value
@@ -84,5 +88,109 @@ $$\mathrm{Var}(Y) = \mathrm{Var}(y_{1} + (y_{2} - y_{1}) X)$$
 $$= (y_{2} - y_{1})^{2} \mathrm{Var}(X)$$
 $$= (y_{2} - y_{1})^{2} p (1 - p)$$
 
+# Examples: Roulette wheel
+
+- We can think of betting on a roulette wheel as a Bernoulli random variable.  Recall we lose \$ 10 with probability $20/38$ and win \$ 10 with probability $18/38$. 
+
+- What is $p$, the probability of success?
+
+- $p = 18/38$
+
+- $y_{1} = -10$, $y_{2} = 10$
+
+# Examples: Roulette wheel
+
+$$\mathrm{Var}(X) = (10 - (-10))^{2} \cdot \frac{18}{38} \cdot \frac{20}{38}$$
+```{r}
+(20^2)*(18/38)*(20/38)
+```
+
+# Binomial distribution {.bigger}
+
+# Binomial distribution
+
+Consider running multiple independent and identically distributed (meaning the outcome of one experiment doesn't affect any others and they all have the probability of success) Bernoulli experiments, or trials.
+
+- Intuition: flipping a coin multiple times and counting the number of heads.
+
+- What is the probability distribution for the number of successes?
+
+- Solution: Binomial distribution
+
+# Binomial distribution
+
+- parameters:  $n =$ \# of trials (flips), $p =$ probability of success.
+
+- What's the probability of getting $x \leq n$ successes in $n$ trials?
+
+- \# of ways to get $x$ successes?  
+    - $\binom{n}{x}$
+    
+- probability of each case?  
+    - $p^{x} (1- p)^{n - x}$
+    
+- $f(x) = \Pr(x) = \binom{n}{x} p^{x} (1 - p)^{n - x}$
+
+# Binomial distribution
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("BinomialPDFandCDF.png")
+```
+
+source: Wikipedia
+
+# Properties of binomial distribution
+
+- $X \sim \text{Binomial}(n, p)$
+
+- Expectation:  
+$$\mathrm{E} (X) = n \cdot p$$
+
+- Variance: 
+$$\mathrm{Var}(X) = n \cdot p \cdot (1 - p)$$
+
 # Examples
 
+We can think of a batter going up against a pitcher in baseball as a bernoulli trial (without other information).  With probability $p$, the batter will score a hit and with probability $1 - p$ he will be out, e.g. through strikeout or ground out.   
+
+- If the batter's batting average against this pitcher is $p = 0.2$, what is the probability he will go 4 for 4 in a game?
+
+- $X =$ number of hits in the game
+
+- $X \sim \text{Binomial}(4, 0.2)$
+
+- $\Pr(X = 4) = \binom{4}{4} 0.2^{4} 0.8^{0} = 0.0016$
+
+# Examples
+
+Suppose each flu season you have a 1 in 10 chance of catching the flu.  What is probability you are flu-free for 5 years?
+
+- $X =$ \# of years you get the flu
+
+- $X \sim \text{Binomial}(5, 0.1)$
+
+- $\Pr(X = 0) = \binom{5}{0} 0.1^{0} 0.9^{5} = 0.59$
+
+# Binomial distribution in R: calculating probabilities
+
+$\Pr(X = 4 | n = 4, p = 0.2)$
+```{r}
+dbinom(4, size = 4, p = 0.2)
+```
+
+$\Pr(X = 0 | n = 5, p = 0.1)$
+```{r}
+dbinom(0, size = 5, p = 0.1)
+```
+
+# Binomial distribution in R: simulating
+
+Let $X \sim \text{Binomial} (100, 0.01)$ then we can sample 20 random sampes of $X$ by
+```{r}
+rbinom(20, size = 100, p = 0.01)
+```
+
+or 
+```{r}
+rbinom(20, 100, 0.01)
+```

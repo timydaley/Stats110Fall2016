@@ -1,0 +1,43 @@
+---
+title: "Homework 2"
+output: pdf_document
+---
+
+For all of the below homework that require choosing a distribution, please state which distribution you chose and explain your reasoning behind your choice.
+
+1. Chapter 4, exercise 1.
+
+2. Chapter 4, exercise 2.
+
+3. Chapter 4, exercise 3a.
+
+4. Chapter 4, exercise 11.
+
+5. Chapter 4, exercise 12.
+
+6. Chapter 4, exercise 16.
+
+6. Chapter 4, exercise 7.
+
+7.  a. Consider a Bernoulli random variable with parameter $p$.  At what value of $p$ is the variance maximized?
+    b. Conside a Binomial random variable with parameters $n$ and $p$.  For a fixed $n$, at what value of $p$ is the variance maximized?
+    
+8. Chapter 4, exercise 20.
+
+9. Chapter 4, exercise 29.
+
+10.  It has been observed that the average number of traffic accidents requiring medical assistance on the 101 between 7 and 8 AM on Wednesday mornings is 1. What, then, is the chance that there will be a need for exactly 2 ambulances on the Freeway, during that time slot on any given Wednesday morning?
+
+11. Coliform bacteria are randomly distributed in a certain Arizona river at an average concentration of 1 per 100cc of water. 
+    a.  If we draw from the river a test tube containing 50cc of water, what is the chance that the sample contain more than 2 coliform bacteria?
+    b.  If we test 10 samples, what is the probability that 1 or more sample contain more than 2 coliform bacteria?
+    c.  If we keep testing samples, what is the probability that we'll find a sample that contains more than 2 coliform bacteria in 10 or less samples?
+
+12.  A batch of cookie dough will be sliced up into 100 cookies and then baked. 500 chocolate chips have been included in the batch of dough, and the dough has been thoroughly mixed so as to randomize the ingredients. 
+    a. What is the chance that, despite these precautions, one or more cookies in the batch will contain no chocolate chips?
+    b. How many chocolate chips should be put in the batch of dough to be 99% sure that there are no chocolate chip-less cookies?
+    c.  Under the above specifications, what is the expect number of repeated batches until a chocolate chip-less cookie is made?
+     
+13.  A famous usage of the Poisson distribution is to model species captures.  For example, you go out to the Amazon and capture a bunch of butterflies.  You make note of the species of each butterfly captured, but you don't know which species you didn't capture.  Assuming that the number of captured butterflies for each species, how would you simulate a capture experiment?  Do this for $\lambda = 0.5$ and 100 species of butterfly.  
+
+

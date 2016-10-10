@@ -1,0 +1,42 @@
+---
+title: "Quiz 2"
+author: "Name: "
+output: pdf_document
+---
+
+
+
+1. Suppose you throw two 3-sided die.  
+    a. Let $X$ denote the random variable of the sum of the two sides. Write out the pmf of $X$
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b. Calculate the expectation of $X$.
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    c. Calculate the variance of $X$
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    d. Suppose we have the following 5 outcomes from throwing two 3-sided dice: 4, 2, 5, 5, and 3.  Calculate the sample mean.
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    e. Calculate the sample variance from the data above.
