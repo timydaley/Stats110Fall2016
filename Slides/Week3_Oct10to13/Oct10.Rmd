@@ -1,7 +1,8 @@
 ---
 title: "Poisson distribution"
 output:
-  beamer_presentation
+  beamer_presentation:
+    increment: true
 date: October 5, 2016
 author: Timothy Daley
 ---
@@ -14,7 +15,7 @@ author: Timothy Daley
 
 What happens in the binomial distribution when $n$ is large $p$ is small?
 
-- Assume $n / p = \lambda$, a constant.
+- Assume $n \cdot p = \lambda$, a constant.
 
 # Binomial distribution for large n and small p
 
@@ -168,7 +169,7 @@ $\Pr(X \geq 20) = 1 - \Pr(X \leq 19) = 1 - F(19)$
 
 - What is the probability that a tent of 75 square feet contains at least one faults? 
 
-- $X \sim \text{Poisson}(\lambda = 1.5)$, $\Pr(X > 1) = 1 - \Pr(X = 0)$
+- $X \sim \text{Poisson}(\lambda = 1.5)$, $\Pr(X \geq 1) = 1 - \Pr(X = 0)$
     ```{r}
     1 - dpois(0, lambda = 1.5)
     ```
