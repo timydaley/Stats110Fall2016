@@ -31,5 +31,32 @@ For the following problems state the distribution used and the reason.
     \
     c.  If you were to four batches of 100 widgets, what is the probability that none of the batches contains at least one defective widget?
     
+\pagebreak
+
+Binomial$(n, p)$: \newline
+    pmf: $f(x) = \binom{n}{x} p^{x} (1 - p)^{n -x}$ \newline
+    expectation: $np$ \newline
+    variance: $np (1 - p)$
+
+Poisson$(\lambda)$: \newline
+pmf: $f(x) = \lambda^{x} e^{-\lambda} / x!$ \newline
+expectation: $\lambda$ \newline
+variance: $\lambda$ \newline
+
+Geometric$(p)$: \newline
+pmf: $f(x) = (1 - p)^{x} p$ \newline
+expectation: $\frac{1}{p} - 1$ \newline
+variance: $\frac{1 - p}{p^{2}}$ \newline
+
+Negative Binomial$(r, p)$: \newline
+pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$ \newline
+expectation: $\frac{pr}{1 - p}$ \newline
+variance: $\frac{pr}{(1 - p)^{2}}$ \newline
+
+Hypergeometric$(N_{1}, N_{2}, n)$: \newline 
+pmf: $f(x) = \frac{\binom{N_{1}}{x} \binom{N_{2}}{n - x}}{\binom{N_{1} + N_{2}}{n}}$ \newline
+expecation: $n N_{1}/ (N_{1} + N_{2})$ \newline
+variance: $n \frac{N_{1}}{N_{1} + N_{2}} \frac{N_{2}}{N_{1} + N_{2}} \frac{N_{1} + N_{2} - n}{N_{1} + N_{2} - 1}$
+
     
     
