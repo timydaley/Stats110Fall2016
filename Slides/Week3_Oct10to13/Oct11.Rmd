@@ -1,9 +1,8 @@
 ---
-title: "Geometric and Negative binomial distributions"
+title: "Geometric distribution"
 output:
-  beamer_presentation:
-    increment: true
-date: October 5, 2016
+  beamer_presentation
+date: October 1, 2016
 author: Timothy Daley
 ---
 
@@ -43,13 +42,13 @@ author: Timothy Daley
 
 # Geometric distribution in R
 
-R uses the parametrization that $X$ is the number of failures before the first success, meaning we will have to add or subtract 1 accordingly.
+R uses the parametrization that $X$ is the number of failures before the first success, which agrees with our parametrization.  Remember that if you're counting the total number you will need to add 1.
 
-- pmf: $f(x) =$ dgeom(x - 1, prob = $p$)
+- pmf: $f(x) =$ dgeom(x, prob = $p$)
 
-- cdf: $F(x) = \Pr(X \leq x) =$ pgeom(x - 1, prob = $p$)
+- cdf: $F(x) = \Pr(X \leq x) =$ pgeom(x, prob = $p$)
 
-- random number generation: $x =$ rgeom(n, prob = $p$) + 1
+- random number generation: $x =$ rgeom(n, prob = $p$)
 
 # Examples: designing a survey
 
@@ -61,9 +60,9 @@ Suppose you want to design a survey and need at least one person representative 
 
 - $X - 1 \sim \text{Geometric}(0.058)$
 
-- $\Pr(X - 1 \geq 20) =  \Pr(X \geq 20) = 1 - \Pr(X \leq 20)$ 
+- $\Pr(X - 1 \geq 20) =  \Pr(X \geq 19) = 1 - \Pr(X \leq 18)$ 
     ```{r}
-    1 - pgeom(20, prob = 0.058)
+    1 - pgeom(18, prob = 0.058)
     ```
     
 # Examples: designing a survey
@@ -72,8 +71,8 @@ Suppose you want to design a survey and need at least one person representative 
 
 - Find first $x$ such that $F(x) \geq 0.95$.  Know that $F(19) = 0.68$
     ```{r}
-    i = 20
-    F = pgeom(i - 1, prob = 0.058)
+    i = 19
+    F = pgeom(i, prob = 0.058)
     while(F < 0.95){
       i = i + 1
       F = pgeom(i, prob = 0.058)
@@ -91,9 +90,9 @@ Suppose you want to design a survey and need at least one person representative 
 
 - $X \sim \text{Geometric}(p = 0.01)$
 
-- $\Pr(X \geq 99) = 1 - \Pr(X \leq 98)$
+- $\Pr(X \geq 100) = 1 - \Pr(X \leq 99)$
     ```{r}
-    1 - pgeom(98, prob = 0.01)
+    1 - pgeom(99, prob = 0.01)
     ```
     
 # Previous example: manufacturing
@@ -104,7 +103,7 @@ In a previous example, a tent manufacturer's track record indicates that it aver
 
 - Number of tents without failures = $X \sim \text{Geometric}(p = 1 - e^{- 1.5})$  
 
-- Expected \# tents without failures = $\mathrm{E}(X) = 1/p = 1/(1 - e^{-1.5}) \approx 1.29$.
+- Expected \# tents without failures = $\mathrm{E}(X) = 1/p - 1 = 1/(1 - e^{-1.5}) \approx 0.29$.
 
 # Memoryless property of the geometric distribution
 
@@ -113,69 +112,4 @@ What if we know that we have gone 5 tents without a failure.  How does this chan
 - $\Pr(X = x | X \geq 5) = \frac{\Pr(X = x \cap X \geq 5)}{\Pr(X \geq 5)}$ $$= \frac{(1 - p)^{x} p}{(1 - p)^{5}} = (1 - p)^{x - 5}p$$ $$= \Pr(X = x - 5)$$
 
 - When we condition on the number of failures already observed, it's like we start over now.  Hence, the memoryless property of the geometric distribution.
-
-# Negative binomial distribution {.bigger}
-
-# Negative binomial distribution
-
-- What if we want to know how many times to flip the coin to obtain a specified number, say $r$, number of successes?  
-
-- Let $X =$ \# of successes (e.g. heads) needed to get $r$ failures.  Total number of flips = $X + r$.
-
-- Again, we deviate from the book here.  See [https://en.wikipedia.org/wiki/Negative_binomial_distribution] for clarification.
-
-# Negative binomial distribution
-
-- pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$
-
-- cdf: $F(x) = 1 - I_{p}(x + 1, r)$ (too complicated for practical use)
-
-# Negative binomial distribution
-
-- Expectation: $\mathrm{E} (X) = \frac{pr}{1 - p}$
-
-- Variance: $\mathrm{Var}(X) = \frac{pr}{(1 - p)^{2}}$
-
-# Reparametrization of Negative binomial distribution
-
-- Define $\mu = \mathrm{E} (X)$
-
-- Expectation: $\mathrm{E} (X) = \mu$
-
-- Variance: $\mathrm{Var}(X) = \mu + \frac{1}{r} \mu^{2}$
-
-- Note that when $r \to \infty$, $\mathrm{Var}(X) = \mu$, e.g. a Poisson distribution.  This is why the Negative binomial is sometimes called an overdispersed Poisson distribution.
-
-# Negative binomial distribution in R
-
-- pmf: $f(x) =$ dnbinom(x, size $= r$, prob $= 1 - p$)
-
-- cdf: $F(x) =$ pnbinom(x, size $= r$, prob $= 1 - p$)
-
-- random number generation: rnbinom(n, size $= r$, prob $= 1 - p$)
-
-# Example: Drilling wells
-
-Consider an oil company looking for oil producing wells.  Suppose they have a 10\% chance of striking oil per well.  
-
-- What's the expected number of wells they need to tap to get 3 oil-producing wells?
-
-- $X =$ \# of failed wells $\sim \text{NegBin}(r = 3, p = 1 - 0.1)$
-
-- $\mathrm{E}(X) = 0.9 \cdot 3 / 0.1 = 27$
-    - so the expected total number of wells needed to tap is 27 + 3 = 30 (need to add the successful wells)
-    
-    
-# Example: Drilling wells
-
-Consider an oil company looking for oil producing wells.  Suppose they have a 10\% chance of striking oil per well.  
-
-- What the probability they need to tap 10 or fewer wells to find 2 oil-producing wells?
-
-- $X =$ \# of failed wells $\sim \text{NegBin}(r = 2, p = 0.9)$
-
-- $\Pr(X + 2 \leq 10) = \Pr(X \leq 8)$
-    ```{r}
-    pnbinom(8, size = 2, prob = 0.1)
-    ```
 

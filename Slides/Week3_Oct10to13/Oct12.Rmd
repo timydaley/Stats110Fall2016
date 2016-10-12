@@ -1,0 +1,134 @@
+---
+title: "The last of the discrete distributions: Negative Binomial and Hypergeometric"
+output:
+  beamer_presentation:
+    increment: true
+date: October 11, 2016
+author: Timothy Daley
+---
+
+# Quick thing I forgot
+
+# Memoryless property of the geometric distribution
+
+What if we know that we have gone $y$ flips without a success.  How does this change the distribution?
+
+- $\Pr(X = x | X \geq y) = \frac{\Pr(X = x \cap X \geq y)}{\Pr(X \geq y)}$ $$= \frac{(1 - p)^{x} p}{(1 - p)^{y}} = (1 - p)^{x - y}p$$ $$= \Pr(X = x - y)$$
+
+- When we condition on the number of failures already observed, it's like we start over now.  Hence, the memoryless property of the geometric distribution.
+
+# Bit parsing
+
+- Consider a digital transmission of bits.  The bits are transmitted until the first error and each bit can independently be an error with a $1 \%$ probability.  Suppose we've observed 100 error free bits.  What's the probability that we observe at least a total of 200 error free bits?
+
+- $X =$ \# of consecutive error free bits.  
+
+- $X \sim \text{Geometric}(p = 0.01)$
+
+- $\Pr(X \geq 200 | X \geq 100) = \Pr(X \geq 200 - 100) = 1 - \Pr(X \leq 99)$
+
+- $= 1 - (1 - (1 - 0.01)^{99 + 1}) = 0.99^{100}$
+    ```{r}
+    0.99^100
+    ```
+
+
+# Negative binomial distribution {.bigger}
+
+# Negative binomial distribution
+
+- What if we want to know how many times to flip the coin to obtain a specified number, say $r$, number of successes?  
+
+- Let $X =$ \# of successes (e.g. heads) needed to get $r$ failures.  Total number of flips = $X + r$.
+
+- Again, we deviate from the book here.  See [https://en.wikipedia.org/wiki/Negative_binomial_distribution] for clarification.
+
+# Negative binomial distribution
+
+- pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$
+
+- cdf: $F(x) = 1 - I_{p}(x + 1, r)$ (too complicated for practical use)
+
+# Negative binomial distribution
+
+- Expectation: $\mathrm{E} (X) = \frac{pr}{1 - p}$
+
+- Variance: $\mathrm{Var}(X) = \frac{pr}{(1 - p)^{2}}$
+
+# Reparametrization of Negative binomial distribution
+
+- Define $\mu = \mathrm{E} (X)$
+
+- Expectation: $\mathrm{E} (X) = \mu$
+
+- Variance: $\mathrm{Var}(X) = \mu + \frac{1}{r} \mu^{2}$
+
+- Note that when $r \to \infty$, $\mathrm{Var}(X) = \mu$, e.g. a Poisson distribution.  This is why the Negative binomial is sometimes called an overdispersed Poisson distribution.
+
+# Negative binomial distribution in R
+
+- pmf: $f(x) =$ dnbinom(x, size $= r$, prob $= 1 - p$)
+
+- cdf: $F(x) =$ pnbinom(x, size $= r$, prob $= 1 - p$)
+
+- random number generation: rnbinom(n, size $= r$, prob $= 1 - p$)
+
+# Example: Drilling wells
+
+Consider an oil company looking for oil producing wells.  Suppose they have a 10\% chance of striking oil per well.  
+
+- What's the expected number of wells they need to tap to get 3 oil-producing wells?
+
+- $X =$ \# of failed wells $\sim \text{NegBin}(r = 3, p = 1 - 0.1)$
+
+- $\mathrm{E}(X) = 0.9 \cdot 3 / 0.1 = 27$
+    - so the expected total number of wells needed to tap is 27 + 3 = 30 (need to add the successful wells)
+    
+    
+# Example: Drilling wells
+
+Consider an oil company looking for oil producing wells.  Suppose they have a 10\% chance of striking oil per well.  
+
+- What the probability they need to tap 10 or fewer wells to find 2 oil-producing wells?
+
+- $X =$ \# of failed wells $\sim \text{NegBin}(r = 2, p = 0.9)$
+
+- $\Pr(X + 2 \leq 10) = \Pr(X \leq 8)$
+    ```{r}
+    pnbinom(8, size = 2, prob = 0.1)
+    ```
+    
+# Hypergeometric distribution {.bigger}
+
+# Hypergeometric distribution
+
+- Suppose we have a population of $N$ individuals, grouped into 2 categories: $N_{1}$ of category 1 and $N_{2}$ of category 2 ($N_{1} + N_{2} = N$).
+
+- What is the probability of drawing $x$ individuals from category 1 when sampling $n$ individuals without replacement?
+
+- \# of ways to sample $n$ individuals $= \binom{N}{n}$.
+
+- \# of ways to sample $x$ individuals from $N_{1}$ and $n - x$ individuals from $N_{2}$ = $\binom{N_{1}}{x} \binom{N_{2}}{n - x}$
+
+# Hypergeometric distribution
+
+- pmf: $\binom{N_{1}}{x} \binom{N_{2}}{n - x} / \binom{N}{n}$
+
+- cdf: Too complicated
+
+- Expectation: $\mathrm{E} (X) = n N_{1} / N$
+
+- Variance:  $n \frac{N_{1}}{N} \frac{N_{2}}{N} \frac{N - n}{N - 1}$
+
+# Example: Texas Hold Em Poker
+
+- From Wikipedia: https://en.wikipedia.org/wiki/Hypergeometric_distribution
+
+- In Hold'em Poker players make the best hand they can combining the two cards in their hand with the 5 cards (community cards) eventually turned up on the table. The deck has 52 and there are 13 of each suit. For this example assume a player has 2 clubs in the hand and there are 3 cards showing on the table, 2 of which are also clubs. The player would like to know the probability of one of the next 2 cards to be shown being a club to complete the flush.
+
+-  $X =$ \# of clubs drawn in next 2 cards.  $X \sim \text{HyperGeo}(N_{1} = 9, N_{2} = 38, n = 2)$
+
+- $\Pr(X \geq 1) = 1 - \Pr(X = 0) = 1 - \binom{9}{0} \binom{38}{2}/ \binom{47}{2}$
+    ```{r}
+    1 - choose(9, 0)*choose(38, 2)/choose(47, 2)
+    ```
