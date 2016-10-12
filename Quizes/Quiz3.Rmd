@@ -1,0 +1,35 @@
+---
+title: "Quiz 3"
+author: "Name: "
+output: pdf_document
+---
+
+For the following problems state the distribution used and the reason.
+
+1. A widget manufacturer has promised a $0.1 \%$ defect rate.  You test out 100 widgets and find one defect.  
+    a. Assuming the stated defect rate, what is the probability of finding one or more defect in 100 widgets?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b.  Assuming the stated defect rate, what is the expected number of widgets you would have to test to find a defective one?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    c.  If you were to four batches of 100 widgets, what is the probability that none of the batches contains at least one defective widget?
+    
+    
+    
