@@ -87,6 +87,57 @@ knitr::include_graphics("mean-median-mode.png")
 knitr::include_graphics("pearson-mode-skewness.jpg")
 ```
 
+
 # Uniform distribution {.bigger}
 
+# Uniform distribution
 
+- A uniform distribution is one where all values are equally likely.
+
+- Uniform over $(0, 1)$ means any value between 0 and 1 are equally likely
+    - $f(x) =$ constant.
+    - $\int_{0}^{1} f(x) dx = 1$ $\Rightarrow$ $f(x) = 1$.
+
+- Uniform over $(a, b)$ $\Rightarrow$ $f(x) = \frac{1}{b -a}$
+
+# Properties of uniform distribution
+
+- cdf: 
+    - $F(x) = \int_{a}^{x} \frac{1}{b - a} dy = \frac{x - a}{b - a}$
+
+- expectation: 
+    - $\mathrm{E}(X) = \int_{a}^{b} y \frac{1}{b - a} dy = (b + a)/2$
+
+- variance:
+    - $\mathrm{Var}(X) = \int_{a}^{b} \Big(y - \frac{b + a}{2} \Big)^{2} \frac{1}{b - a} dy = \frac{(b - a)^{2}}{12}$
+    
+# Relationship to the cdf of all random variables
+
+- Let $X$ be a random variable with cdf $F(x)$ and pdf $f(x)$.  
+
+- Let $U$ be a Uniform$(0, 1)$ random variable, then $F^{-1} (U)$ has the same distribution as $X$.
+
+- $\Rightarrow$ $F(X) \sim \text{Uniform}(0, 1)$
+
+# R commands
+
+pdf: dunif(x, min = 0, max = 1)
+
+cdf: punif(x, min = 0, max = 1)
+
+quantile: qunif(q, min = 0, max = 1)
+
+random number generator: runif(r, min = 0, max =1)
+
+# Example: throwing darts 
+
+- Suppose we throw darts at a dartboard.  If we throw darts uniformly at random at the dartboard, what is the distribution of the distance to the center?  Assume the dartboard has unit radius
+
+- All portions of the dartboard are equally likely $\Rightarrow$ $x, y$ $\sim$ Uniform.
+    - But $x^{2} + y^{2} < 1$.
+
+- $r^{2} = x^{2} + y^{2}$ $\sim$ Uniform$(0, 1)$.
+
+- $r = \sqrt{r^{2}} = F^{-1} (r)$ $\Rightarrow$ $F(r) = r^{2}$
+
+- $f(x) = F^{\prime}(x) = 2r$
