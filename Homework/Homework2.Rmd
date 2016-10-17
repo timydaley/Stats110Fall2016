@@ -38,6 +38,6 @@ For all of the below homework that require choosing a distribution, please state
     b. How many chocolate chips should be put in the batch of dough to be 99% sure that there are no chocolate chip-less cookies?
     c.  Under the above specifications, what is the expect number of repeated batches until a chocolate chip-less cookie is made?
      
-13.  A famous usage of the Poisson distribution is to model species captures.  For example, you go out to the Amazon and capture a bunch of butterflies.  You make note of the species of each butterfly captured, but you don't know which species you didn't capture.  Assuming that the number of captured butterflies for each species, how would you simulate a capture experiment?  Do this for $\lambda = 0.5$ and 100 species of butterfly.  
+13.  A famous usage of the Poisson distribution is to model species captures.  For example, you go out to the Amazon and capture a bunch of butterflies.  You make note of the species of each butterfly captured, but you don't know which species you didn't capture.  Assuming that the number of captured butterflies for each species are independently Poisson distributed, how would you simulate a capture experiment?  Do this for $\lambda = 0.5$ and 100 species of butterfly.  
 
 

@@ -7,7 +7,7 @@ date: October 11, 2016
 author: Timothy Daley
 ---
 
-# Quick thing I forgot
+# Quick thing I forgot about the geometric distribution
 
 # Memoryless property of the geometric distribution
 

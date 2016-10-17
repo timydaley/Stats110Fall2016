@@ -4,7 +4,7 @@ author: "Name: "
 output: pdf_document
 ---
 
-For the following problems state the distribution used and the reason.
+For the following problems state the distribution used and the reason. {.bigger}
 
 1. A widget manufacturer has promised a $0.1 \%$ defect rate.  You test out 100 widgets and find one defect.  
     a. Assuming the stated defect rate, what is the probability of finding one or more defect in 100 widgets?
