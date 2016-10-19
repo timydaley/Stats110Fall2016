@@ -27,9 +27,24 @@ author: Timothy Daley
 
 - Support: $x > 0$
 
+# Pdf
+
 - pdf: $f(x) = \lambda e^{-\lambda x}$
 
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("650px-Exponential_pdf.png")
+```
+source: Wikipedia
+
+
+# Cdf
+
 - cdf: $F(x) = 1 - e^{- \lambda x}$
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("650px-Exponential_cdf.png")
+```
+source: Wikipedia
 
 # Exponential distribution
 
@@ -57,6 +72,17 @@ random number generator: rexp(n, rate = 1)
 - $\Pr(X > t | X > x) = \frac{\Pr(X > t \cap X > x)}{\Pr(X > x)}$  
 - $\Pr(X > t \cap X > x) = \Pr(X > t) = e^{-\lambda t}$
 - $\Pr(X > t | X > x) = \frac{e^{-\lambda t}}{e^{-\lambda x}} = e^{- \lambda (t - x)} = \Pr(X > t - x)$
+
+# Example
+
+- Students arrive at a local bar and restaurant according to an approximate Poisson process at a mean rate of 30 students per hour. 
+
+- What is the probability that the bouncer has to wait more than 3 minutes to card the next student?
+    - $X =$ minutes between student arrivals.  $X \sim \text{Exponential}(\lambda = 30/60 = 1/2)$
+    - $\Pr(X > 3) = 1 - \Pr(X \leq 3) = 1 - (1 - e^{-3/2}) = e^{-3/2}$
+    
+- If the bouncer has already been waiting 3 minutes, what's the probability he has to wait another 3 minutes for the next student to arrive?
+    - $\Pr(X > 6 | X > 3) = \Pr(X > 3) = e^{-3/2}$
 
 # Min and max of exponentials
 
@@ -103,6 +129,13 @@ Suppose that car accidents occur on the Stanford campus at an average of 2 per w
   - Way 1: $\Pr(X = 0) = e^{-2}$
   - Way 2: $\Pr(T > 1) = e^{-2 \cdot 1}$
   
+# Critical assumptions
+
+- Constant rate
+
+- Events are independent
+
+
     
 # Gamma distribution {.bigger}
 
@@ -119,3 +152,13 @@ Suppose that car accidents occur on the Stanford campus at an average of 2 per w
 - Expectation: $\mathrm{E}(X) = k \theta$
 
 - Variance: $\mathrm{Var}(X) = k \theta^{2}$
+
+# Gamma distribution 
+
+pdf: dgamma(x, shape = $k$, scale = $\theta$)
+
+cdf: pgamma(x, shape = $k$, scale = $\theta$)
+
+quantile: qgamma(q, shape = $k$, scale = $\theta$)
+
+random number generator: rgamma(n, shape = $k$, scale = $\theta$)
