@@ -103,3 +103,14 @@ output: pdf_document
     We do the same thing, noting that $\int_{0}^{1} x e^{x} = 1$ and therefore $c = 1$.
     
 8.  Suppose that the percentage of impurities in a batch of chemical follows a beta distribution with shape parameters $\alpha$ = 2 and $\beta$ = 10. 
+    a.  What is the probability that a random batch has more than $10 \%$ impurities?
+    The probability that a random batch has more than $10 \%$ impurities is 
+    ```{r}
+    1 - pbeta(0.1, 2, 10)
+    ```
+
+   b.  Suppose that you can measure the impurities and classify the product into three grades, A with between 0 and $10 \%$ impurities, B with between 10 and $25 \%$ impurities, and C with more than $25 \%$ impurities.  You can sell grade A for $100 per batch, B for $40 per batch, and C for $10 per batch.  What is the average price of a batch?
+   What we need to do is find out what percentage of the batches correspond to each category and then add up the weighted sum.  That is the average price = $\Pr(\text{grade A}) \cdot 100 + \Pr(\text{grade B}) \cdot 40 + \Pr(\text{grade C}) \cdot 10$. 
+   ```{r}
+   100*pbeta(0.1, 2, 10) + 40*(pbeta(0.4, 2, 10) - pbeta(0.1, 2, 10)) + 10*(1 - pbeta(0.4, 2, 10))
+   ```
