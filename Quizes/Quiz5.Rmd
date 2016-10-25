@@ -1,0 +1,21 @@
+---
+title: "Quiz 5"
+author: "Name: "
+output: pdf_document
+---
+
+1.  Suppose that $x_{1}, \ldots, x_{n}$ are independent and identically distributed observations from a normal distribution with mean $10$ and variance $4$.  What is the distribution of $\bar{x}$ for $n = 10$?
+   \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+2.  Suppose that we measure want to compare a new flu treatment to the traditional treatment.  The average recovery time for the traditional treatment is 4 days.  To test the new treatment you give it to 9 people and obtain an average recovery time of 2.8 days with a standard deviation of 1.9 days.  Construct a $95 \%$ confidence interval for the mean recovery time of the new treatment.
+
+        
+    
