@@ -15,9 +15,17 @@ output: pdf_document
     \
     \
     \
-2.  Suppose that we measure want to compare a new flu treatment to the traditional treatment.  The average recovery time for the traditional treatment is 4 days.  To test the new treatment you give it to 50 people and obtain an average recovery time of 2.8 days with a standard deviation of 1.9 days.  
-    a. Construct a $95 \%$ confidence interval for the mean recovery time of the new treatment.
-       \
+2.  Suppose that we measure want to compare a new flu treatment to the traditional treatment.  The average recovery time for the traditional treatment is 4 days.  To test the new treatment you give it to 50 people and obtain an average recovery time of 2.8 days with a standard deviation of 1.9 days.
+    a. What is the standard error of the mean?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b. Construct a $95 \%$ confidence interval for the mean recovery time of the new treatment.
+    \
     \
     \
     \
@@ -43,7 +51,7 @@ $t$ table
 ```{r echo=FALSE}
 library(knitr)
 x = data.frame(alpha = rep(c(0.1, 0.05, 0.01), times = 9), df = rep(2:10, each = 3))
-x = data.frame(alpha = x$alpha, df = x$df, z = qt(1 - x$alpha/2, df = x$df) )
+x = data.frame(alpha = x$alpha, df = x$df, t = qt(1 - x$alpha/2, df = x$df) )
 x
 #kable(x, format = "markdown", colnames = colnames(x))
 ```
