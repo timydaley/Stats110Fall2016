@@ -4,6 +4,8 @@ author: "Name: "
 output: pdf_document
 ---
 
+Remember to state the logic behind your answers.  
+
 1.  Suppose that $x_{1}, \ldots, x_{n}$ are independent and identically distributed observations from a normal distribution with mean $10$ and variance $4$.  What is the distribution of $\bar{x}$ for $n = 10$?
    \
     \
