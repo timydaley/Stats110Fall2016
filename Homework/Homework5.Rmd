@@ -1,0 +1,48 @@
+---
+title: "Homework 5"
+output: pdf_document
+---
+
+1. To assess the accuracy of a laboratory scale, a standard weight that is known to
+weigh 100 grams is repeatedly weighed 20 times. The resulting measurements (in grams) are: 107, 120, 111, 91, 99, 110, 98, 105, 100, 102, 96, 105, 105, 111, 97, 99, 125, 110, 94, and 108. 
+    a. Compute a $95 \%$ confidence interval for the population mean $\mu$.  Should you expect that the true average weight is 100?
+    b. Compute the $p$-value of the hypothesis test with $H_{0}: \mu = 100$.  Does this indicate that the scale is biased?
+    
+2. An exit poll of 1000 randomly selected voters found that 515 favored measure A.
+    a.  Construct a $99 \%$ confidence interval for the support of measure A.
+    b.  What is the null hypothesis if we were to test to see if measure A will pass?
+    c.  Compute the $p$-value under the null hypothesis above.
+  
+3. Repeated from last homework: There is a theory that powerul men have a higher frequency of male children.  We can test this by looking at the children of the wives presidents (ignoring children from mistresses, e.g. Warren Harding).  From [http://www.infoplease.com/ipa/A0194051.html], the number of sons is 88 and the number of daughters is 65.  
+    a. What would be the null hypothesis here?
+    b. Using R, compute the exact $p$-value under the null hypothesis above.
+    c. Compute an approximate $p$-value under the null hypothesis above using the normal approximation.
+    
+4.  Students in Stats 110 were surveyed and asked if they thought their homework was too long.  They were asked to rank the difficulty of the homework on a scale of 1 to 10, with 1 being extremely easy and 10 being overwhelmingly difficult.  35 students responded and on average scored the homework as a 5.8 with a standard deviation of 3.  
+    a.  Compute a $95 \%$ confidence interval for the average difficulty.
+    b.  You would like to test if the Stats 110 homework is harder than average (5).  What is the null hypothesis?
+    c.  Compute the $p$-value under the above null hypothesis.
+    d.  Can you reject null hypothesis at the $95 \%$ confidence level?  Does this mean Stats 110 homework is harder than average?
+    
+5.  To test the effectiveness of a new non-steroid anti-inflammitory drug (NSAID), rofecoxib, 4047 patients were randomly assigned to receive rofecoxib and 4029 patients were randomly assigned to receive naproxen, the standard NSAID. 5 of the patients receiving rofecoxib had a fatal heart attack while 1 patient receiving naproxen had a fatal heart attack. We want to test if rofecoxib increases a patient's risk of heart attack.
+    a.  What is null hypothesis?
+    b.  Compute the $p$-value under the null hypothesis.
+    c.  Suppose that 3 patients had fatal heart attacks while receiving rofecoxib but were excluded from the study.  Compute the $p$-value under the null hypothesis but include these three patients.
+    d.  This is a true story, see [https://en.wikipedia.org/wiki/Rofecoxib].  What is your opinion on the usage of hypothesis testing in this situation?
+    
+6.  Suppose that you want to test between two weight loss pills, that we will call A and B.  You randomly assign 10 people to take each weight loss drug.  You find that on average people taking pill A lost 10.1 pounds with an estimated standard deviation of 10.3 pounds.  People taking pill B lost 5.1 pounds with a standard deviation of 1.5 pounds.  
+    a. You want to test pill A to see if it has a statistically significant effect.  
+        i. What is the null hypothesis?  
+        ii. Compute the $p$-value under the null hypothesis.
+        iii.  Can you reject the null at a $99 \%$ confidence level?
+    b. You want to test pill B to see if it has a statistically significant effect.  
+        i. What is the null hypothesis?  
+        ii. Compute the $p$-value under the null hypothesis.
+        iii.  Can you reject the null at a $99 \%$ confidence level? 
+    c.  You want to test if there is a statistically significant difference between the two pills.
+        i.  What is the null hypothesis?
+        ii.  Compute the $p$-value under the null hypothesis.
+        iii.  Can you reject the null at a $99 \%$ confidence level?
+    d.  Which pill would you prefer to take for weight loss and why?
+    
+    
