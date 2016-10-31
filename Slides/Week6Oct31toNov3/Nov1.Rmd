@@ -1,0 +1,25 @@
+---
+title: "Hypothesis testing"
+output:
+  beamer_presentation:
+    increment: true
+date: October 26, 2016
+author: Timothy Daley
+---
+
+# From last class: 
+
+- The null hypothesis is the opposite of what you want to show.
+
+- The $p$-value is the probability of obtaining the observed data or something more extreme under the null hypothesis.
+    - This is **not** the probability the null is true.
+    
+# Confidence level
+
+- Before you perform a hypothesis test, you should set a confidence level.
+    - Usually $90 \%$, $95 \%$, or $99 \%$
+    - Corresponds to $\alpha = 0.1, 0.05, 0.01$
+
+- If $100 (1 - \alpha) \%$ is the confidence level, then $\alpha$ is the probability of obtaining the observed data or something more extreme under the null
+     - $\alpha$ is the probability of rejecting the null under the null hypothesis.
+     

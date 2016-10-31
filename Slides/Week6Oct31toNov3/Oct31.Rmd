@@ -1,0 +1,130 @@
+---
+title: "Introduction to hypothesis testing"
+output:
+  beamer_presentation:
+    increment: true
+date: October 26, 2016
+author: Timothy Daley
+---
+
+# Previously on Stats 110: confidence intervals
+
+- Confidence intervals let us represent variability on estimated quantities.
+
+- What if we want to test something?
+    - Effectiveness of a drug
+    - Who will win an election
+    - Effect of an ad strategy
+    
+- How to systematically test a hypothesis?
+
+# Hypothesis testing
+
+- Typically we want to test if the data indicates a change in the state of the world.
+
+- We have a null hypothesis $H_{0}$, the base state of the world.
+    - e.g.
+    - the drug has no difference in effect over the standard treatment or placebo
+    - the selected candidate will no win
+    - the ad strategy makes no difference.
+
+# Hypothesis testing: choosing a hypothesis
+
+- The null hypothesis is the opposite of what you want to show.
+
+- There are two hypotheses: $H_{0}$ and $H_{1}$.
+
+- These two must encompass everything that can happen
+    - $H_{0}: \mu = 0$ then $H_{1}: \mu \neq 0$
+    - $H_{0}: \mu \leq 0$ then $H_{1}: \mu > 0$
+    - $H_{0}: p \geq 0.5$ then $H_{1}: p < 0.5$
+
+- We want to reject $H_{0}$ in favor of $H_{1}$
+
+# Hypothesis testing: defining $p$-values
+
+- We want to see if the data is unlikely under the null hypothesis.
+    - Then this would support the notion that $H_{1}$ is true rather than $H_{0}$.
+
+- The $p$-value is the probability that we would observe the data or something more extreme under the null hypothesis.
+
+- This is **not** the probability that $H_{0}$ is true.
+    - Remember the case of Sally Clark that we talked about the first day of class.
+    
+    
+# Example
+
+- The time needed for college students to complete a certain maze follows a normal distribution with a mean of 45 seconds. To see if the mean time time  (in seconds) is changed by vigorous exercise, we have a group of 30 college students exercise vigorously for 30 minutes and then complete the maze.  The sample mean and standard deviation of the collected data is 49.2 seconds and 3.5 seconds respectively.  
+
+- What is the null hypothesis?
+    - Time to complete the maze $\sim N (\mu, \sigma^{2})$, $H_{0}: \mu = 45$
+
+# Example continued
+- What is the probability of observing a mean of 49.2 or higher under the null hypothesis?
+
+- $\bar{x} \sim N(\mu \sigma^{2}/n)$
+
+- $$\Pr(|\bar{x}| > 49.2) = 2 \cdot \Pr(\bar{x} > 49.2) = 2 \cdot \Pr \Big(\frac{\bar{x} - 45}{s/\sqrt{n}} > \frac{49.2 - 45}{3.5/\sqrt{30}} \Big)$$
+  
+- In R:
+    ```{r}
+    barx = 49.2; s = 3.5; z = (49.2 - 45)/(s/sqrt(30));
+    2*(1 - pnorm(z))
+    2*pnorm(z, lower.tail = FALSE)
+    ```
+
+# Example
+
+- Suppose we want to test the fairness of a coin.  We will flip the coin a fixed number of times and count the number of heads.  What is the null hypothesis?
+    - If the coin is fair, the probability of heads is $p = 0.5$.  Therefore the null hypothesis is $H_{0}: p = 0.5$.
+
+# Example: exact $p$-value
+
+- We flip the coint 100 times and obtain 45 heads.  What is the exact $p$-value?
+
+- Under the null, the number of heads is binomial$(100, 0.5)$.  
+
+- Probability of obtaining the observed data or something more extreme?
+    - The expected number of heads under the null is 50.  
+    - More extreme than the observed data is 45 or less
+    - and 55 or more
+    
+- $\Pr(X \leq 45) + \Pr(X \geq 55) = 2 \cdot \Pr(X \leq 45)$
+    ```{r}
+    2*pbinom(45, size = 100, prob = 0.5)
+    ```
+
+# Example: approximate $p$-value
+
+- Since the normal distribution well approximates the binomial under the null distribution, we can use a normal approximation.
+
+- $\hat{p} \sim N(0.5, \sigma^{2}/\sqrt{n})$
+    - What is $\sigma^{2}$?
+    - $\sigma^{2} = p \cdot (1 - p) = 0.5^{2}$
+
+- In R:
+    ```{r}
+    phat = 45/100; z = (phat - 0.5)/(0.5/sqrt(100));
+    2*pnorm(z)
+    ```
+    
+# Example: One sided hypothesis
+
+- Suppose a regulatory agency is concerned a toothpaste manufacturer is putting too little toothpaste in their packages.  The packaging states it should be 12 ounces.  
+
+- What is the null hypothesis?
+    - The regulator doesn't care if the manufacturer is putting too much toothpaste in their packages, only if there's too little.
+    - $H_{0} \mu \geq 12$
+    - $H_{1} \mu < 12$
+
+# Example: One sided hypothesis
+
+- Suppose they measure 25 packages of toothpaste and obtain an average of 11.65 ounces with an estimated standard deviation of 1.15.
+
+- $$\Pr(\bar{x} < 11.65) = \Pr \Big( \frac{\bar{x} - 12}{s / \sqrt{n}} < \frac{11.65 - 12}{1.15 / \sqrt{25}})$$
+
+- In R:
+    ```{r}
+    z = (11.65 - 12)/(1.15 / sqrt(25))
+    pnorm(z)
+    ```
