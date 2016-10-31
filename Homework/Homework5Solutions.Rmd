@@ -1,0 +1,132 @@
+---
+title: "Homework 5"
+output: pdf_document
+---
+
+1. To assess the accuracy of a laboratory scale, a standard weight that is known to
+weigh 100 grams is repeatedly weighed 20 times. The resulting measurements (in grams) are: 107, 120, 111, 91, 99, 110, 98, 105, 100, 102, 96, 105, 105, 111, 97, 99, 125, 110, 94, and 108. 
+    a. Compute a $95 \%$ confidence interval for the population mean $\mu$.  Should you expect that the true average weight is 100?
+    ```{r}
+    x = c(107, 120, 111, 91, 99, 110, 98, 105, 100, 102, 96, 105, 105, 111, 97, 99, 125, 110, 94, 108)
+    barx = mean(x); barx
+    s = sd(x); s
+    c(barx - qnorm(0.975)*s/sqrt(20), barx + qnorm(0.975)*s/sqrt(20))
+    ```
+    b. Compute the $p$-value of the hypothesis test with $H_{0}: \mu = 100$.  Does this indicate that the scale is biased?
+    ```{r}
+    z = (barx - 100)/(s/sqrt(20)); z
+    2*(pnorm(z, lower.tail = FALSE))
+    ```
+    We can reject the null hypothesis at a $95 \%$ confidence level, indicating that the scale may be biased.
+    
+    
+2. An exit poll of 1000 randomly selected voters found that 515 favored measure A.
+    a.  Construct a $99 \%$ confidence interval for the support of measure A.
+    ```{r}
+    phat = 515/1000; s = phat*(1 - phat);
+    x = c(phat - qnorm(0.995)*s/sqrt(1000), phat + qnorm(0.995)*s/sqrt(1000)); x
+    ```
+      
+    b.  What is the null hypothesis if we were to test to see if measure A will pass?
+    If measure A does not pass, that means that the proportion of support is below $50 \%$.  Therefore the null hypothesis is $H_{0}: p \leq 0.5$.
+    
+    c.  Compute the $p$-value under the null hypothesis above.
+    Under the null hypothesis $s = 0.5$, which gives a test statistic of
+    ```{r}
+    z = (phat - 0.5)/(0.5/sqrt(1000)); z
+    ```
+    This gives a $p$-value of 
+    ```{r}
+    pnorm(z, lower.tail = FALSE)
+    ```
+    This indicates that we cannot reject the null hypothesis at any reasonable confidence level.
+  
+3. Repeated from last homework: There is a theory that powerul men have a higher frequency of male children.  We can test this by looking at the children of the wives presidents (ignoring children from mistresses, e.g. Warren Harding).  From [http://www.infoplease.com/ipa/A0194051.html], the number of sons is 88 and the number of daughters is 65.  
+    a. What would be the null hypothesis here?
+    The null hypothesis is that there is no difference between the chances of boys and girls.  If $p$ is chance of having a son, then the null hypothesis is $H_{0}: p = 0.5$.
+    
+    b. Using R, compute the exact $p$-value under the null hypothesis above.
+    Under the null hypothesis, the observed data should follow a binomial$(n = 123, p = 0.5)$.
+    ```{r}
+    pbinom(88, size = 123, prob = 0.5, lower.tail = FALSE)
+    ```
+    
+    c. Compute an approximate $p$-value under the null hypothesis above using the normal approximation.
+    Under the normal approximation $z = (\hat{p} - 0.5)/(0.5/\sqrt{123})$
+    ```{r}
+    z = (88/123 - 0.5)/(0.5/sqrt(123)); z
+    pnorm(z, lower.tail = FALSE)
+    ```
+    
+4.  Students in Stats 110 were surveyed and asked if they thought their homework was too long.  They were asked to rank the difficulty of the homework on a scale of 1 to 10, with 1 being extremely easy and 10 being overwhelmingly difficult.  35 students responded and on average scored the homework as a 5.8 with a standard deviation of 3.  
+    a.  Compute a $95 \%$ confidence interval for the average difficulty.
+    ```{r}
+    barx = 5.8; s = 3; 
+    x = c(barx - qnorm(0.975)*s/sqrt(35), barx + qnorm(0.975)*s/sqrt(35)); x
+    ```
+      
+    b.  You would like to test if the Stats 110 homework is harder than average (5).  What is the null hypothesis?
+    The null hypothesis is that Stats 110 is not harder than average, $H_{0}: \mu \leq 5$.
+    
+    c.  Compute the $p$-value under the above null hypothesis.
+    ```{r}
+    z = (5.8 - 5)/(3/sqrt(35))
+    pnorm(z, lower.tail = FALSE)
+    ```
+    
+    d.  Can you reject null hypothesis at the $95 \%$ confidence level?  Does this mean Stats 110 homework is harder than average?
+    Since the $p$-value is greater than $0.05$, we cannot reject the null hypothesis $H_{0}: \mu \leq 5$ at the $95 \%$ confidence level.  However, this does not mean that we can conclude that Stats 110 is not harder than average.  It may be that it is harder than average, but the difference is not large enough to detect with the given sample size.
+    
+5.  To test the effectiveness of a new non-steroid anti-inflammitory drug (NSAID), rofecoxib, 4047 patients were randomly assigned to receive rofecoxib and 4029 patients were randomly assigned to receive naproxen, the standard NSAID. 5 of the patients receiving rofecoxib had a fatal heart attack while 1 patient receiving naproxen had a fatal heart attack. We want to test if rofecoxib increases a patient's risk of heart attack.
+    a.  What is null hypothesis?
+    The null hypothesis is that there is no difference in the risk of heart attack between the two drugs. If $p_{r}$ is the probability of heart attack while using rofecoxib and $p_{n}$ is the probability of heart attack while using naproxen, then the null hypothesis is $H_{0}: p_{r} = p_{n}$ or $H_{0}: p_{r} - p_{n} = 0$.
+    
+    b.  Compute the $p$-value under the null hypothesis.
+    We can do a two sided $p$-value using pooled variance, $s = \sqrt{\hat{p}(1 - \hat{p} (1 / n_{1} + 1/n_{2}))}$, where $\hat{p} = (5 + 1)/(4047 + 4029)$.  
+    ```{r}
+    phat = (5 + 1)/(4047 + 4029)
+    s = sqrt(phat*(1 - phat)*(1/4047 + 1/4029))
+    z = (5/4047 - 1 / 4029)/s; z
+    2*pnorm(z, lower.tail = FALSE)
+    ```
+    
+    c.  Suppose that 3 patients had fatal heart attacks while receiving rofecoxib but were excluded from the study.  Compute the $p$-value under the null hypothesis but include these three patients.
+    Under the new numbers,
+    ```{r}
+    phat = (8 + 1)/(4050 + 4029)
+    s = sqrt(phat*(1 - phat)*(1/4050 + 1/4029))
+    z = (8/4050 - 1/4029)/s; z   
+    2*pnorm(z, lower.tail = FALSE)
+    ```
+
+    
+    d.  This is a true story, see [https://en.wikipedia.org/wiki/Rofecoxib].  What is your opinion on the usage of hypothesis testing in this situation?
+   They need to say something about the how $p$-values can be subject to high noise.  Just excluding 3 patients allowed the researchers to claim that there is no difference of the risk of heart attack between the two drugs.
+   
+    
+6.  Suppose that you want to test between two weight loss pills, that we will call A and B.  You randomly assign 10 people to take each weight loss drug.  You find that on average people taking pill A lost 10.1 pounds with an estimated standard deviation of 10.3 pounds.  People taking pill B lost 5.1 pounds with a standard deviation of 1.5 pounds.  
+    a. You want to test pill A to see if it has a statistically significant effect.  
+        i. What is the null hypothesis?  
+        If $\mu_{A}$ is the average weight lost under pill A, then to test if pill A helps you lose weight the null hypothesis is $H_{0}: \mu_{A} \leq 0$.
+        
+        ii. Compute the $p$-value under the null hypothesis.
+        ```{r}
+        z = 10.1/(10.3/sqrt(10))
+        pnorm(z, lower.tail = FALSE)
+        ```
+        
+        iii.  Can you reject the null at a $99 \%$ confidence level?
+        Yes, you can reject the null hypothesis at the $99 \%$ confidence level.  
+        
+    b. You want to test pill B to see if it has a statistically significant effect.  
+        i. What is the null hypothesis? 
+        
+        ii. Compute the $p$-value under the null hypothesis.
+        iii.  Can you reject the null at a $99 \%$ confidence level? 
+    c.  You want to test if there is a statistically significant difference between the two pills.
+        i.  What is the null hypothesis?
+        ii.  Compute the $p$-value under the null hypothesis.
+        iii.  Can you reject the null at a $99 \%$ confidence level?
+    d.  Which pill would you prefer to take for weight loss and why?
+    
+    
