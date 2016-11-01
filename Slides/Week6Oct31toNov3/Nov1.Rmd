@@ -16,10 +16,60 @@ author: Timothy Daley
     
 # Confidence level
 
-- Before you perform a hypothesis test, you should set a confidence level.
+- Before you perform a hypothesis test, you should set a confidence level $100 \cdot (1 - \alpha) \%$.
     - Usually $90 \%$, $95 \%$, or $99 \%$
     - Corresponds to $\alpha = 0.1, 0.05, 0.01$
 
+- The rule is to reject the null hypothesis if $p < \alpha$
+    
+# $\alpha$ and the confidence level
+
+- We set the confidence level to control $\alpha$.
+
 - If $100 (1 - \alpha) \%$ is the confidence level, then $\alpha$ is the probability of obtaining the observed data or something more extreme under the null
      - $\alpha$ is the probability of rejecting the null under the null hypothesis.
+     - Commonly called the Type I (one) error.
      
+- By setting the confidence level, you are setting the probability of incorrectly rejecting the null.
+    - The higher the confidence level, the less chance of incorrectly rejecting the null.
+     
+# What should we expect under the null
+
+- What is the distribution of $p$-values under the null?
+
+```{r, fig.height=2.5, fig.width=4.5, fig.align='center'}
+pvals = rep(1, times = 10000)
+for(i in 1:10000){
+  x = rnorm(20)
+  pvals[i] = 2*pnorm(-abs(mean(x)/(sd(x)/sqrt(20))))
+}
+hist(pvals, breaks = 100, probability = TRUE)
+```
+
+# What should we expect under the null
+
+- What is the distribution of $p$-values under the null?
+
+- Uniform!
+
+- Recall that if $X$ is a random variable with cdf $F$, then $F(X)$ is uniformly distributed.
+    - This is essentially what we are doing by computing the $p$-value
+    
+# Type II error
+
+- We talked about the type I error: the probability of incorrectly reject the null.
+    - What about the probability of incorrectly accepting the null, assuming the null hypothesis is false?
+    
+- This is known as Type II error and depends on several factors.
+    - The true populations mean (which is unknown under $H_{1}$)
+    - The populations variance (may or may not be known)
+    - The sample size.
+    
+- $1 -$ Type II error is known as the power, higher power means more chance of detecting a difference.
+
+# Higher power means more chance of rejecting null
+
+```{r, out.width = "250px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("PValueDistribution2.jpg")
+```
+        
