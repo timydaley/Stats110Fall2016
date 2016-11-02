@@ -6,9 +6,12 @@ output: pdf_document
 
 Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
 
-1.  Genetic testing is commonly used in prosecution to confirm the suspect's presence at a crime scene.  There are proposals to extend genetic testing to database searches, but it is known that the data in the database and input are not exact.  Suppose that we want to search a database of 10 million people.  To prevent false identification, we set a strigent threshold for matching at a $99.999 \%$ confidence level.  Supposing that each match test is independent and that the null hypotheses are correctly stated, how many incorrect matches can we expect for each search?
+1.  Genetic testing is commonly used in prosecution to confirm the suspect's presence at a crime scene.  There are proposals to extend genetic testing to database searches, but it is known that the data in the database and input are not exact.  Suppose that we want to search a database of 10 million people.  To prevent false identification, we set a strigent threshold for matching at a $99.999 \%$ confidence level.  
+    a.  What is $\alpha$?
     \
     \
+    \
+    b. Supposing that each match test is independent and that the null hypotheses are correctly stated, how many incorrect matches can we expect for each search?
     \
     \
     \
@@ -16,13 +19,11 @@ Remember to state the logic behind your answers.  If you use any variables, plea
 3.  It is believed that the average level of prothrombin in a normal population is 20 mg/100 ml of blood plasma with a standard deviation of 4 mg/100 ml.  We are going to get 100 volunteers and measure their prothrombin level to see if their prothrombin levels support this level.  
     a.  State the null and alternative hypotheses.
     \
-    \
    \
    \
    \
    \
     b. From the measured data we obtain mean measured levels of 21.44 mg / 100 ml with an estimated standard deviation of 8.8 mg / 100 ml.  Compute the test statistic.
-    \
     \
     \
     \
