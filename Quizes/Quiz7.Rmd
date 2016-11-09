@@ -1,0 +1,42 @@
+---
+title: "Quiz 6"
+author: "Name: "
+output: pdf_document
+---
+
+Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
+
+In species sampling experiments, the number of capture species is thought to be Poisson distributed with pmf $f(x | \lambda) = \lambda^{x} e^{-\lambda} / x!$.  Unfortunately, captured species are not observed.  In this case, the observed species follow a zero-truncated distribution with pmf $f(x) = \Pr(X = x | X > 0)$.  Suppose we observe $n$ species with counts $s_{1}, \ldots, s_{n}$. \newline
+1. Write out the log likelihood function.
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+2. Set up the maximum likelihood equations for $\lambda$.  
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+3.  What is the expected number of captures for an observation, conditional upon it being observed?
+\
+\
+\
+\
+\
+\
+\
+\
+\
+4. Set up the method of moments equations for $\lambda$.
+    
