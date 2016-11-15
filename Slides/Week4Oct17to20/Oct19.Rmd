@@ -2,7 +2,7 @@
 title: "The Gamma and beta distributions"
 output:
   beamer_presentation:
-    increment: true
+      increment: true
 date: October 19, 2016
 author: Timothy Daley
 ---
@@ -128,3 +128,43 @@ source: Wikipedia
 # Relationship to Uniform distribution
 
 - When $\alpha = 1$ and $\beta = 1$, then the beta distribution is just the Uniform$(0, 1)$ distribution.
+
+# Beta distribution in R
+
+pdf: dbeta(x, $\alpha$, $\beta$)
+
+cdf: pbeta(x, $\alpha$, $\beta$)
+
+quantile: qbeta(q, $\alpha$, $\beta$)
+
+random number generator: rbeta(n, $\alpha$, $\beta$)
+
+# Example 
+
+Suppose that we model MLB batting averages as a beta$(\alpha = 81, \beta = 219)$ distribution, see [http://stats.stackexchange.com/questions/47771/what-is-the-intuition-behind-beta-distribution].  The average batting average is $\frac{81}{219} = 0.27$.
+
+```{r, fig.width=3.5, fig.height=3, fig.align="center"}
+curve(dbeta(x, 81, 219))
+```
+
+# Example cont.
+
+- What is the probability that out of the 9 starting players, at least one of them will have a batting average of over $0.35$?
+
+- Let $X_{1}, X_{2}, \ldots, X_{9}$ be the batting averages of the 9 players.  The batting averages are assumed to be independent and identically (iid) beta$(81, 219)$ random variables.  We want $\Pr( \max (X_{1}, \ldots, X_{9}) > 0.35)$
+
+- $\Pr( \max (X_{1}, \ldots, X_{9}) > 0.35) = 1 - \Pr( \max (X_{1}, \ldots, X_{9}) \leq 0.35 )$ 
+    - $= 1 - \Pr(X_{1} \leq 0.35 \cap X_{2} \leq 0.3 \cap \cdots \cap X_{9} \leq 0.35 )$ 
+    - $= 1 - (\Pr(X \leq 0.35))^{9}$
+    ```{r}
+    1 - (pbeta(0.35, 81, 219))^9
+    ```
+    
+# Example cont.
+
+- What is the probability that out of the 9 starting players for each of the 30 teams, at least one of them will have a batting average of over $0.35$?
+
+- Now we have $30 \cdot 9 = 270$ players.
+    ```{r}
+    1 - (pbeta(0.35, 81, 219))^270
+    ```

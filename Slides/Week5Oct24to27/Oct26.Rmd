@@ -1,7 +1,8 @@
 ---
 title: "Margin of error and the central limit theorem"
 output:
-  beamer_presentation 
+  beamer_presentation:
+    increment: true
 date: October 26, 2016
 author: Timothy Daley
 ---
@@ -91,17 +92,17 @@ for(n in c(2, 20, 200)){
       barx + qt(1 - 0.05/2, df = 30 - 1)*s/sqrt(30))
     ```
 
-# Measurement error
+# Margin of error
 
-- Measurement error is proportional to the inverse of the square root of the sample size.
+- Margin of error is proportional to the inverse of the square root of the sample size.
 
-- Standard error of the mean is $\hat{\sigma} / \sqrt{n}$
+- Standard error of the mean is $\hat{\sigma} / \sqrt{n}$, the estimated standard deviation of the mean.
     - $\hat{\sigma}$ is the estimated standard deviation.
     - For example, decreasing the measurement error by a decimal point takes 100 times more observations.
     - abbreviated as s.e.m.
     
-- "Margin of error" in polling: the margin of error is the radius of the confidence interval
-    - So if they say "person X is leading by 2 with a margin of error of 4", are they really leading?
+- Margin of error: the margin of error is the radius of the confidence interval
+    - So in a poll, they say "person X is leading by 2 with a margin of error of 4", are they really leading?
     
 # Margin of error
 

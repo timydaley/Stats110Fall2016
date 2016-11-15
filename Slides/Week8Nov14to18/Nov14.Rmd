@@ -1,0 +1,162 @@
+---
+title: "Correlation and Linear Regression"
+output:
+  beamer_presentation:
+    increment: true
+date: November 14, 2016
+author: Timothy Daley
+---
+
+# Covariance
+
+- Suppose that $X$ and $Y$ are random variables.
+    - How to measure the relationship between $X$ and $Y$?
+
+- The covariance of $X$ and $Y$ is $$\sigma_{X,Y} = \mathrm{E}\big( (Y - \mathrm{E}(Y)) (X - \mathrm{E}(X)) \big)$$
+    - $\sigma_{X, Y} = \mathrm{E}(XY) - \mathrm{E}(X) \mathrm{E}(Y)$
+
+- If $X$ and $Y$ are independent, then $\sigma_{X, Y} = 0$
+
+# Correlation
+
+- The covariance is dependent on the scale of $X$ and $Y$
+
+- The correlation of $X$ and $Y$ is $$\rho_{X,Y} = \sigma_{X, Y} / \sigma_{X} \sigma_{Y}$$
+    - $-1 \leq \rho_{X, Y} \leq 1$
+    
+- The correlation of $X$ and $Y$ is $1$ or $-1$ or $1$ only when $Y = a + b X$
+
+# Correlation
+
+- The following have the same correlation:
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("1280px-Anscombe's_quartet_3.png")
+```
+
+
+# Linear Regression 
+
+- Suppose that we want to fit the model $$Y = \beta_{0} + \beta_{1} X + \epsilon$$
+    - $Y$ is dependent variable
+    - $X$ is the independent variable
+
+- $\epsilon$ is mean $0$ error.
+
+
+# MLE
+
+- Suppose $\epsilon$ is $N(0, \sigma^{2})$
+
+- Observations: $(x_{i}, y_{i})$ for $i = 1, \ldots, n$
+
+- Likelihood: $L(\beta_{0}, \beta_{1} | (x_{i}, y_{i}), i = 1, \ldots, n, \, \sigma^{2}) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2 \pi \sigma^{2}}} \text{exp} \big( - (y_{i} - (\beta_{0} + \beta_{1} x_{i})^{2}/2 \sigma^{2} \big)$
+    - $\log L = \sum_{i = 1}^{n} - \frac{1}{2} \log(2 \pi) - \frac{1}{2} \log (\sigma^{2}) - \frac{1}{2 \sigma^{2}} \big( y_{i} - (\beta_{0} + \beta_{1} x_{i}) \big)^{2}$
+    
+# MLE
+
+- Maximize in $\beta_{0}$ and $\beta_{1}$
+ 
+- $\frac{\partial}{\partial \beta_{0}} \log L = \sum_{i = 1}^{n} \frac{1}{2 \sigma^{2}} 2 (y_{i} - ( \beta_{0} + \beta_{1} x_{i}))^{2} = 0$
+    - $\sum_{i = 1}^{n} y_{i} - (\beta_{0} + \beta_{1} x_{i}) = 0$
+    - $\hat{\beta}_{0} = \bar{y} - \hat{\beta}_{1} \bar{x}$
+    
+- $\frac{\partial}{\partial \beta_{1}} \log L = \sum_{i = 1}^{n} -\frac{1}{2 \sigma^{2}} 2 (y_{i} - ( \beta_{0} + \beta_{1} x_{i})) (- x_{i}) = 0$
+    - $\sum_{i = 1}^{n} (y_{i} - (\beta_{0} + \beta_{1} x_{i})) x_{i} = 0$
+    - $\bar{xy} - \bar{y} \cdot \bar{x} + \beta_{1} \bar{x}^{2} - \beta_{1} \bar{x^{2}} = 0$
+    - $\hat{\beta}_{1} = s_{X, Y} / s^{2}_{X}$
+    
+
+# Other derivation: Least Squares
+
+- Use MSE to find "best" fit for $\beta_{0}$ and $\beta_{1}$.
+
+- $( \hat{\beta}_{0}, \hat{\beta}_{1} ) = \text{arg } \min_{\beta_{0}, \beta_{1}} \mathrm{E} \big( (Y - (\beta_{0} + \beta_{1} X))^{2} \big)$
+
+- $\frac{1}{n} \sum_{i = 1}^{n} (y_{i} - (\hat{\beta}_{0} + \hat{\beta}_{1} x_{i})) = 0$ and $\frac{1}{n} \sum_{i = 1}^{n} (y_{i} - (\hat{\beta}_{0} + \hat{\beta}_{1} x_{i})) x_{i} = 0$
+    - Same equations!  No normality assumptions!
+    
+# $\hat{\beta}$s are unbiased
+
+- $\hat{\beta}_{1} = s_{X, Y} / s^{2}_{X}$
+    
+- $$= \beta_{1} + \frac{ \frac{1}{n} \sum_{i = 1}^{n} (x_{i} - \bar{x}) \epsilon_{i}}{s^{2}_{X}}$$
+
+- $\mathrm{E} (\hat{\beta}_{1}) = \beta_{1}$
+
+- Similarly $\mathrm{E} (\hat{\beta}_{0}) = \beta_{0}$
+    
+# The linear assumption
+
+- The following have the same linear fit:
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("1280px-Anscombe's_quartet_3.png")
+```
+
+# Example
+
+- The book *Introduction to Statistical Learning* has a number of data sets available (also a good supplementary reference for linear regression).  
+
+- I'll take a look at the Credit data set
+
+# Example: Credit
+
+```{r}
+credit = read.csv(file = "http://www-bcf.usc.edu/~gareth/ISL/Credit.csv")
+head(credit)
+```
+
+# Example: Credit
+
+```{r}
+pairs(credit[, c("Income", "Limit", "Rating", 
+                 "Ethnicity", "Age", "Gender")])
+```
+
+# Example: Credit Rating vs Income
+
+```{r echo=FALSE}
+library(pander)
+panderOptions("digits", 3)
+```
+```{r}
+rating_vs_income.lm = lm(Rating ~ Income, data = credit)
+pander(rating_vs_income.lm)
+```
+
+# Example: Credit Rating vs Income
+
+```{r}
+plot(x = credit$Income, y = credit$Rating, pch = 16)
+abline(rating_vs_income.lm)
+```
+
+
+# Example: Credit Rating vs Age
+
+```{r}
+rating_vs_age.lm = lm(Rating ~ Age, data = credit)
+pander(rating_vs_age.lm)
+```
+
+# Example: Credit Rating vs Age
+
+```{r}
+plot(x = credit$Age, y = credit$Rating, pch = 16)
+abline(rating_vs_age.lm)
+```
+
+# Example: Credit Rating vs Gender
+
+```{r}
+rating_vs_gender.lm = lm(Rating ~ Gender, data = credit)
+pander(rating_vs_gender.lm)
+```
+
+# Example: Credit Rating vs Age
+
+```{r}
+plot(x = credit$Gender, y = credit$Rating)
+abline(rating_vs_gender.lm)
+```

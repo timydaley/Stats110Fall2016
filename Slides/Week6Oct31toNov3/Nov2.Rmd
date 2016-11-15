@@ -1,5 +1,5 @@
 ---
-title: "Hypothesis testing and confidence intervals"
+title: "Hypothesis testing, confidence intervals, and two sample hypothesis tests"
 output:
   beamer_presentation:
     increment: true

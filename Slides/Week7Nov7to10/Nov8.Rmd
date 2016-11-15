@@ -1,0 +1,115 @@
+---
+title: "Maximum Likelihood Estimation"
+output:
+  beamer_presentation:
+    increment: true
+date: November 8, 2016
+author: Timothy Daley
+---
+
+# The likelihood function
+
+- For observations $x_{1}, \ldots x_{n}$ and parameters $\theta$, the likelihood function is $$L( \theta |  x_{1}, \ldots, x_{n}) = \Pr(x_{1}, \ldots, x_{n} | \theta)$$
+    - Or for continuous data: $L(\theta | x_{1}, \ldots, x_{n}) = f(x_{1}, \ldots, x_{n} | \theta)$
+
+- We consider the data as given, so that it's a function of the parameter
+
+- Commonly the data is iid, then 
+    - $L(\theta | x_{1}, \ldots, x_{n}) = \prod_{i = 1}^{n} \Pr(x_{i} | \theta)$
+
+# Likelihood examples: German Tank problem
+
+- $t_{1}, \ldots, t_{n}$ are sample from $1, \ldots, T$ without replacement
+    - $\binom{T}{n}$ ways to get $t_{1}, \ldots, t_{n}$
+    
+- $L(T | t_{1}, \ldots, t_{n}) =  \begin{cases} 1 / \binom{T}{n} & \text{ if } \{t_{1}, \ldots, t_{n} \} \in \{1, \ldots, T \} \\ 0 & \text{ otherwise } \end{cases}$
+
+# Likelihood example: iid exponential
+
+- $x_{1}, \ldots, x_{n}$ are idd exponential$(\lambda)$ rv's 
+
+- $L(\lambda | x_{1}, \ldots, x_{n}) = \prod_{i = 1}^{n} \lambda e^{- \lambda x_{i}}$
+
+# Maximum Likelihood Estimation
+
+- The maximum likelihood estimator is the value of $\theta$ that maximizes the likelihood $L(\theta | x)$
+
+- If $\theta$ is a continuous parameter:
+    - Use Calculus!
+    
+# Maximizing the likelihood
+
+- Recall that a function of $\theta$ is maximized at $\theta_{0}$ when:
+    - $\frac{\partial}{\partial \theta} L(\theta_{0} | x) = 0$
+    - $\frac{\partial^{2}}{\partial \theta^{2}} L(\theta_{0} | x) |  < 0$
+    
+- Find the value of $\theta$ where the likelihood is maximized
+
+- Most times (especially with iid data) it's easier to work with the log likelihood
+    - Because $\log \big( \prod_{i = 1}^{n} \Pr(x_{i} | \theta) \big) = \sum_{i = 1}^{n} \log \big( \Pr(x_{i} | \theta) \big)$
+
+# Likelihood example: iid exponential
+
+- Recall $L(\lambda | \vec{x}) = \prod_{i = 1}^{n} \lambda e^{- \lambda x_{i}}$
+
+- $\log L(\lambda | \vec{x}) = \sum_{i = 1}^{n} \log ( \lambda) - \lambda x_{i}$
+
+- $\frac{\partial}{\partial \lambda} \log L(\lambda | \vec{x}) = \sum_{i = 1}^{n} \frac{1}{\lambda} - x_{i}$
+    - $\frac{\partial^{2}}{\partial \lambda^{2}} \log L(\lambda | \vec{x}) = -n / \lambda$
+    - Therefore $\hat{\lambda}_{MLE} = n / \sum_{i = 1}^{n} x_{i} = 1 / \bar{x}$
+    
+# Likelihood examples: German Tank problem
+
+- $L(T | t_{1}, \ldots, t_{n}) =  \begin{cases} 1 / \binom{T}{n} & \text{ if } \{t_{1}, \ldots, t_{n} \} \in \{1, \ldots, T \} \\ 0 & \text{ otherwise } \end{cases}$
+
+- Note if $\hat{T} < \max_{i} t_{i}$, then the likelihood is $0$
+
+- $L(T | t_{1}, \ldots, t_{n})$ is decreasing as $T$ increases
+
+- Therefore $L(T | t_{1}, \ldots, t_{n})$ is maximized at $\hat{T}_{MLE} = \max_{i} t_{i}$
+
+# Example: replaced lightbulbs
+
+- Suppose that in a house there are $n$ identical lightbulbs.
+    
+- For the lightbulbs that went out we know when they went out 
+    - $\Pr(x_{i} | \lambda) = \lambda e^{- \lambda x_{i}}$
+
+- For the lightbulbs that did not go out, we know they lasted at least till time $T$ 
+    - $\Pr(x_{i} | \lambda) = \int_{T}^{\infty} \lambda e^{\lambda x} dx = e^{- \lambda T}$
+    
+# Example: replaced lightbulbs
+
+- Suppose there are $r$ lightbulbs that went out, $n - r$ that didn't
+
+- $L(\lambda | x_{1}, \ldots, x_{r}, T, \ldots, T) = \Big(\prod_{i=1}^{r} \lambda e^{- \lambda x_{i}} \Big) \cdot \Big( \prod_{i = r + 1}^{n} e^{- \lambda T} \Big)$
+
+- $\log L(\lambda | x_{1}, \ldots, x_{r}, T, \ldots, T) = \big( \sum_{i = 1}^{r} \log (\lambda ) - \lambda x_{i} \big) + (n - r) (- \lambda T)$
+
+- $\frac{\partial}{\partial \lambda} \log L( \lambda ) = r / \lambda - \sum_{i = 1}^{r} x_{i} - (n - r) T$
+    - $\hat{\lambda} = r / (\sum_{i = 1}^{r} x_{i} + (n - r) T)$
+
+
+
+# Example: More replaced lightbulbs
+
+- Suppose we have a large factory that constantly needs lightbulbs replaced.
+
+- If a lightbulb needs replacing, the people call facilities and it is replaced
+    - Assume that the factory is so large that it's too difficult to walk around and count all the lightbulbs
+    - We take note of when a light bulb is needed to be replaced
+    
+- We have data $x_{1}, \ldots, x_{n}$ of $n$ lightbulbs that needed to be replaced
+    - We also know that our data is predicated on the fact that $x_{i} \leq T$, how long we collected data
+    
+# Example: replaced lightbulbs
+
+- $\Pr(x_{i} | \lambda, x_{i} \leq T) = \Pr(x_{i} | \lambda) / \Pr(x_{i} \leq T) = \lambda e^{- \lambda x_{i}} / (1 - e^{- \lambda T})$
+
+- $\log L(\lambda | x_{1}, \ldots, x_{n}) = \sum_{i = 1}^{n} \log (\lambda) - \lambda x_{i} - \log \big(1 - e^{- \lambda T} \big)$
+
+- $\frac{\partial}{\partial \lambda} \log L = n / \lambda - \sum_{i = 1}^{n} x_{i} - n T e^{-\lambda T} / (1 - e^{- \lambda T})$
+
+- Ummmm.  Use numerical solver to solve.
+
+- See book for an example.

@@ -1,0 +1,132 @@
+---
+title: "Linear Regression"
+output:
+  beamer_presentation
+date: November 14, 2016
+author: Timothy Daley
+---
+
+# Recap
+
+- Statistical estimation is the estimation of a quantity based on a statistical model
+
+- Maximum likelihood estimation:
+    - Set up the likelihood, basically the probability of the data given the parameters
+    - Interpret the likelihood as a function of the parameters given the data
+    - Find the parameters that maximize the likelihood
+
+# The moments of a distribution
+
+- For $X$ a random variable with cdf $F$ the $k$th moment of $F$ is $\mathrm{E} (X^{k})$
+
+- Continuous random variable with pdf $f$: $\mathrm{E}(X^{k}) = \int_{-\infty}^{\infty} x^{k} f(x) dx$
+
+- Discrete random variable: $\mathrm{E} (X^{k}) = \sum_{x} x^{k} \Pr(X = x)$
+
+- $k$th empirical moment: $\frac{1}{n} \sum_{i = 1}^{n} x_{i}^{k}$
+    
+- Recall that the variance is determined by the 2nd and 1st moment
+    - $\mathrm{Var}(X) = \mathrm{E}(X^{2}) - (\mathrm{E} (X))^{2}$
+    
+# Method of moments
+
+- Suppose we have $k$ parameters: $\theta_{1}, \ldots, \theta_{k}$
+    - Poisson$(\lambda)$: $k = 1$, $\theta_{1} = \lambda$
+    - $N(\mu, \sigma^{2})$: $k = 2$, $\theta_{1} = \mu$, $\theta_{2} = \sigma^{2}$
+    
+- Set up a system of equations: $\mathrm{E} (X) = g_{1} (\theta_{1}, \ldots, \theta_{k})$, $\mathrm{E} (X^{2}) = g_{2} (\theta_{1}, \ldots, \theta_{k})$, $\ldots$, $\mathrm{E} (X^{k}) = g_{k} (\theta_{1}, \ldots, \theta_{k})$
+    - If $k = 1$ use the mean for $\mathrm{E}(X)$
+    - If $k = 2$ use variance for $\mathrm{E}(X^{2}) - (\mathrm{E} (X))^{2}$
+
+- Solve for $\theta_{1}, \ldots, \theta_{k}$
+
+# Example: German Tank problem
+
+- There is 1 parameter $T$
+
+- $\mathrm{E}(t) = (T + 1)/2$
+
+- Method of moments equation: $\bar{t} = (T + 1)/2$
+    - Therefore $\hat{T} = 2 \bar{T} - 1$
+    
+# Example: iid exponential
+
+- $x_{1}, \ldots, x_{n}$ are idd exponential$(\lambda)$ rv's 
+
+- 1 parameter: $\lambda$
+
+- $\mathrm{E}(X) = 1 / \lambda$
+    - Therefore $\bar{x} = 1 / \lambda$ and $\lambda = 1 / \bar{x}$
+    
+# Example: replaced lightbulbs
+
+- Suppose that in a house there are $n$ identical lightbulbs.
+    
+- For the lightbulbs that went out we know when they went out 
+    - $\Pr(x_{i} | \lambda) = \lambda e^{- \lambda x_{i}}$
+
+- For the lightbulbs that did not go out, we know they lasted at least till time $T$ 
+    - $\Pr(x_{i} | \lambda) = \int_{T}^{\infty} \lambda e^{\lambda x} dx = e^{- \lambda T}$
+    
+# Example: replaced lightbulbs
+
+- Suppose there are $r$ lightbulbs that went out, $n - r$ that didn't
+
+- The expectation:
+    - $\mathrm{E} (X) = \int_{0}^{T} x \lambda e^{- \lambda x} dx + \int_{T}^{\infty} T \lambda e^{- \lambda x} dx$
+    - $= \int_{0}^{\infty} x \lambda e^{- \lambda x} dx - \int_{T}^{\infty} x \lambda e^{-\lambda x} dx + \int_{T}^{\infty} T \lambda e^{- \lambda x} dx$
+    - $= \frac{1}{\lambda} - (T + \frac{1}{\lambda}) e^{-\lambda T}) + T e^{- \lambda T}$
+    - $= \frac{1}{\lambda} \big(1 - e^{- \lambda T} \big)$
+    
+# Example: replaced lightbulbs
+
+- Now set the observed mean equal to the expectation:
+    - $\bar{x} = \frac{1}{n} \big( \sum_{i = 1}^{r} x_{i} + (n - r) T \big)$
+    
+- $\bar{x} = \frac{1}{\lambda} \big(1 - e^{- \lambda T} \big)$
+
+- Solve for $\lambda$
+    - use numerical solver!
+    
+# Example: normal with unknown mean and variance
+
+- Suppose the $x_{1}, \ldots, x_{n}$ are iid normal with mean $\mu$ (unknown) and variance $\sigma^{2}$ (unknown)
+
+- Method of moments:
+   - $\mathrm{E}(X) = \mu$
+   - $\hat{\mu}_{MoM} = \bar{x}$
+   - $\mathrm{E}(X^{2}) = \sigma^{2} + \mu^{2}$
+   - $\frac{1}{n} \sum_{i = 1}^{n} x_{i}^{2} = \sigma^{2} + \mu^{2}$
+   - $\hat{\sigma^{2}}_{MoM} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}^{2} - \bar{x}^{2}$
+   
+    
+# Example: normal with unknown mean and variance MLE
+
+- log likelihood:
+    - $\log L(\mu, \sigma^{2} | x_{1}, \ldots, x_{n}) = \sum_{i = 1}^{n} - \frac{1}{2} \big( \log(2) + \log (\sigma^{2}) + \log( \pi) \big) - (x_{i} - \mu)^{2} / 2 \sigma^{2}$
+    
+- Two variables, need to do two derivatives
+    - $\frac{\partial}{\partial \mu} \log L = \sum_{i = 1}^{n} (x_{i} - \mu) / \sigma^{2} = 0$
+    - $\hat{\mu}_{MLE} = \bar{x}$
+    - $\frac{\partial}{\partial \sigma^{2}} \log L = \sum_{i = 1}^{n} - \frac{1}{2 \sigma^{2}} + (x_{i} - \mu)^{2}/ 2 (\sigma^{2})^{2} = 0$
+    - $\hat{\sigma}^{2}_{MLE} = \frac{1}{n} \sum_{i = 1}^{n} (x_{i} - \bar{x})^{2}$
+    
+
+# Example
+
+- Suppose $x_{1}, \ldots, x_{n}$ are iid samples from distribution with pdf $f(x) = \theta x^{\theta - 1}$ for $0 < x < 1$.
+
+- Expectation:
+    - $\mathrm{E} (X) = \int_{0}^{1} x \theta x^{\theta - 1} = \theta / (\theta + 1)$
+    - $\bar{x} = \theta / (\theta + 1)$ 
+    - $\hat{\theta}_{MoM} = \bar{x} / (1 - \bar{x})$
+    
+# Example 
+
+- log likelihood:
+    - $\sum_{i = 1}^{n} \log (\theta) + (\theta - 1) \log (x_{i})$
+    
+- $\frac{\partial}{\partial \theta} \log L = \sum_{i = 1}^{n} \frac{1}{\theta} + \log x_{i}$
+    - $\hat{\theta}_{MLE} = - n / \sum_{i = 1}^{n} \log x_{i}$
+    
+
