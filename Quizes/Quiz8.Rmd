@@ -1,0 +1,69 @@
+---
+title: "Quiz 8"
+author: "Name: "
+output: pdf_document
+---
+
+Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
+
+1.  Which of the following plots show signs of heteroscedasticity?
+
+```{r echo=FALSE, fig.width=8, fig.height=3, fig.align='center'}
+par(mfrow = c(1, 4))
+n_obs = 80
+x = runif(n_obs, 0, 10)
+y = 2*x + 3 + rnorm(n_obs, 0, 5)
+plot(x, y, type = "p", pch = 16, main = "a")
+abline(lm(y ~ x))
+x = runif(n_obs, 0, 10)
+y = 2*x + 3 + rnorm(n_obs, 0, x)
+plot(x, y, type = "p", pch = 16, main = "b")
+abline(lm(y ~ x))
+x = runif(n_obs, 0, 10)
+y = exp(-x + rnorm(n_obs, 0, 1))
+plot(x, y, type = "p", pch = 16, main = "c")
+abline(lm(y ~ x))
+x = runif(n_obs, 0, 10)
+y = rnorm(n_obs, 0, 8)
+plot(x, y, type = "p", pch = 16, main = "d")
+abline(lm(y ~ x))
+```
+
+2.  From the below regression summary answer the following questions.
+```{r echo = FALSE}
+library(ISLR)
+data(Auto)
+library(pander)
+panderOptions("digits", 3)
+```
+```{r}
+credit = read.csv(file = "http://www-bcf.usc.edu/~gareth/ISL/Credit.csv")
+income_vs_education.lm = lm(Income ~ Education, data = credit)
+summary(income_vs_education.lm)
+```
+\newpage
+a.  What is the $R^{2}$ of this regression and what is correlation between the fitted income and the observed income?  
+\
+\
+\
+b.  Is the coefficient for Education significantly different from 0 at the $95 \%$ confidence level?
+\
+\
+\
+c.  Assuming the linear model is correct, an increase in 1 year of Education corresponds to what expected increase of Income?
+\
+\
+\
+\
+d.  Below are diagnostic plots for the above regression.  Does the fit of this regression look good and why or why not?
+\
+\
+
+```{r fig.height=2.8, fig.width=6, fig.align='center'}
+plot(x = credit$Education, y = credit$Income, type = "p", pch = 16)
+abline(income_vs_education.lm, lwd = 2)
+```
+```{r fig.height=2.5, fig.width=8, fig.align='center'}
+par(mfrow = c(1, 4))
+plot(income_vs_education.lm)
+```
