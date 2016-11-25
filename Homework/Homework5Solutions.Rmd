@@ -121,6 +121,7 @@ weigh 100 grams is repeatedly weighed 20 times. The resulting measurements (in g
     b. You want to test pill B to see if it has a statistically significant effect.  
         i. What is the null hypothesis? 
         
+        
         ii. Compute the $p$-value under the null hypothesis.
         iii.  Can you reject the null at a $99 \%$ confidence level? 
     c.  You want to test if there is a statistically significant difference between the two pills.

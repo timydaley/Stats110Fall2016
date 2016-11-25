@@ -6,7 +6,7 @@ output: pdf_document
 
 Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
 
-Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ for some unknown $C$.  Note that this distribution has expectation $0$ and variance $C^{2}/3$.  
+Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ for some unknown $C$.  Note that this distribution has expectation $0$, variance $C^{2}/3$, and pdf $f(x) = 1 / 2C$ for $-C \leq x \leq C$ and $0$ otherwise.  
  \newline
 1. Write out the log likelihood function.
     \
@@ -18,7 +18,11 @@ Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ fo
     \
     \
     \
-2. Set up the maximum likelihood equations for $C$.  
+    \
+    \
+2. Find the maximum likelihood estimator for $C$.
+    \
+    \
     \
     \
     \

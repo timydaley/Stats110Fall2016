@@ -1,7 +1,8 @@
 ---
 title: "Polynomial regression, transformed regression, and multiple regression"
 output:
-  beamer_presentation
+  beamer_presentation:
+    increment: true
 date: November 15, 2016
 author: Timothy Daley
 ---
@@ -28,7 +29,8 @@ plot(x = Auto$horsepower, y = Auto$mpg, pch = 16)
 # Quadratic relationship
 
 ```{r}
-mpg_vs_hp_squared.lm = lm(mpg ~ horsepower + I(horsepower^2), data = Auto)
+mpg_vs_hp_squared.lm = lm(mpg ~ horsepower + 
+                            I(horsepower^2), data = Auto)
 pander(mpg_vs_hp_squared.lm)
 ```
 
@@ -57,8 +59,8 @@ lines(x, predict(mpg_vs_hp_squared.lm, newdata =
 
 # Questioning the quadratic fit
 
-```{r}
-plot(x = Auto$horsepower, y = Auto$mpg, pch = 16, xlim = c(0, 500))
+```{r fig.height=3.5, fig.width=4.5, fig.align='center'}
+plot(x = Auto$horsepower, y = Auto$mpg, pch = 16, xlim = c(0, 500), cex = 0.75)
 x = seq(from = 0, to =500, by = 1)
 lines(x, predict(mpg_vs_hp_squared.lm, newdata =
                  data.frame(horsepower = x)), lwd = 3)
@@ -119,6 +121,18 @@ lines(x, exp(predict(log_mpg_vs_horsepower.lm, newdata =
 plot(log_mpg_vs_horsepower.lm)
 ```
 
+# Non-linear linear regression
+
+- We normally speak of all of the previous examples as linear regression
+
+- As long as $g(y) = \beta_{0} + \beta_{1} h(x) + \epsilon$ for some functions $g$ and $h$
+    - The critical part is that the coefficients, $\beta_{0}$ and $\beta_{1}$, and the error, $\epsilon$ are linear.
+    
+- Ex. $\log Y = \beta_{0} + \beta_{1} \log X + \epsilon$ 
+    - $Y = \text{exp}(\beta_{0} + \beta_{1} \log X + \epsilon) = e^{\beta_{0}} X^{\beta_{1}} e^{\epsilon}$
+ 
+    
+
 # Multiple regression
 
 - Suppose now we have one dependent variable $Y$ and several independent variables $X_{1}, \ldots, X_{d}$
@@ -164,3 +178,60 @@ pander(rating_vs_age_and_income.lm)
 knitr::include_graphics("MultipleRegressionPlane.png")
 ```
 Source: Introduction to Statistical Learning
+
+# What happens to $R^{2}$ as the number of variables increases?
+
+```{r}
+summary(lm(Rating ~ Income, data = credit))$r.squared
+summary(lm(Rating ~ Income + Age, data = credit))$r.squared
+summary(lm(Rating ~ Income + Age + Education, data = credit))$r.squared
+summary(lm(Rating ~ Income + Age + Education + Ethnicity, data = credit))$r.squared
+```
+
+# What happens to the fit as the number of variables increases?
+
+```{r}
+plot(lm(Rating ~ Income, data = credit))
+```
+
+# What happens to the fit as the number of variables increases?
+
+```{r}
+plot(lm(Rating ~ Income + Age, data = credit))
+```
+
+# What happens to the fit as the number of variables increases?
+
+```{r}
+plot(lm(Rating ~ Income + Age + Education, data = credit))
+```
+
+# What happens to the fit as the number of variables increases?
+
+```{r}
+plot(lm(Rating ~ Income + Age + Education + Ethnicity, data = credit))
+```
+
+# What happens to the coefficients as the number of variables increases?
+
+```{r}
+pander(lm(Rating ~ Income + Age + Education + Ethnicity, data = credit))
+```
+
+# What happens to the coefficients as the number of variables increases?
+
+```{r}
+pander(lm(Rating ~ Income, data = credit))
+```
+
+# Statistics done wrong
+
+To replace your lowest quiz grade, read the following online book:
+
+```{r, out.width = "90px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("cover.png")
+```
+
+[https://www.statisticsdonewrong.com/]
+
+There will be an online quiz on the Monday following Thanksgiving breaks

@@ -1,0 +1,76 @@
+---
+title: "Quiz 4"
+author: "Name: "
+output: pdf_document
+---
+
+For the following problems state the distribution used and reason for doing so.  
+
+Suppose a battery manufacturer wants to test out the lifetime of their batteries.  They expect  their batteries to last an average of 100 hours.  
+    a. What is the probability that a randomly tested battery will last at least 50 hours?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b. If they test 5 batteries, what is the probability that they all last at most 100 hours?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    c. Suppose a consumer needs 100 hours of use but they only have two batteries.  What's the probability the two batteries last long enough for the consumer to get the full 100 hours of use?  Assume that only one battery is used at a time.
+\pagebreak
+
+Binomial$(n, p)$: \newline
+    pmf: $f(x) = \binom{n}{x} p^{x} (1 - p)^{n -x}$ \newline
+    expectation: $np$ \newline
+
+Poisson$(\lambda)$: \newline
+pmf: $f(x) = \lambda^{x} e^{-\lambda} / x!$ \newline
+expectation: $\lambda$ \newline
+
+Geometric$(p)$: \newline
+pmf: $f(x) = (1 - p)^{x} p$ \newline
+expectation: $\frac{1}{p} - 1$ \newline
+
+Negative Binomial$(r, p)$: \newline
+pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$ \newline
+expectation: $\frac{pr}{1 - p}$ \newline
+
+Hypergeometric$(N_{1}, N_{2}, n)$: \newline 
+pmf: $f(x) = \frac{\binom{N_{1}}{x} \binom{N_{2}}{n - x}}{\binom{N_{1} + N_{2}}{n}}$ \newline
+expectation: $n N_{1}/ (N_{1} + N_{2})$ \newline
+
+Uniform$(a, b)$: \newline
+pdf: $f(x) = 1/(b -a)$ \newline
+cdf: $F(x) = \begin{cases} 0 & x \leq a \\ (x - a)/(b - a) & a < x < b \\ 1 & x > b \end{cases}$ \newline
+expectation: $(a + b)/2$ \newline
+
+Exponential$(\lambda)$: \newline
+pdf: $f(x) = \lambda e^{-\lambda x}$, $x > 0$ \newline
+cdf: $F(x) = 1 - e^{-\lambda x}$, $x > 0$ \newline
+expectation: $\lambda^{-1}$
+
+Gamma$(k, \theta)$: \newline
+pdf: $f(x) = x^{k - 1} e^{-x / \theta} / \big( \Gamma(k) \theta^{k} \big)$, $x > 0$ \newline
+cdf: $F(x) = 1 - \frac{1}{\Gamma (k)} \Gamma(k, x / \theta)$ \newline
+expectation: $k \theta$
+
+Beta$(\alpha, \beta)$: \newline
+pdf: $f(x) = x^{\alpha - 1} (1 - x)^{\beta - 1} / \mathcal{B} ( \alpha, \beta)$, $0 < x < 1$ \newline
+expectation: $\alpha / (\alpha + \beta)$
+
+
+    
+    

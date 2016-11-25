@@ -26,7 +26,7 @@ weigh 100 grams is repeatedly weighed 20 times. The resulting measurements (in g
     
 5.  To test the effectiveness of a new non-steroid anti-inflammitory drug (NSAID), rofecoxib, 4047 patients were randomly assigned to receive rofecoxib and 4029 patients were randomly assigned to receive naproxen, the standard NSAID. 5 of the patients receiving rofecoxib had a fatal heart attack while 1 patient receiving naproxen had a fatal heart attack. We want to test if rofecoxib increases a patient's risk of heart attack.
     a.  What is null hypothesis?
-    b.  Compute the $p$-value under the null hypothesis.
+    b.  Compute the $p$-value under the null hypothesis.  Use the fact that when testing the difference between two correlations, the estimated standard error of the mean is computed by $\sqrt{\hat{p} (1 - \hat{p}) (1/ n_{1} + 1 / n_{2})}$, where $\hat{p} = (\text{total \# of successes})/(\text{total sample size})$.
     c.  Suppose that 3 patients had fatal heart attacks while receiving rofecoxib but were excluded from the study.  Compute the $p$-value under the null hypothesis but include these three patients.
     d.  This is a true story, see [https://en.wikipedia.org/wiki/Rofecoxib].  What is your opinion on the usage of hypothesis testing in this situation?
     

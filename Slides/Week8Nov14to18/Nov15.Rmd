@@ -1,7 +1,8 @@
 ---
 title: "Categorical Variables and Evaluating a Linear Regression Fit"
 output:
-  beamer_presentation
+  beamer_presentation:
+    increment: true
 date: November 15, 2016
 author: Timothy Daley
 ---
@@ -112,6 +113,12 @@ knitr::include_graphics("heteroscedastic-relationships.png")
 plot(rating_vs_income.lm)
 ```
 
+# Diagnostic plot: Rating vs Income
+
+```{r, out.width = "320px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("rating_vs_income_diagnostic.png")
+```
+
 # Residual diagnostic plot: MPG vs Horsepower
 
 ```{r echo = FALSE}
@@ -130,6 +137,11 @@ abline(mpg_vs_hp.lm)
 plot(mpg_vs_hp.lm)
 ```
 
+# Residual diagnostic plot: MPG vs Horsepower
+
+```{r, out.width = "320px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("mpg_vs_hp_diagnostic.png")
+```
 
 # Categorical (Binary) variable in regression
 
