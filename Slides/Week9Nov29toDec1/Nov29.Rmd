@@ -3,9 +3,18 @@ title: "Model selection"
 output:
   beamer_presentation:
     increment: true
-date: November 15, 2016
+date: November 29, 2016
 author: Timothy Daley
 ---
+
+# Book change for this week
+
+This week we will be using the book *An Introduction to Statistical Learning with Applications in R*, available for free at [http://www-bcf.usc.edu/~gareth/ISL/].  The material for this week is covered in chapter 6.
+
+```{r, out.width = "100px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("ISLCover2.jpg")
+```
+
 
 # Multiple regression: regress everything!
 
@@ -48,7 +57,7 @@ knitr::include_graphics("log_mpg_vs_all.png")
 
 # How to choose which variables are important?
 
-- Method 1: Remove variables that are not important.
+- Method 1: Successively remove variables that are not important.
 
       &nbsp;        Estimate   Std. Error   t value   Pr(>|t|) 
 ------------------ ---------- ------------ --------- ----------
@@ -85,6 +94,12 @@ log_mpg_vs_sig.lm.1 = lm(log(mpg) ~ cylinders + displacement
      
 Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + weight + year + origin
 
+# Removing non-significant variables
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("log_mpg_vs_sig.png")
+```
+
 # How to choose which variables are important?
 
 - Method 2:
@@ -110,7 +125,7 @@ Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + 
 
 # Adding significant variables
 
-- Add weight, now regressions estimates look like
+- Add weight, now the other added regression coefficients are:
 
       &nbsp;      | Estimate | Std. Error | t value | Pr(>|t|)    |
 ------------------|----------|------------|---------|-------------|
@@ -123,7 +138,7 @@ Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + 
     
 # Adding significant variables
 
-- Add weight and year, now regressions estimates look like
+- Add weight and year, now the other added regression coefficients are:
 
       &nbsp;      | Estimate | Std. Error | t value | Pr(>|t|)    |
 ------------------|----------|------------|---------|-------------|
@@ -136,7 +151,7 @@ Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + 
     
 # Adding significant variables
 
-- Add weight, year, and origin, now regressions estimates look like
+- Add weight, year, and origin, now the other added regression coefficients are:
 
       &nbsp;      | Estimate | Std. Error | t value | Pr(>|t|)    |
 ------------------|----------|------------|---------|-------------|
@@ -156,6 +171,12 @@ Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + 
    **origin**     | 0.03463   |  0.009349  |  3.704  | 0.0002434 | 
  **horsepower**   | -0.001034 | 0.0003323  | -3.116  | 0.001968  |
  **(Intercept)**  |   1.658   |    0.148   |   11.2  | 1.989e-25 |
+
+# Adding significant variables
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("log_mpg_vs_sig2.png")
+```
  
 # Adding vs subtracting variables
 
@@ -178,3 +199,34 @@ Table: Fitting linear model: log(mpg) ~ cylinders + displacement + horsepower + 
 - adjusted $R^{2}$ $= R^{2} - (1 - R^{2}) \frac{p}{n - p -1}$
     - $n$ is the number of observations (sample size)
     - $p$ is the number of variables in regression
+   
+   
+# Mallow's $C_{p}$
+
+- $C_{p} = \frac{1}{n} \big( RSS + 2 p \hat{\sigma}^{2} \big)$
+    - $RSS =$ residual sum of squares $= \sum_{i = 1}^{n} (y_{i} - \hat{y}_{i})^{2}$
+    - $\hat{\sigma}^{2}$ is the estimated variance of the residuals
+    
+- Smaller $C_{p}$ is better.
+
+
+# AIC: Akaike Information Criterion
+
+- In general: $\mathrm{AIC} = 2p - 2 \log L$
+
+- For linear regression: $\mathrm{AIC} = 2 p + n \log RSS$
+    
+- With more predictors, $RSS$ gets smaller while $p$ gets larger
+
+- Smaller $\mathrm{AIC}$ is preferable
+    
+- $C_{p}$ is a special case of AIC.  
+  
+# BIC: Bayesian Information Criterion
+
+- In general: $\mathrm{BIC} = p \log n - 2 \log L$
+
+- For linear regression: $\mathrm{BIC} = p \log n + n \log ( RSS / n)$
+
+- Like $\mathrm{AIC}$ but larger penalty on number of parameters
+    - Tends to pick smaller models than $\mathrm{AIC}$
