@@ -1,38 +1,27 @@
 ---
-title: "Regularization Methods and Cross Validation"
+title: "Cross Validation"
 output:
   beamer_presentation
 date: November 30, 2016
 author: Timothy Daley
 ---
 
-# Regularization methods
+# How to test models on the data?
 
-- In linear models the goal is to minimize the residual sum of squares $$RSS = \sum_{i = 1}^{n} \bigg( y_{i} - \beta_{0} - \sum_{i = 1}^{p} \beta_{j} x_{ij} \bigg)^{2}$$
+- Sometimes we can build a model, then get more data to test the model.  
 
-- What if we add a penalty term for the $\beta_{j}$'s?
-    - Don't include $\beta_{0}$ since we could just set $\beta_{0} = \bar{y}$ and de-mean the $y$'s
+- Most times we can't.  We have the data we have.
+
+- What to do?
+
+# Hold-out
+
+- Take some of the data and sequester it for testing
+
+- Building the model ignores this data.
+    - Can introduce bias if the test data is poorly selected.
     
-# Ridge regression
-
-- Ridge regression adds a penalty proportional to $\beta_{j}^{2}$:  $$\sum_{i = 1}^{n} \bigg( y_{i} - \beta_{0} - \sum_{i = 1}^{p} \beta_{j} x_{ij} \bigg)^{2} + \lambda \sum_{j = 1}^{p} \beta_{j}^{2}$$
-
-- This "shrinks" the $\beta_{j}$'s towards $0$
-    - But not all the way.
-    
-# LASSO (least absolute shrinkage and selection operator)
-
-- Lasso adds a penalty proportional to $| \beta_{j} |$: $$\sum_{i = 1}^{n} \bigg( y_{i} - \beta_{0} - \sum_{i = 1}^{p} \beta_{j} x_{ij} \bigg)^{2} + \lambda \sum_{j = 1}^{p} \big| \beta_{j} \big|$$
-
-- This "shrinks" the $\beta_{j}$'s to be $0$
-
-# How to choose $\lambda$?
-
-- $\lambda = 0$ is equivalent to plain regression
-
-- $\lambda = \infty$ will make all $\beta_{j} = 0$.
-
-- Want $0 < \lambda < \infty$, but what is optimal?
+- How to use the full data for training and testing?
 
 # Cross validation
 
@@ -42,18 +31,145 @@ author: Timothy Daley
     - The model will naturally fit the training set better than the test set.
     - Use the performance test set to choose the best model
 
+- Training error is $RSS / n = \frac{1}{n} \sum_{i = 1}^{n} \big(y_{i} - \hat{y}_{i} \big)^{2}$ for $y_{i}$ in training set
+
+- Test error is error in test set $\frac{1}{m} \sum_{i = 1}^{m} \big( y_{i} - \hat{y}_{i} \big)^{2}$
+
+# Training vs Test Error performance
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("alkeM.png")
+```
+
+
 # Cross validation
 
 - In cross validation you successively divide the data into training and test sets
 
+- Average test error over all iterations
+
+- Choose model with lowest average test error
+
+- Refit model using full data
+
+# Leave one out cross validation
+
 - Leave one out cross validation:
     - For each of the $n$ observations, take the test set to be a single observation and the training set to be the other $n - 1$ observations.
     - Average performance across the test sets.
-    
+    - $n$ total test iterations
+
+# Leave one out cross validation
+
+```{r, out.width = "280px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("Figure-8-Leave-one-out-cross-validation-procedure.png")
+```
+
 # $k$-fold cross validation
 
-- In $k$-fold cross validation you divide the data into $k$ parts.  Use each $k$ parts as test sets, successively, and the remainder as training.  Average performance across $k$ test sets.
+- In $k$-fold cross validation you divide the data into $k$ parts.  
+
+- Use each $k$ parts as test sets, successively, and the remainder as training.  
+
+- Average performance across $k$ test sets.
+
+
+# $k$-fold cross validation
 
 ```{r, out.width = "280px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("B-fig-1.jpg")
+```
+
+# Cross validation in practice
+
+- Let's apply cross validation to evaluate the performance of the forward and backward stepwise regression models we built last class. 
+
+- Forwards model: log(mpg) ~ weight + year + origin + horsepower
+
+- Backwards model: log(mpg) ~ cylinders + displacement + horsepower + weight + year + origin
+
+# Cross validation in practice
+
+```{r echo = FALSE}
+library(ISLR)
+data(Auto)
+library(pander)
+```
+```{r}
+n_folds = 10
+fold = sample(1:n_folds, dim(Auto)[1], 
+              replace = TRUE)
+forward_error = 0
+backward_error = 0
+```
+
+# Cross validation in practice
+
+```{r}
+for(i in 1:n_folds){
+  forward.lm = lm(log(mpg) ~ weight + year
+                  + origin + horsepower,
+                  data = Auto[-which(fold == i), ])
+  forward_error = forward_error +
+    mean((log(Auto$mpg[which(fold == i)]) - 
+            predict(forward.lm, 
+                    newdata = Auto[which(fold == i), ],
+                    interval = "none"))^2)
+}
+```
+
+# Cross validation in practice
+
+```{r}
+for(i in 1:n_folds){
+  backward.lm = lm(log(mpg) ~ cylinders + displacement 
+                   + horsepower + weight + year + origin,
+                  data = Auto[-which(fold == i), ])
+  backward_error = backward_error +
+    mean((log(Auto$mpg[which(fold == i)]) - 
+            predict(backward.lm, 
+                    newdata = Auto[which(fold == i), ],
+                    interval = "none"))^2)
+}
+```
+
+# Cross validation in practice
+
+```{r}
+forward_error
+backward_error
+```
+
+Backwards error is lower, use larger model: log(mpg) ~ cylinders + displacement + horsepower + weight + year + origin
+
+# Comparison with AIC, BIC, and adjusted $R^{2}$
+
+```{r}
+backward.lm = lm(log(mpg) ~ cylinders + displacement 
+                   + horsepower + weight + year + origin,
+                  data = Auto)
+forward.lm = lm(log(mpg) ~ weight + year + origin 
+                  + horsepower, data = Auto)
+```
+
+# Comparison with AIC, BIC, and adjusted $R^{2}$
+
+```{r}
+library(MASS)
+AIC(forward.lm)
+AIC(backward.lm)
+```
+
+# Comparison with AIC, BIC, and adjusted $R^{2}$
+
+```{r}
+BIC(forward.lm)
+BIC(backward.lm)
+```
+
+# Comparison with AIC, BIC, and adjusted $R^{2}$
+
+```{r}
+summary(forward.lm)$adj.r.squared
+summary(backward.lm)$adj.r.squared
 ```
