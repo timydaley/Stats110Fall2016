@@ -6,16 +6,16 @@ output: pdf_document
 
 Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
 
-1. If $k$ is small in a $k$-fold cross validation is the bias in the estimate of out-of-sample (test set) accuracy smaller or bigger?
+1. What is $k$ in leave one out cross validation for $k$-fold cross validation?
 \
 \
 \
 \
-2. What is $k$ in leave one out cross validation?
-\
-\
-\
-\
+2.  For the following question select all that are correct.  Consider fitting a linear regression model with 3 predictor variables, $X_{1}$, $X_{2}$, and $X_{3}$.
+a. Shrinkage methods like ridge regression and the lasso try to trade off larger bias for smaller variance to reduce the mean square error.
+b. If we fit a ridge regression model with $X_{1}$, $X_{2}$, and $X_{3}$, then each coefficient is shrunk to somewhere between $0$ and the corresponding standard least squares coefficient.
+c. If we fit a lasso model with $X_{1}$, $X_{2}$, and $X_{3}$, then some model coefficients can be shrunk to $0$.
+
 3. 	For the following question select all that are correct.  Stepwise regression is a method to:
 a. eliminate extraneous variables from a multiple regression equation.
 b. select the best regression equation with a single independent variable.
