@@ -5,7 +5,7 @@ output: pdf_document
 ---
 
 
-1. (4 points) If you believe that only a small number of variables are important, which of the following regression approaches can you use to select the important variables:
+1. (4 points) If you believe that only a small number of variables are important, which of the following regression approaches are appropriate ways to select the important variables:
     i. Ridge regression
     ii. Lasso regression
     iii. p-values.
@@ -63,6 +63,12 @@ a. (4 points) What is the interpretation of the education coefficient?
 \
 
 b. (4 points) Assuming the linear model is true, what is the expected wages for someone with 16 years of education? 
+\
+\
+\
+\
+\
+c. (4 points) What is percentage of variance in wages explained by education?
 
 \newpage
 
@@ -82,7 +88,22 @@ b. (4 points) What is the optimal number of predictors according to the test err
 
   
 7. In species sampling experiments, the number of individuals captured from each species is thought to be Poisson distributed with pmf $f(x) = \Pr(X = x) = \lambda ^{x} e^{- \lambda} / x!$.  Unfortunately, species with no captured individuals are not observed.  In this case, the number of individuals captured for each observed species (those with at least one observed individual) follows a zero-truncated Poisson distribution with pmf $f(x) = \Pr(X = x | X > 0)$.  Suppose we observed $10$ species with counts $x_{1}, \ldots, x_{10}$.
-    a. (5 points) Write out the log-likelihood function.
+    a. (4 points)  If $\lambda = 2$, what is the probability $X = 2$?
+    \
+    \
+    \
+    \
+    \
+    
+    b. (4 points) Write out the log-likelihood function.
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    b. (4 points) Set up the maximum likelihood equations.  Do not solve.
     \
     \
     \
@@ -91,7 +112,7 @@ b. (4 points) What is the optimal number of predictors according to the test err
     \
     \
     \
-    b. (5 points) Set up the maximum likelihood equations.  Do not solve.
+    c. (4 points) Calculate the expectation and variance of a zero-truncted Poisson distribution with parameter $\lambda$.
     \
     \
     \
@@ -100,45 +121,25 @@ b. (4 points) What is the optimal number of predictors according to the test err
     \
     \
     \
-    c. (5 points) Calculate the expectation and variance of a zero-truncted Poisson distribution with parameter $\lambda$.
+    d.  (4 points) Set up the Method of Moments equations.  Do not solve.
     \
     \
     \
     \
     \
     \
-    \
-    \
-    \
-    \
-    \
-    d.  (5 points) Set up the Method of Moments equations.  Do not solve.
-    \
-    \
-    \
-    \
-    \
-    \
-    e.  (2 points) Suppose we fit a zero-truncated Poisson and a zero truncated Negative Binomial distribution and obtain the following AIC values: 123.2 and 127.5953, respectively.  Which model would be chosen by the AIC criterion?
+    e.  (3 points) Suppose we fit a zero-truncated Poisson and a zero truncated Negative Binomial distribution and obtain the following AIC values: 123.2 and 127.5953, respectively.  Which model would be chosen by the AIC criterion?
     
 \newpage
     
-8. A new internet provider claims that using their system you can get transmission speeds of upwards of 1 gigabits per second.   To test this regulators visit 100 houses and measure speeds  of 0.956 gb/s with an estimated standard deviation 0.213 gb/s.  
-    a.  (2 points) State the null and alternative hypotheses.
+8. A new internet provider claims that using their system you can get transmission speeds of 1 gigabits per second.   To test that consumers are getting at least the advertised speed,  regulators visit 100 houses and measure speeds of 0.956 gb/s with an estimated standard deviation 0.213 gb/s.  
+    a.  (3 points) State the null and alternative hypotheses.
     \
     \
     \
     \
     \
-    b. (6 points) Construct a $95 \%$ confidence interval for the average transmission speed.
-    \
-    \
-    \
-    \
-    \
-    \
-    \
-    c. (6 points) Can you reject the null hypothesis at the $99 \%$ confidence level?  Compute the $p$-value or explain why or why not you can reject the null.
+    b. (5 points) Construct a $95 \%$ confidence interval for the average transmission speed.
     \
     \
     \
@@ -146,13 +147,27 @@ b. (4 points) What is the optimal number of predictors according to the test err
     \
     \
     \
+    c. (5 points) Can you reject the null hypothesis at the $99 \%$ confidence level?  Compute the $p$-value or explain why or why not you can reject the null.
     \
-    d.  (6 points) Suppose the true speed is Normal with average speed of 0.96 gb/s and standard deviation of 0.2 gb/s.  What is power of the test assuming a null distribution of $N(1, 0.2)$ at the $95 \%$ confidence level?
+    \
+    \
+    \
+    \
+    \
+    \
+    \
+    d.  (5 points) Suppose the true speed is Normal with average speed of 0.96 gb/s and standard deviation of 0.2 gb/s.  What is the approximate power of the test assuming a null distribution of $N(1, 0.2)$ at the $95 \%$ confidence level and $n = 100$?
     
 \newpage
 
-9.  To bid for government contracts, businesses submit bids and the government selects the lowest bid that satisfies the criteria.  Suppose that bids are exponentially distributed with average bid equal to \$ 10 million.  
-    a.  (4 points) If there are 10 bids, what is the expected lowest bid?
+9.  To bid for government contracts, businesses submit bids and the government selects the lowest bid that satisfies the criteria.  Suppose that bids are exponentially distributed with average bid equal to \$ 10 million.
+    a.  (4 points) What is the probability the first bid is below \$ 3 million?
+    \
+    \
+    \
+    \
+    
+    b.  (5 points) If there are 10 bids, what is the expected value of the lowest bid?
     \
     \
     \
@@ -160,7 +175,7 @@ b. (4 points) What is the optimal number of predictors according to the test err
     \
     \
     \
-    b. (8 points) If the government decides to take bids one by one until one is below \$ 2 million.  How many bids will the government have to wait on average?
+    b. (5 points) If the government decides to take bids one by one until one is below \$ 3 million.  How many bids will the government have to wait on average?
     \
     \
     \
@@ -170,4 +185,69 @@ b. (4 points) What is the optimal number of predictors according to the test err
     \
     \
     \
-    c. (8 points) If you want to enter the auction (for 11 bids total), what bid would you have to submit to ensure a $90 \%$ probability of having the lowest bid?
+    c. (5 points) If you want to enter the auction (for 11 bids total, 1 being yours and 10 other bids), what bid would you have to submit to ensure a $90 \%$ probability of having the lowest bid?
+    
+\pagebreak
+
+Binomial$(n, p)$: \newline
+    pmf: $f(x) = \binom{n}{x} p^{x} (1 - p)^{n -x}$ \newline
+    expectation: $np$ \newline
+    variance: $np (1 - p)$
+
+Poisson$(\lambda)$: \newline
+pmf: $f(x) = \lambda^{x} e^{-\lambda} / x!$ \newline
+expectation: $\lambda$ \newline
+variance: $\lambda$ \newline
+
+Geometric$(p)$: \newline
+pmf: $f(x) = (1 - p)^{x} p$ \newline
+expectation: $\frac{1}{p} - 1$ \newline
+variance: $\frac{1 - p}{p^{2}}$ \newline
+
+Negative Binomial$(r, p)$: \newline
+pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$ \newline
+expectation: $\frac{pr}{1 - p}$ \newline
+variance: $\frac{pr}{(1 - p)^{2}}$ \newline
+
+Hypergeometric$(N_{1}, N_{2}, n)$: \newline 
+pmf: $f(x) = \frac{\binom{N_{1}}{x} \binom{N_{2}}{n - x}}{\binom{N_{1} + N_{2}}{n}}$ \newline
+expecation: $n N_{1}/ (N_{1} + N_{2})$ \newline
+variance: $n \frac{N_{1}}{N_{1} + N_{2}} \frac{N_{2}}{N_{1} + N_{2}} \frac{N_{1} + N_{2} - n}{N_{1} + N_{2} - 1}$
+
+Uniform$(a, b)$: \newline
+pdf: $f(x) = 1/(b -a)$ \newline
+cdf: $F(x) = \begin{cases} 0 & x \leq a \\ (x - a)/(b - a) & a < x < b \\ 1 & x > b \end{cases}$ \newline
+expectation: $(a + b)/2$ \newline
+variance: $(b - a)^{2} / 12$
+
+Exponential$(\lambda)$: \newline
+pdf: $f(x) = \lambda e^{-\lambda x}$, $x > 0$ \newline
+cdf: $F(x) = 1 - e^{-\lambda x}$, $x > 0$ \newline
+expectation: $\lambda^{-1}$ \newline
+variance: $\lambda^{-2}$
+
+
+Gamma$(k, \theta)$: \newline
+pdf: $f(x) = x^{k - 1} e^{-x / \theta} / \big( \Gamma(k) \theta^{k} \big)$, $x > 0$ \newline
+expectation: $k \theta$ \newline
+variance: $k \theta^{2}$
+
+Beta$(\alpha, \beta)$: \newline
+pdf: $f(x) = x^{\alpha - 1} (1 - x)^{\beta - 1} / \mathcal{B} ( \alpha, \beta)$, $0 < x < 1$ \newline
+expectation: $\alpha / (\alpha + \beta)$ \newline
+variance: $\alpha \beta / ((\alpha + \beta)^{2} (\alpha + \beta + 1))$
+
+Normal$(\mu, \sigma^{2})$: \newline
+pdf: $f(x) = \frac{1}{\sqrt{2 \pi \sigma^{2}}} e^{ - (x - \mu)^{2} / \sigma^{2}}$ \newline
+expectation: $\mu$ \newline
+variance: $\sigma^{2}$
+
+\pagebreak
+
+Standard normal table for $z_{\alpha}$ (or $z_{1 - \alpha}$ depending on the notation)
+```{r echo=FALSE}
+library(knitr)
+x = data.frame(alpha = c(0.2, 0.1, 0.05, 0.025, 0.01, 0.005), z = c(qnorm(1 - 0.2), qnorm(1 - 0.1), qnorm(1 - 0.05), qnorm(1 - 0.025), qnorm(1 - 0.01), qnorm(1 - 0.005)))
+x
+#kable(x, format = "markdown")
+```

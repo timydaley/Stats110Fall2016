@@ -10,12 +10,7 @@ output: pdf_document
     \
     \
     \
-    \
-    \
     b. Write out the log-likelihood function.
-    \
-    \
-    \
     \
     \
     \
@@ -30,9 +25,7 @@ output: pdf_document
     \
     \
     \
-    \
     d. Calculate the expectation and variance of a zero-inflated Poisson distribution with parameters $p$ and $\lambda$.
-    \
     \
     \
     \
@@ -77,7 +70,7 @@ output: pdf_document
 \newpage
 3. Suppose that $Y, X_{1}, X_{2}$ and $\epsilon$ are all Gaussian (aka Normal) random variables and that $Y = \beta_{0} + \beta_{1} X_{1} + \beta_{2} X_{2} + \beta_{3} X_{3} + \epsilon$.
 
-    a.  If $X_{1}$, $X_{2}$, and $\epsilon$ are all independent standard normal random variables (mean 0 and variance 1) and $\beta_{0} = 10$, $\beta_{1} = 2$, $\beta_{2} = 5$, and $\beta_{3} = 1$, what is the variance of $Y$?
+a.  If $X_{1}$, $X_{2}$, $X_{3}$, and $\epsilon$ are all independent standard normal random variables (mean 0 and variance 1) and $\beta_{0} = 10$, $\beta_{1} = 2$, $\beta_{2} = 5$, and $\beta_{3} = 1$, what is the variance of $Y$?
     \
     \
     \
@@ -87,7 +80,7 @@ output: pdf_document
     \
     \
     \
-    b.  If $X_{1}$, $X_{2}$, and $\epsilon$ are all independent standard normal random variables (mean 0 and variance 1) and $\beta_{0} = 10$, $\beta_{1} = 2$, and $\beta_{2} = 5$, what is the correlation of $X_{1}$ and $Y$?
+b.  If $X_{1}$, $X_{2}$, and $\epsilon$ are all independent standard normal random variables (mean 0 and variance 1) and $\beta_{0} = 10$, $\beta_{1} = 2$, and $\beta_{2} = 5$, what is the correlation of $X_{1}$ and $Y$?
     \
     \
     \
@@ -98,7 +91,7 @@ output: pdf_document
     \
     \
     
-    c.  We have 20 total observations of $Y, X_{1}, X_{2},$ and $X_{3}$.  We fit linear models using $X_{1}$ alone, $X_{1}$ and $X_{2}$, and all three $X$'s.    State which of the three models will be chosen according to each of the below criteria.
+c.  We have 20 total observations of $Y, X_{1}, X_{2},$ and $X_{3}$.  We fit linear models using $X_{1}$ alone, $X_{1}$ and $X_{2}$, and all three $X$'s.    State which of the three models will be chosen according to each of the below criteria.
     
 | criterion | $X_{1}$ | $X_{1}, X_{2}$ | $X_{1}, X_{2}, X_{3}$ |
 |-----------|---------|----------------|-----------------------|
@@ -106,6 +99,20 @@ output: pdf_document
 |  AIC      |  122.5  |      124.2     |        123.1          |
 | adj $R^2$ |  -0.003 |     -0.045     |        0.048          |
 | 5-fold CV |  135.9  |      162.3     |        104.2          |
+
+d. Below is a table for fitting the model $Y = \beta_{0} + \beta_{1} X_{1} + \beta_{2} X_{2}$.  What is the interpretation of the coefficient for $X_{2}$?
+    
+--------------------------------------------------------------
+     &nbsp;        Estimate   Std. Error   t value   Pr(>|t|) 
+----------------- ---------- ------------ --------- ----------
+     $X_{1}$         1.969       0.4229      4.657    0.000226 
+
+     $X_{2}$         4.747       0.2657      17.86   1.878e-12 
+
+ **(Intercept)**    10.11       0.2968      34.07   4.337e-17 
+--------------------------------------------------------------
+
+Table: Fitting linear model: $Y \sim X_{1} + X_{2}$
 
 
 
@@ -135,7 +142,7 @@ output: pdf_document
     \
     \
     \
-    c.  If the average weight is in fact 101 with variance equal to 4, what is the power with 25 observations compared to null distribution of $N(100, 4^2)$?
+    c.  If the average weight is in fact 101 with variance equal to 4, what is the power with 25 observations compared to null distribution of $N(100, 4)$ at the $95 \%$ confidence level?
     
 
 \newpage
@@ -213,7 +220,7 @@ output: pdf_document
 
 \newpage
 
-9.  A popular model for long tailed distributions (meaning they are likely to take on large values) is power law type distributions.  This has been used to model word frequency and city population.  If $X$ is power law distributions the $X$ has cdf that is proportional to $x^{-\alpha}$ for $x > 0$ and some $\alpha > 0$.
+9.  A popular model for long tailed distributions (meaning they are likely to take on large values) is power law type distributions.  This has been used to model word frequency and city population.  If $X$ is power law distributions the $X$ has cdf that is proportional to $x^{-\alpha}$ for $x > 1$ and some $\alpha > 0$.
 
     a. If $\alpha = 3$ then $f(x) = c x^{-3}$.  Calculate the normalizing constant $c$.
     \
@@ -269,3 +276,33 @@ knitr::include_graphics("power_law.png")
     \
     \
     d.  Suppose the true support for measure A is $58 \%$.  What is the minimum sample size needed for a power of $90 \%$ at a $95 \%$ confidence level?
+    
+\newpage
+
+12. After the 1936 presidential polling fiasco, more rigorous polling methods were develop.  The best known was the Gallup poll, who used a method known as quota sampling.  Quota sampling is nothing more than a systematic effort to force the sample to fit a certain national profile by using quotas: The sample should have so many women, so many men, so many blacks, so many whites, so many under 40, so many over 40 etc. The numbers in each category are taken to represent the same proportions in the sample as are in the electorate at large.  If we assume that every important characteristic of the population is taken into account when setting up the quotas, it is reasonable to expect that quota sampling will produce a good cross-section of the population and therefore lead to accurate predictions. For the 1948 election between Thomas Dewey and Harry Truman, Gallup conducted a poll with a sample size of about 3250. Each individual in the sample was inteviewed in person by a professional interviewer to minimize nonresponse bias, and each interviewer was given a very detailed set of quotas to meet. For example, an interviewer could have been given the following quotas: seven white males under 40 living in a rural area, five black males under 40 living in a rural area, six black females under 40 living in a rural area, etc. Other than meeting these quotas the ultimate choice of who was interviewed was left to each interviewer. Based on the results of this poll, Gallup predicted a victory for Dewey, the Republican candidate. The predicted breakdown of the vote was 50\% for Dewey, 44\% for Truman, and 6\% for third-party candidates Strom Thurmond and Henry Wallace. The actual results of the election turned out to be almost exactly reversed: 50\% for Truman, 45\% for Dewey, and 5\% for third-party candidates.
+
+Can you identify a major problem or confounding factor with quota sampling as described above?
+
+\newpage
+
+The following are true / false questions.
+
+13. When there are more predictor variables ($x$s) overfitting is less likely in linear models.
+
+14. Increasing the regularization parameter $\lambda$ in lasso regression leads to sparser regression.
+
+15. Increasing the regularization parameter $\lambda$ in ridge regression leads to sparser regression
+
+16. For a fixed size of the training and test set, increasing the complexity of the model
+always leads to reduction of the test error
+
+17. A linear regression analysis allows you to make predictions for a variable using information about another variable and the relationship between them.
+
+18. The standard error of the estimate is a measure of how far off are our predictions for $X$.
+
+19.  In any regression analysis, the total variance in $Y$ can be broken down into two parts: the variance attributable to variation in $X$ and that which is left over and unexplained.
+
+20. If you wish to use many predictors to predict a single criterion, you must use each predictor in its own regression analysis.
+coefficients.
+coefficients.
+
