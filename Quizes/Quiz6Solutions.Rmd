@@ -1,0 +1,32 @@
+---
+title: "Quiz 6 Solutions"
+author: "Name: "
+output: pdf_document
+---
+
+Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
+
+1.  Genetic testing is commonly used in prosecution to confirm the suspect's presence at a crime scene.  There are proposals to extend genetic testing to database searches, but it is known that the data in the database and input are not exact.  Suppose that we want to search a database of 10 million people.  To prevent false identification, we set a strigent threshold for matching at a $99.999 \%$ confidence level.  
+
+a.  What is $\alpha$?
+
+$\alpha = 1 - 0.99999 = 0.00001$.    
+    
+b. Supposing that each match test is independent and that the null hypotheses are correctly stated, how many incorrect matches can we expect for each search?
+    
+We perform 10,000,000 matches, each with a probability of a false positive of $1/100000$.  Therefore we expect $10000000/100000 = 100$ incorrect matches.  
+
+3.  It is believed that the average level of prothrombin in a normal population is 20 mg/100 ml of blood plasma with a standard deviation of 4 mg/100 ml.  We are going to get 100 volunteers and measure their prothrombin level to see if their prothrombin levels support this level.  
+    
+a.  State the null and alternative hypotheses.
+    
+$H_{0}: \mu = 20 \text{mg / 100 ml}$ and $H_{1}: \mu \neq 20 \text{mg / 100 ml}$.    
+    
+b. From the measured data we obtain mean measured levels of 21.44 mg / 100 ml with an estimated standard deviation of 8.8 mg / 100 ml.  Compute the test statistic.
+    
+$t = |\bar{x} - \mu_{0}| / (s / \sqrt{n}) = (21.44 - 20)/ (8.8 / \sqrt{100}) = 1.636$
+    
+c. Suppose that after measuring the levels of the 100 volunteers we get a $99 \%$ confidence interval for the average population prothrombin level of $(20.56, 22.32)$.  Can we reject the null hypothesis at $\alpha = 0.05$?
+    
+Since the $99 \%$ confidence interval does not contain $\mu_{0} = 20$, we can reject the null hypothesis at the $99 \%$ confidence level.  We can also reject at any lower confidence level, including at the $95 \%$ level.
+

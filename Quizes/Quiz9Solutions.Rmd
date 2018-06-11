@@ -7,25 +7,29 @@ output: pdf_document
 Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
 
 1. What is $k$ in leave one out cross validation for $k$-fold cross validation?
-\
-\
-\
-\
+
+$k = n$ in LOOCV
+
 2.  For the following question select all that are correct.  Consider fitting a linear regression model with 3 predictor variables, $X_{1}$, $X_{2}$, and $X_{3}$.
 a. Shrinkage methods like ridge regression and the lasso try to trade off larger bias for smaller variance to reduce the mean square error.
 b. If we fit a ridge regression model with $X_{1}$, $X_{2}$, and $X_{3}$, then each coefficient is shrunk to somewhere between $0$ and the corresponding standard least squares coefficient.
 c. If we fit a lasso model with $X_{1}$, $X_{2}$, and $X_{3}$, then some model coefficients can be shrunk to $0$.
+
+a and c.  There's no guarantee ridge regression coefficients don't change sign.
 
 3. 	For the following question select all that are correct.  Stepwise regression is a method to:
 a. eliminate extraneous variables from a multiple regression equation.
 b. select the best regression equation with a single independent variable.
 c. select independent variables to include in a multiple regression equation that increases the $R^{2}$ the most.
 
+Only a is correct.  b is incorrect because we use more than one variable and c is incorrect because $R^{2}$ is largest when all variables are included.
+
 4.  For the following question select all that are correct.  The adjusted $R^{2}$  
 a. is the percentage of variance explained by the model corrected for the number of independent variables ($x$'s) in the regression equation.
 b. takes values in the range of $-1$ to $1$
 c. increases as more variables are included in the model.
 
+a and b.  c is incorrect because the adjusted $R^{2}$ includes a penalty for more variables, so it may increase or decrease with more variables.
 
 5. For the following question select all that apply.  Which of the following methods are appropriate for selecting the best model from among a choice of models:
 a. Choose the model with the highest $R^{2}$.
@@ -33,3 +37,5 @@ b. Choose the model with the highest $C_{p}$.
 c. Choose the model with the lowest BIC.
 d. Choose the model with the lowest AIC.
 e. Choose the model with lowest cross-validation mean square error.
+
+c,d, and e.  $R^{2}$ always increased with more variables, so it's a poor model selection criteria.  $C_{p}$ is equivalent to AIC, and we want the lowest value. 

@@ -1,0 +1,30 @@
+---
+title: "Quiz 7"
+author: "Name: "
+output: pdf_document
+---
+
+Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
+
+In species sampling experiments, the number of capture species is thought to be Poisson distributed with pmf $f(x | \lambda) = \lambda^{x} e^{-\lambda} / x!$.  Unfortunately, uncaptured species are not observed.  In this case, the observed species follow a zero-truncated distribution with pmf $f(x) = \Pr(X = x | X > 0)$.  Suppose we observe $n$ species with counts $s_{1}, \ldots, s_{n}$. \newline
+1. Write out the log likelihood function.
+
+The pmf is given by $f(x) = \Pr(X = x | X > 0)$ for $x = 1, 2, \ldots$.  Using the conditional probability rule, $f(x) = \Pr(X = x \cap X > 0)/ \Pr(X > 0) = \big(\lambda^{x} e^{-\lambda} / x! \big) / \big(1 - e^{-\lambda} \big)$.  Therefore the likelihood is given by
+$$\prod_{i = 1}^{n} \frac{\frac{\lambda^{s_{i}} e^{-\lambda}}{s_{i} !}}{1 - e^{- \lambda}}$$
+and the log likelihood is given by
+$$\sum_{i = 1}^{n} s_{i} \log \lambda - \lambda - \log s_{i} - \log \big(1 - e^{- \lambda} \big).$$
+    
+2. Set up the maximum likelihood equations for $\lambda$.  
+
+To set up the maximum likelihood equations we need to take the derivative in $\lambda$ of the log likelihood.  
+$$\frac{\partial}{\partial \lambda} \log L = \sum_{i = 1}^{n} s_{i} / \lambda - 1 - \frac{1}{1 - e^{- \lambda}} \big( e^{-\lambda} \big) = 0$$
+
+3.  What is the expected number of captures for an observation, conditional upon it being observed?
+
+If $X$ is distributed with pmf $f(x) = \big(\lambda^{x} e^{-\lambda} / x! \big) / \big(1 - e^{-\lambda} \big)$.  The expectation is equal to 
+$$\mathrm{E}(X) = \sum_{x = 1}^{\infty} x \big(\lambda^{x} e^{-\lambda} / x! \big) / \big(1 - e^{-\lambda} \big) = \frac{1}{1 - e^{-\lambda}} \sum_{x = 1}^{\infty} x \lambda^{x} e^{- \lambda} / x!.$$
+Note that the above summation is unchanged is we include 0 in the summation, since we multiply by 0.  If we do this, then the summation is equal to the expectation of a Poisson random variable.  Therefore $\mathrm{E}(X) = \frac{1}{1 - e^{-\lambda}} \lambda$.
+
+4. Set up the method of moments equations for $\lambda$.
+
+$$\bar{x} = \frac{1}{1 - e^{-\lambda}} \lambda$$

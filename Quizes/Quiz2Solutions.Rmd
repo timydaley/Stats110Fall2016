@@ -1,0 +1,31 @@
+---
+title: "Quiz 2 Solutions"
+author: "Name: "
+output: pdf_document
+---
+
+1. Suppose you throw two 3-sided die.  
+    a. Let $X$ denote the random variable of the sum of the two sides. Write out the pmf of $X$
+    
+    $$f(x) = \begin{cases} 
+    1/9 & \text{ if } x = 2 \\
+    2/9 & \text{ if } x = 3 \\
+    3/9 & \text{ if } x = 4 \\
+    2/9 & \text{ if } x = 5 \\
+    1/9 & \text{ if } x = 6
+    \end{cases}$$
+    
+    b. Calculate the expectation of $X$.
+    
+    $$2*1/9 + 3*2/9 + 4*3/9 + 5*2/9 + 6*1/9 = 36/9 = 4$$
+    
+    c. Calculate the variance of $X$
+    $$(2 - 4)^2 * 1/9 + (3 - 4)^2 *2/9 + (4 - 4)^2 * 3/9 + (5 - 4)^2 * 2/9 + (6 - 4)^2 *1/9 = (4 + 2 + 0 + 2 + 4)/9 = 4/3$$
+    
+    d. Suppose we have the following 5 outcomes from throwing two 3-sided dice: 4, 2, 5, 5, and 3.  Calculate the sample mean.
+    
+    $$\frac{1}{5}(4 + 2 + 5 + 5 + 3) = 19/5 = 3.8$$
+    
+    e. Calculate the sample variance from the data above.
+    
+    $$\frac{1}{5} \bigg( (4 - 3.8)^2 + (2 - 3.8)^2 + (5 - 3.8)^2 + (5  - 3.8)^2 + (3 - 3.8)^2 \bigg) = 1.36$$

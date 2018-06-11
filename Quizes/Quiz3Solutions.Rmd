@@ -1,0 +1,52 @@
+---
+title: "Quiz 3"
+author: "Name: "
+output: pdf_document
+---
+
+For the following problems state the distribution used and the reason. {.bigger}
+
+1. A widget manufacturer has promised a $0.1 \%$ defect rate.  You test out 100 widgets and find one defect.  
+    a. Assuming the stated defect rate, what is the probability of finding one or more defect in 100 widgets?
+    
+    Due to the large number of widgets, we'll use a Poisson.  The expected number of defective widgets is $0.001 \cdot 100 = 0.1$.  Let $X$ be the number of defective widgets.  $X \sim$ Poisson$(\lambda = 0.1)$
+    
+    $$\Pr(X \geq 1) = \Pr(X > 0) = 1 - \Pr(X = 0) = 1 - e^{- 0.1}$$
+    
+    b.  Assuming the stated defect rate, what is the expected number of widgets you would have to test to find a defective one?
+    
+    The number of widgets we would have to test until finding a defective one is a geometric random variable with $p = 0.001$.  The expectation is equal to $(1 - p)/p = 0.999/0.001 = 999$.
+    
+    c.  If you were to four batches of 100 widgets, what is the probability that none of the batches contains at least one defective widget?
+    
+    Each batch has a probability of $e^{- 0.1}$ of containing at least no defective widgets.  The probability that none of the 4 batches has a defective widget is $(e^{-0.1})^{4} = e^{-0.4}$.
+    
+\pagebreak
+
+Binomial$(n, p)$: \newline
+    pmf: $f(x) = \binom{n}{x} p^{x} (1 - p)^{n -x}$ \newline
+    expectation: $np$ \newline
+    variance: $np (1 - p)$
+
+Poisson$(\lambda)$: \newline
+pmf: $f(x) = \lambda^{x} e^{-\lambda} / x!$ \newline
+expectation: $\lambda$ \newline
+variance: $\lambda$ \newline
+
+Geometric$(p)$: \newline
+pmf: $f(x) = (1 - p)^{x} p$ \newline
+expectation: $\frac{1}{p} - 1$ \newline
+variance: $\frac{1 - p}{p^{2}}$ \newline
+
+Negative Binomial$(r, p)$: \newline
+pmf: $f(x) = \binom{x + r - 1}{x} p^{x} (1 - p)^{r}$ \newline
+expectation: $\frac{pr}{1 - p}$ \newline
+variance: $\frac{pr}{(1 - p)^{2}}$ \newline
+
+Hypergeometric$(N_{1}, N_{2}, n)$: \newline 
+pmf: $f(x) = \frac{\binom{N_{1}}{x} \binom{N_{2}}{n - x}}{\binom{N_{1} + N_{2}}{n}}$ \newline
+expecation: $n N_{1}/ (N_{1} + N_{2})$ \newline
+variance: $n \frac{N_{1}}{N_{1} + N_{2}} \frac{N_{2}}{N_{1} + N_{2}} \frac{N_{1} + N_{2} - n}{N_{1} + N_{2} - 1}$
+
+    
+    

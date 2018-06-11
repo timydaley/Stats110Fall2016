@@ -6,8 +6,7 @@ output: pdf_document
 
 Remember to state the logic behind your answers.  If you use any variables, please state what the variables represent.
 
-Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ for some unknown $C$.  Note that this distribution has expectation $0$ and variance $C^{2}/3$.  
- \newline
+In species sampling experiments, the number of capture species is thought to be Poisson distributed with pmf $f(x | \lambda) = \lambda^{x} e^{-\lambda} / x!$.  Unfortunately, uncaptured species are not observed.  In this case, the observed species follow a zero-truncated distribution with pmf $f(x) = \Pr(X = x | X > 0)$.  Suppose we observe $n$ species with counts $s_{1}, \ldots, s_{n}$. \newline
 1. Write out the log likelihood function.
     \
     \
@@ -18,7 +17,7 @@ Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ fo
     \
     \
     \
-2. Set up the maximum likelihood equations for $C$.  
+2. Set up the maximum likelihood equations for $\lambda$.  
     \
     \
     \
@@ -29,5 +28,14 @@ Consider sampling $n$ observations from a uniform distribution on $-C$ to $C$ fo
     \
     \
     \
-3. Set up the method of moments equations for $C$.
-    
+3.  What is the expected number of captures for an observation, conditional upon it being observed?
+\
+\
+\
+\
+\
+\
+\
+\
+\
+4. Set up the method of moments equations for $\lambda$.

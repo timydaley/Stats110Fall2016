@@ -1,0 +1,43 @@
+---
+title: "Extra credit quiz"
+output: pdf_document
+---
+
+1. Suppose the company you work for wants to test the effectiveness of a new online advertising campaign.  A standard way to test this is to randomly assign users to see either the new ad or the old ad.  Your company plans to run this "experiment" until there is a statistically significant difference between the two campaigns.  Please explain why this is a bad idea.
+\
+\
+\
+\
+\
+
+
+2. Tamiflu is an anti-viral medication used to treat influenza (the flu).  To review the effectiveness of Tamiflu, the Cochrane Collaboration (a non-profit organization that reviews health care information) requested results of Tamiflu trials from the manufacturer and received 10 trials.  Later it came to light that there were in fact closer to 70 trials, most of which showed little to no effect of tamiflu over competing medication (paracetamol).  Please state and explain what problem in science is this indicative of? (2 sentences minimum)
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+3. Please state one reason why constant small-volume blood tests, as proposed by Theranos and other start-ups, is a bad idea.
+\
+\
+\
+\
+\
+\
+\
+
+Suppose you want to test the effectiveness of two medications: A and B.  The effect of A is statistically significant from 0 but the effect of B is not.  Is the effect of A statistically significantly larger than the effect of B?
+\
+	Yes
+	\
+	
+	No
+	\
+	
+	Maybe
